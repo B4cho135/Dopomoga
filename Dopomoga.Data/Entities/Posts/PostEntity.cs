@@ -14,7 +14,7 @@ namespace Dopomoga.Data.Entities.Posts
         public string UkrainianTitle { get; set; }
         public string UkrainianDescription { get; set; }
         public byte[] Thumbnail { get; set; }
-        public int? CategoryId { get; set; }
+        public int CategoryId { get; set; }
         public CategoryEntity Category { get; set; }
         public string RedirectUrl { get; set; }
     }

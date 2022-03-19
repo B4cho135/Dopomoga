@@ -25,7 +25,7 @@ namespace Dopomoga.API.Controllers
         {
             try
             {
-                var categories = _context.Categories.OrderByDescending(x => x.UpdatedAt).ToList();
+                var categories = _context.Categories.Where(x => !x.IsDeleted).OrderByDescending(x => x.UpdatedAt).ToList();
 
                 return Ok(categories);
             }
@@ -42,7 +42,7 @@ namespace Dopomoga.API.Controllers
         {
             try
             {
-                var category = _context.Categories.FirstOrDefault(c => c.Id == id);
+                var category = _context.Categories.FirstOrDefault(c => c.Id == id && !c.IsDeleted);
                 if (category == null)
                 {
                     return NotFound();
@@ -94,14 +94,16 @@ namespace Dopomoga.API.Controllers
         {
             try
             {
-                var cateogry = _context.Categories.FirstOrDefault(c => c.Id == id);
+                var cateogry = _context.Categories.Where(x => !x.IsDeleted).FirstOrDefault(c => c.Id == id);
 
                 if (cateogry == null)
                 {
                     return NotFound();
                 }
 
-                _context.Categories.Remove(cateogry);
+                cateogry.IsDeleted = true;
+
+                _context.Categories.Update(cateogry);
                 _context.SaveChanges();
 
                 return Ok(id);

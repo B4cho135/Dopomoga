@@ -2,6 +2,7 @@
 using Dopomoga.Data.Entities.Categories;
 using Dopomoga.Data.Entities.Posts;
 using Dopomoga.Models.Requests.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using test.Models.Identity;
@@ -42,10 +43,37 @@ namespace test.Controllers.Identity
         }
 
         [HttpGet]
-        public IActionResult Categories()
+        public async Task<IActionResult> Categories()
         {
             var model = new CategoryViewModel();
+
+            var response = await _client.Categories.Get();
+
+            if(response.IsSuccessStatusCode)
+            {
+                foreach(var category in response.Content)
+                model.Categories.Add(new SelectListItem()
+                {
+                    Value = category.Id.ToString(),
+                    Text = category.CategoryGeorgianName
+                });
+            }
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteCategory(CategoryViewModel model)
+        {
+            try
+            {
+                var response = await _client.Categories.Delete(model.CategoryId);
+
+                return RedirectToAction("Categories", "Identity");
+            }
+            catch(Exception ex)
+            {
+                return RedirectToAction("Categories", "Identity");
+            }
         }
 
         [HttpPost]
@@ -76,6 +104,20 @@ namespace test.Controllers.Identity
         public async Task<IActionResult> Posts()
         {
             var postViewModel = new PostViewModel();
+
+            var posts = await _client.Posts.Get();
+
+            if(posts.IsSuccessStatusCode)
+            {
+                foreach(var post in posts.Content)
+                {
+                    postViewModel.Posts.Add(new SelectListItem()
+                    {
+                        Value = post.Id.ToString(),
+                        Text = post.GeorgianTitle
+                    });
+                }    
+            }
 
             var categories = await _client.Categories.Get();
 
@@ -132,5 +174,105 @@ namespace test.Controllers.Identity
 
             return RedirectToAction("Categories");
         }
+
+        [HttpGet]
+        public IActionResult Info()
+        {
+            
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditPost(int Id)
+        {
+            var post = await _client.Posts.GetById(Id);
+
+            var postCategories = await _client.Categories.Get();
+            var model = new PostViewModel();
+            if(post.IsSuccessStatusCode)
+            {
+                model.TitleGeorgian = post.Content.GeorgianTitle;
+                model.TitleUkrainian = post.Content.UkrainianTitle;
+                model.DescriptionGeorgian = post.Content.GeorgianDescription;
+                model.DescriptionUkrainian = post.Content.UkrainianDescription;
+                model.RedirectUrl = post.Content.RedirectUrl;
+                model.CategoryName = post.Content.Category.CategoryGeorgianName;
+                model.CategoryId = post.Content.CategoryId;
+            }
+
+            if(postCategories.IsSuccessStatusCode)
+            {
+                foreach(var category in postCategories.Content)
+                {
+                    model.Categories.Add(new SelectListItem()
+                    {
+                        Value = category.Id.ToString(),
+                        Text = category.CategoryGeorgianName
+                    });
+                }
+            }
+           
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditPost(PostViewModel model, IFormFile Image)
+        {
+            var entity = new PostEntity()
+            {
+                Id = model.Id,
+                GeorgianTitle = model.TitleGeorgian,
+                GeorgianDescription = model.DescriptionGeorgian,
+                UkrainianTitle = model.TitleUkrainian,
+                UkrainianDescription = model.DescriptionUkrainian,
+                CategoryId = model.CategoryId,
+                Thumbnail = model.Image,
+                RedirectUrl = model.RedirectUrl
+            };
+            if (Image != null)
+            {
+                using (var stream = new MemoryStream())
+                {
+                    await Image.CopyToAsync(stream);
+                    entity.Thumbnail = stream.ToArray();
+
+
+                }
+            }
+
+            var response = await _client.Posts.Update(model.Id,entity);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                return RedirectToAction("Login");
+            }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return RedirectToAction("Categories");
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> DeletePost(PostViewModel model)
+        {
+
+            try
+            {
+                var response = await _client.Posts.Delete(model.Id);
+
+
+                return RedirectToAction("Posts");
+            }
+            catch(Exception ex)
+            {
+                return RedirectToAction("Posts");
+            }
+        }
+
+
     }
 }

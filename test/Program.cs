@@ -69,6 +69,7 @@ app.UseRequestLocalization(options.Value);
 
 app.UseRouting();
 
+
 app.UseAuthorization();
 
 app.MapControllerRoute(

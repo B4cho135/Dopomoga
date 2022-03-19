@@ -6,8 +6,8 @@
         <div class="list-group">
 
                 <a class="list-group-item list-group-item-action list-group-item-light p-1" href="@Url.Action("Categories", "Identity")"> კატეგორიები</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="@Url.Action("Posts", "Identity")"> კატეგორიები</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="@Url.Action("Info", "Identity")"> კატეგორიები</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="@Url.Action("Posts", "Identity")"> პოსტები</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="@Url.Action("Info", "Identity")"> ინფორმაცია</a>
                 
             </div>
     </div>
@@ -22,6 +22,17 @@
                 </div>
                 <div class="col">
                     <button type="submit" class="btn btn-success"> დამატება</button>
+                </div>
+            </div>
+        </form>
+
+        <form asp-action="DeleteCategory" asp-controller="Identity" method="post">
+            <div class="row" style="margin-top:50px;">
+                <div class="col">
+                    <select asp-for="CategoryId" asp-items="@Model.Categories" class="form-control"></select>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-danger"> წაშლა</button>
                 </div>
             </div>
         </form>

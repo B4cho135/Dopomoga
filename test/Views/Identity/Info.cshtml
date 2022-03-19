@@ -1,0 +1,34 @@
+﻿@model test.Models.Identity.InfoViewModel;
+
+<div class="container">
+<div class="row">
+    <div class="col-md-2" style="margin-top:40px;">
+        <div class="list-group">
+                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="@Url.Action("Categories", "Identity")"> კატეგორიები</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="@Url.Action("Posts", "Identity")"> პოსტები</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="@Url.Action("Info", "Identity")"> ინფორმაცია</a>
+            </div>
+    </div>
+    <div class="col-md-10">
+
+    <div class="container container_margin">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="CreatePost" asp-controller="Identity" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="InfoGeorgian" class="control-label"></label>
+                        <input asp-for="InfoGeorgian" class="form-control" />
+                        <span asp-validation-for="InfoGeorgian" class="text-danger"></span>
+                    </div>
+
+                    <div class="row">
+                        <button type="submit" class="btn btn-primary" value="Create">დამატება</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+           
+    </div>
+</div>
+</div>

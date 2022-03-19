@@ -3,6 +3,7 @@ using Dopomoga.Data.Entities.Posts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Dopomoga.API.Controllers
 {
@@ -23,7 +24,7 @@ namespace Dopomoga.API.Controllers
         {
             try
             {
-                var categories = _context.Posts.OrderByDescending(x => x.UpdatedAt).ToList();
+                var categories = _context.Posts.Include(x => x.Category).Where(x => !x.IsDeleted).OrderByDescending(x => x.UpdatedAt).ToList();
 
                 return Ok(categories);
             }
@@ -40,7 +41,7 @@ namespace Dopomoga.API.Controllers
         {
             try
             {
-                var category = _context.Posts.FirstOrDefault(c => c.Id == id);
+                var category = _context.Posts.Include(x => x.Category).FirstOrDefault(c => c.Id == id && !c.IsDeleted);
                 if (category == null)
                 {
                     return NotFound();
@@ -91,14 +92,15 @@ namespace Dopomoga.API.Controllers
         {
             try
             {
-                var cateogry = _context.Posts.FirstOrDefault(c => c.Id == id);
+                var post = _context.Posts.FirstOrDefault(c => c.Id == id);
 
-                if (cateogry == null)
+                if (post == null)
                 {
                     return NotFound();
                 }
 
-                _context.Posts.Remove(cateogry);
+                post.IsDeleted = true;
+                _context.Posts.Remove(post);
                 _context.SaveChanges();
 
                 return NoContent();

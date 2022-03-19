@@ -15,7 +15,8 @@
     <div class="container container_margin">
         <div class="row">
             <div class="col-md-4">
-                <form asp-action="CreatePost" asp-controller="Identity" method="post" enctype="multipart/form-data">
+                <form asp-action="EditPost" asp-controller="Identity" method="post" enctype="multipart/form-data">
+                    <input asp-for="Id" hidden/>
                     <div class="form-group">
                         <label asp-for="TitleGeorgian" class="control-label"></label>
                         <input asp-for="TitleGeorgian" class="form-control" />
@@ -38,7 +39,6 @@
                         <textarea asp-for="DescriptionUkrainian" class="form-control"></textarea>
                         <span asp-validation-for="DescriptionUkrainian" class="text-danger"></span>
                     </div>
-
                     <div class="form-group">
                         <label asp-for="RedirectUrl" class="control-label"></label>
                         <input asp-for="RedirectUrl" class="form-control" />
@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary" value="Create">დამატება</button>
+                        <button type="submit" class="btn btn-primary" value="Create" style="margin-left:20px">დამატება</button>
                     </div>
 
                     <span class="form-group">
@@ -65,17 +65,6 @@
                     </span>
                 </form>
             </div>
-
-            <form asp-action="DeletePost" asp-controller="Identity" method="post">
-            <div class="row" style="margin-top:50px;">
-                <div class="col">
-                    <select asp-for="Id" asp-items="@Model.Posts" class="form-control"></select>
-                </div>
-                <div class="col">
-                    <button type="submit" class="btn btn-danger"> წაშლა</button>
-                </div>
-            </div>
-        </form>
         </div>
     </div>
            
