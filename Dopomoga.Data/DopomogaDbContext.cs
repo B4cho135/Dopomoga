@@ -1,4 +1,6 @@
 ﻿using Dopomoga.Data.Entities.Categories;
+using Dopomoga.Data.Entities.Identity;
+using Dopomoga.Data.Entities.PageInformation;
 using Dopomoga.Data.Entities.Posts;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Dopomoga.Data
 {
-    public class DopomogaDbContext : DbContext
+    public class DopomogaDbContext : IdentityDbContext<UserEntity, RoleEntity, Guid>
     {
         public DopomogaDbContext(DbContextOptions<DopomogaDbContext> options) : base(options)
         {
@@ -19,6 +21,7 @@ namespace Dopomoga.Data
 
         public DbSet<CategoryEntity> Categories { get; set; }
         public DbSet<PostEntity> Posts { get; set; }
+        public DbSet<PageInformationEntity> PageInformation { get; set; }
 
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dopomoga.Models.Requests.Identity
 {
-    internal class LoginResponse
+    public class LoginResponse
     {
         public User User { get; set; }
         public string JWT { get; set; }

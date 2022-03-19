@@ -1,4 +1,7 @@
-﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+﻿@model test.Models.Home.HomeViewModel;
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
 
 <div class="container">
     <div class="row">
@@ -6,18 +9,11 @@
             <div class="" id="sidebar-wrapper" style="margin-top:10px;">
             <div class="sidebar-heading border">კატეგორიები</div>
             <div class="list-group">
-                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#!">@localizer["Category"]</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#!">კატეგორია</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#!">კატეგორია</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#!">კატეგორია</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#!">კატეგორია</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#!">კატეგორია</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#!">კატეგორია</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#!">კატეგორია</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#!">კატეგორია</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#!">კატეგორია</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#!">კატეგორია</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#!">კატეგორია</a>
+
+                @foreach(var category in Model.Categories)
+                {
+                    <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#!">@*@localizer["Category"]*@ @category.CategoryGeorgianName</a>
+                }
             </div>
         </div>
         </div>

@@ -1,0 +1,30 @@
+﻿@model test.Models.Identity.CategoryViewModel;
+
+<div class="container">
+<div class="row">
+    <div class="col-md-2">
+        <div class="list-group">
+
+                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="@Url.Action("Categories", "Identity")"> კატეგორიები</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="@Url.Action("Posts", "Identity")"> კატეგორიები</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="@Url.Action("Info", "Identity")"> კატეგორიები</a>
+                
+            </div>
+    </div>
+    <div class="col-md-10">
+        <form asp-action="CreateCategory" asp-controller="Identity" method="post">
+            <div class="row">
+            <div class="col">
+                <input type="text" asp-for="GeorgianTitle" class="form-control" placeholder="კატეგორია ქართულად">
+            </div>
+            <div class="col">
+                <input type="text" asp-for="UkrainianTitle" class="form-control" placeholder="კატეგორია უკრაინულად">
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-success"> დამატება</button>
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>

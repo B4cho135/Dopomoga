@@ -1,4 +1,7 @@
+using Dopomoga.API.SDK;
 using Dopomoga.Data;
+using Dopomoga.Services;
+using Dopomoga.Services.Abstractions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
@@ -21,6 +24,11 @@ builder.Services.AddMvc()
     .AddDataAnnotationsLocalization();
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<IHttpClientSettings, HttpClientSettings>();
+builder.Services.AddScoped<ServiceHttpClient>();
+builder.Services.AddScoped<ApiClient>();
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.Configure<RequestLocalizationOptions>(opt =>
 {
     var supportedCultures = new List<CultureInfo>()
@@ -42,9 +50,6 @@ builder.Services.AddCors(c =>
     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
 
-builder.Services.AddDbContext<DopomogaDbContext>(options =>
-  options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -62,13 +67,6 @@ var options = ((IApplicationBuilder)app).ApplicationServices.GetRequiredService<
 
 app.UseRequestLocalization(options.Value);
 
-//var supportedLocalizations = new[] { "ge", "uk" };
-//var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedLocalizations[0])
-//    .AddSupportedCultures(supportedLocalizations)
-//    .AddSupportedUICultures(supportedLocalizations);
-
-//app.UseRequestLocalization(localizationOptions);
-//app.UseRequestLocalizationCookies();
 app.UseRouting();
 
 app.UseAuthorization();

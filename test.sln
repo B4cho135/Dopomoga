@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "test", "test\test.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dopomoga.Data", "Dopomoga.Data\Dopomoga.Data.csproj", "{972D0312-E002-4AE1-B263-FE1917FB75FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dopomoga.Models", "Dopomoga.Models\Dopomoga.Models.csproj", "{3827D456-B5C0-44F9-BAEA-E9C1F321650B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dopomoga.Models", "Dopomoga.Models\Dopomoga.Models.csproj", "{3827D456-B5C0-44F9-BAEA-E9C1F321650B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dopomoga.Services", "Dopomoga.Services\Dopomoga.Services.csproj", "{900FD6B2-206E-4AF8-AD85-0C2E119E4832}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dopomoga.Services", "Dopomoga.Services\Dopomoga.Services.csproj", "{900FD6B2-206E-4AF8-AD85-0C2E119E4832}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dopomoga.API", "Dopomoga.API\Dopomoga.API.csproj", "{61747E66-A01D-48F5-B499-6B554ED9162B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dopomoga.API", "Dopomoga.API\Dopomoga.API.csproj", "{61747E66-A01D-48F5-B499-6B554ED9162B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dopomoga.API.SDK", "Dopomoga.API.SDK\Dopomoga.API.SDK.csproj", "{CE9DC936-B0E7-4723-B3E0-662DF9A4F0F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{61747E66-A01D-48F5-B499-6B554ED9162B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61747E66-A01D-48F5-B499-6B554ED9162B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61747E66-A01D-48F5-B499-6B554ED9162B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE9DC936-B0E7-4723-B3E0-662DF9A4F0F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE9DC936-B0E7-4723-B3E0-662DF9A4F0F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE9DC936-B0E7-4723-B3E0-662DF9A4F0F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE9DC936-B0E7-4723-B3E0-662DF9A4F0F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

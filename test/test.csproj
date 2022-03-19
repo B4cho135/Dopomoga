@@ -13,10 +13,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
+    <PackageReference Include="Refit" Version="6.3.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Dopomoga.API.SDK\Dopomoga.API.SDK.csproj" />
     <ProjectReference Include="..\Dopomoga.Data\Dopomoga.Data.csproj" />
+    <ProjectReference Include="..\Dopomoga.Services\Dopomoga.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

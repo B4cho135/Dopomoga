@@ -1,15 +1,11 @@
-﻿using API.Enums;
-using AutoMapper;
-using Core.Entities.Users;
+﻿using AutoMapper;
+using Dopomoga.API.Helpers;
 using Dopomoga.Data.Entities.Identity;
+using Dopomoga.Models.Dtos.Identity;
 using Dopomoga.Models.Requests.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Models.Requests;
-using Models.Responses;
-using Models.Users;
-using Services.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,19 +17,17 @@ namespace API.Controllers
     public class AccountsController : ControllerBase
     {
         private UserManager<UserEntity> userManager;
-        private IMapper mapper;
         private readonly SignInManager<UserEntity> signInManager;
         public IConfiguration Configuration { get; }
         public AccountsController(
             UserManager<UserEntity> userManager,
             SignInManager<UserEntity> signInManager,
-            IConfiguration configuration,
-            IMapper mapper)
+            IConfiguration configuration
+            )
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             Configuration = configuration;
-            this.mapper = mapper;
         }
 
         [HttpPost("Login")]
@@ -54,29 +48,30 @@ namespace API.Controllers
             var userRoles = await userManager.GetRolesAsync(user);
             string token = JwtHelper.GenerateToken(Configuration["JWT:Secret"], user, userRoles);
             LoginResponse loginResponse = new LoginResponse();
-            loginResponse.User = mapper.Map<User>(user);
-            loginResponse.User.Roles = await userManager.GetRolesAsync(user);
+            loginResponse.User = new User()
+            {
+                Email = user.Email,
+                Username = user.Email
+            };
             loginResponse.JWT = token;
             return Ok(loginResponse);
 
         }
 
         [HttpPost("Register")]
-        public async Task<IActionResult> RegisterAsync(RegistrantRoleFilter role, RegisterRequest registerRequest)
+        public async Task<IActionResult> RegisterAsync(string email, string password)
         {
             var newUser = new UserEntity()
             {
-                PhoneNumber = registerRequest.PhoneNumber,
-                Email = registerRequest.Email,
-                UserName = registerRequest.Email,
-                Name = registerRequest.Name,
-                Surname = registerRequest.Surname
+                PhoneNumber = "598471547",
+                Email = email,
+                UserName = email
             };
-            var result = await userManager.CreateAsync(newUser, registerRequest.Password);
+            var result = await userManager.CreateAsync(newUser, password);
             if (result.Succeeded)
             {
-                await userManager.AddToRoleAsync(newUser, role.ToString());
-                string token = JwtHelper.GenerateToken(Configuration["Jwt:Secret"], newUser, new List<string>() { role.ToString() });
+                await userManager.AddToRoleAsync(newUser, "admin");
+                string token = JwtHelper.GenerateToken(Configuration["Jwt:Secret"], newUser, new List<string>() { "admin" });
                 return Ok(token);
             }
             return BadRequest();

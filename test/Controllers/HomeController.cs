@@ -1,29 +1,54 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Dopomoga.API.SDK;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using test.Models;
+using test.Models.Home;
 
 namespace test.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ApiClient _apiClient;
+        public HomeController(ILogger<HomeController> logger, ApiClient apiClient)
         {
             _logger = logger;
+            _apiClient = apiClient;
         }
 
-        
-        public IActionResult Index()
+
+        public async Task<IActionResult> Index()
         {
             // Retrieves the requested culture
             var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
             // Culture contains the information of the requested culture
             var culture = rqf.RequestCulture.Culture;
 
-            return View();
+
+            var response = await _apiClient.Categories.Get();
+
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                return RedirectToAction("Login", "Identity");
+            }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            
+
+            var model = new HomeViewModel();
+
+            response.Content.ForEach(x =>
+            {
+                model.Categories.Add(x);
+            });
+
+            return View(model);
         }
 
 
@@ -36,10 +61,7 @@ namespace test.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-        public IActionResult Test()
-        {
-            return View();
-        }
+        
         public IActionResult Privacy()
         {
             return View();

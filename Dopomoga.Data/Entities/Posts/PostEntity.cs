@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dopomoga.Data.Entities.Categories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,5 +15,8 @@ namespace Dopomoga.Data.Entities.Posts
         public string UkrainianDescription { get; set; }
         public byte[] Thumbnail { get; set; }
         public byte[] TopImage { get; set; }
+        public int CategoryId { get; set; }
+        public CategoryEntity Category { get; set; }
+        public string RedirectUrl { get; set; }
     }
 }
