@@ -59,7 +59,7 @@ namespace API.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<IActionResult> RegisterAsync(string email, string password)
+        public async Task<IActionResult> RegisterAsync(string email="admin@dopomoga.com", string password="Te@st1")
         {
             var newUser = new UserEntity()
             {
