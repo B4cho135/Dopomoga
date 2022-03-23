@@ -7,123 +7,186 @@
     <div class="row">
         <div class="col-sm-3">
             <div class="" id="sidebar-wrapper" style="margin-top:10px;">
-            <div class="sidebar-heading border">კატეგორიები</div>
-            <div class="list-group">
+                <div class="sidebar-heading border">კატეგორიები</div>
+                <div class="list-group">
 
-                @foreach(var category in Model.Categories)
-                {
-                    <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#!">@*@localizer["Category"]*@ @category.CategoryGeorgianName</a>
-                }
+                    @foreach (var category in Model.Categories)
+                    {
+                        <a class="list-group-item list-group-item-action list-group-item-light p-1" href="#!">@*@localizer["Category"]*@ @category.CategoryGeorgianName</a>
+                    }
+                </div>
             </div>
-        </div>
         </div>
         <div class="col-md-9">
             <div class="container">
                 <div class="row">
+                    <div class="col-sm col-xs-12">
+                        @for (int i = 0; i < Model.Posts.Count; i++)
+                        {
+
+                            @if (i % 3 == 0)
+                            {
+                                <div class="card" style="margin-top:10px;">
+                                    <img class="card-img-top" src="data:image/png;base64,@Model.Posts[i].ThumbnailBase64" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@Model.Posts[i].GeorgianTitle</h5>
+                                        <p class="card-text">@Model.Posts[i].GeorgianDescription</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="@Model.Posts[i].RedirectUrl">ვრცლად ნახვა</a>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+                    </div>
 
                     <div class="col-sm col-xs-12">
-                        <div class="card" style="margin-top:10px;">
-                    <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                    </div>
+                        @for (int i = 0; i < Model.Posts.Count; i++)
+                        {
 
-                              
-                    <div class="card"  style="margin-top:10px;">
-                    <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                    </div>
-
+                            @if (i % 3 == 1)
+                            {
+                                <div class="card" style="margin-top:10px;">
+                                    <img class="card-img-top" src="data:image/png;base64,@Model.Posts[i].ThumbnailBase64" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@Model.Posts[i].GeorgianTitle</h5>
+                                        <p class="card-text">@Model.Posts[i].GeorgianDescription</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="@Model.Posts[i].RedirectUrl">ვრცლად ნახვა</a>
+                                    </div>
+                                </div>
+                            }
+                        }
 
                     </div>
-                <div class="col-sm col-xs-12">
-                        <div class="card" style="margin-top:10px;">
-                    <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                    </div>
 
-                              
-                    <div class="card"  style="margin-top:10px;">
-                    <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                    </div>
-
-                </div>
-                <div class="col-sm col-xs-12">
-                    <div class="card" style="margin-top:10px;">
-                    <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                    </div>
-
-                              
-                    <div class="card"  style="margin-top:10px;">
-                    <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                    </div>
-
-                </div>
                     <div class="col-sm col-xs-12">
-                        <div class="card" style="margin-top:10px;">
-                    <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </div>
+                        @for (int i = 0; i < Model.Posts.Count; i++)
+                        {
+
+                            @if (i % 3 == 2)
+                            {
+                                <div class="card" style="margin-top:10px;">
+                                    <img class="card-img-top"src="data:image/png;base64,@Model.Posts[i].ThumbnailBase64" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@Model.Posts[i].GeorgianTitle</h5>
+                                        <p class="card-text">@Model.Posts[i].GeorgianDescription</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="@Model.Posts[i].RedirectUrl">ვრცლად ნახვა</a>
+                                    </div>
+                                </div>
+                            }
+                        }
+
                     </div>
 
-                              
-                    <div class="card"  style="margin-top:10px;">
-                    <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
-                    <div class="card-body">
+
+                    @*<div class="col-sm col-xs-12">
+                        <div class="card" style="margin-top:10px;">
+                        <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
+                        <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                    <div class="card-footer">
+                        </div>
+                        <div class="card-footer">
                         <small class="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                    </div>
+                        </div>
+                        </div>
+
+
+                        <div class="card"  style="margin-top:10px;">
+                        <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                        </div>
+
+
+                        </div>
+                        <div class="col-sm col-xs-12">
+                        <div class="card" style="margin-top:10px;">
+                        <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                        </div>
+
+
+                        <div class="card"  style="margin-top:10px;">
+                        <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                        </div>
+
+                        </div>
+                        <div class="col-sm col-xs-12">
+                        <div class="card" style="margin-top:10px;">
+                        <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                        </div>
+
+
+                        <div class="card"  style="margin-top:10px;">
+                        <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                        </div>
+
+                        </div>
+                        <div class="col-sm col-xs-12">
+                        <div class="card" style="margin-top:10px;">
+                        <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                        </div>
+
+
+                        <div class="card"  style="margin-top:10px;">
+                        <img class="card-img-top" src="https://media.istockphoto.com/photos/ukraine-flag-ukrainian-flag-on-black-storm-cloud-sky-stormy-weather-picture-id876656164?k=20&m=876656164&s=612x612&w=0&h=5WrGkOe-OW7G2lE56CfBBBlOAIYG02eFtVro_lkMHDA=" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                        </div>
+                        </div>*@
                 </div>
+            </div>
         </div>
-        </div>
-    </div>
     </div>
 </div>
 
@@ -163,7 +226,7 @@
 <footer class="footer bg-light">
     <div class="container">
         <div class="row">
-           
+
             <div class="col-lg-7 h-100 text-center text-lg-end my-auto">
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item">
@@ -185,10 +248,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script src="js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </footer>

@@ -24,9 +24,9 @@ namespace Dopomoga.API.Controllers
         {
             try
             {
-                var categories = _context.Posts.Include(x => x.Category).Where(x => !x.IsDeleted).OrderByDescending(x => x.UpdatedAt).ToList();
+                var posts = _context.Posts.Include(x => x.Category).Where(x => !x.IsDeleted).OrderByDescending(x => x.UpdatedAt).ToList();
 
-                return Ok(categories);
+                return Ok(posts);
             }
             catch (Exception ex)
             {
@@ -41,12 +41,12 @@ namespace Dopomoga.API.Controllers
         {
             try
             {
-                var category = _context.Posts.Include(x => x.Category).FirstOrDefault(c => c.Id == id && !c.IsDeleted);
-                if (category == null)
+                var post = _context.Posts.Include(x => x.Category).FirstOrDefault(c => c.Id == id && !c.IsDeleted);
+                if (post == null)
                 {
                     return NotFound();
                 }
-                return Ok(category);
+                return Ok(post);
             }
             catch (Exception)
             {

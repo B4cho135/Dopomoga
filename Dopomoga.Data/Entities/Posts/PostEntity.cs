@@ -1,6 +1,7 @@
 ﻿using Dopomoga.Data.Entities.Categories;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,5 +19,8 @@ namespace Dopomoga.Data.Entities.Posts
         public CategoryEntity Category { get; set; }
         public string RedirectUrl { get; set; }
         public bool ShowOnMainMenu { get; set; }
+
+        [NotMapped]
+        public string ThumbnailBase64 { get; set; }
     }
 }

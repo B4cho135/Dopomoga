@@ -39,9 +39,28 @@ namespace test.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+
+            var postsResponse = await _apiClient.Posts.Get();
+
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                return RedirectToAction("Login", "Identity");
+            }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             
 
+
             var model = new HomeViewModel();
+
+            postsResponse.Content.ForEach(x =>
+            {
+                x.ThumbnailBase64 = Convert.ToBase64String(x.Thumbnail);
+                model.Posts.Add(x);
+            });
 
             response.Content.ForEach(x =>
             {
