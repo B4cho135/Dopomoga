@@ -25,7 +25,7 @@ namespace Dopomoga.API.Controllers
         {
             try
             {
-                var categories = _context.Categories.Where(x => !x.IsDeleted).OrderByDescending(x => x.UpdatedAt).ToList();
+                var categories = _context.Categories.Where(x => !x.IsDeleted).OrderBy(x => x.Order).ToList();
 
                 return Ok(categories);
             }
@@ -33,7 +33,6 @@ namespace Dopomoga.API.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            
         }
 
         [HttpGet("{id}")]
@@ -61,6 +60,9 @@ namespace Dopomoga.API.Controllers
         {
             try
             {
+                var largestOrderNumber = _context.Categories.Max(x => x.Order);
+
+                request.Order = largestOrderNumber;
                 _context.Categories.Add(request);
                 _context.SaveChanges();
                 return Ok(request);
