@@ -17,5 +17,6 @@ namespace Dopomoga.Data.Entities.Posts
         public int CategoryId { get; set; }
         public CategoryEntity Category { get; set; }
         public string RedirectUrl { get; set; }
+        public bool ShowOnMainMenu { get; set; }
     }
 }

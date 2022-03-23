@@ -147,7 +147,8 @@ namespace test.Controllers.Identity
                 UkrainianDescription = model.DescriptionUkrainian,
                 CategoryId = model.CategoryId,
                 Thumbnail = model.Image,
-                RedirectUrl =model.RedirectUrl
+                RedirectUrl =model.RedirectUrl,
+                ShowOnMainMenu = model.ShowOnMainMenu,
             };
             if (Image != null)
             {
@@ -198,6 +199,7 @@ namespace test.Controllers.Identity
                 model.RedirectUrl = post.Content.RedirectUrl;
                 model.CategoryName = post.Content.Category.CategoryGeorgianName;
                 model.CategoryId = post.Content.CategoryId;
+                model.ShowOnMainMenu = post.Content.ShowOnMainMenu;
             }
 
             if(postCategories.IsSuccessStatusCode)
@@ -227,7 +229,8 @@ namespace test.Controllers.Identity
                 UkrainianDescription = model.DescriptionUkrainian,
                 CategoryId = model.CategoryId,
                 Thumbnail = model.Image,
-                RedirectUrl = model.RedirectUrl
+                RedirectUrl = model.RedirectUrl,
+                ShowOnMainMenu=model.ShowOnMainMenu,
             };
             if (Image != null)
             {
