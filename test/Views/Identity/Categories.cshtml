@@ -26,6 +26,26 @@
             </div>
         </form>
 
+        <form asp-action="UpdateCategory" asp-controller="Identity" method="post">
+            <div class="row" style="margin-top:50px;">
+                <div class="col">
+                    <select asp-for="CategoryId" asp-items="@Model.Categories" class="form-control"></select>
+                </div>
+                <div class="col">
+                    <input type="text" asp-for="GeorgianTitle" class="form-control" placeholder="კატეგორია ქართულად">
+                </div>
+                <div class="col">
+                    <input type="text" asp-for="UkrainianTitle" class="form-control" placeholder="კატეგორია უკრაინულად">
+                </div>
+                <div class="col">
+                    <input type="number" asp-for="Order" class="form-control" placeholder="სიაში ადგილი">
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-success"> განახლება</button>
+                </div>
+            </div>
+        </form>
+
         <form asp-action="DeleteCategory" asp-controller="Identity" method="post">
             <div class="row" style="margin-top:50px;">
                 <div class="col">

@@ -82,12 +82,40 @@ namespace test.Controllers.Identity
             var entity = new CategoryEntity()
             {
                 CategoryGeorgianName = model.GeorgianTitle,
-                CategoryUkrainianName = model.UkrainianTitle
+                CategoryUkrainianName = model.UkrainianTitle,
+                Order = model.Order,
             };
 
             var response = await _client.Categories.Create(entity);
 
             if(response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                return RedirectToAction("Login");
+            }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return RedirectToAction("Categories");
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateCategory(CategoryViewModel model)
+        {
+            var entity = new CategoryEntity()
+            {
+                Id = model.CategoryId,
+                CategoryGeorgianName = model.GeorgianTitle,
+                CategoryUkrainianName = model.UkrainianTitle,
+                Order = model.Order,
+            };
+
+            var response = await _client.Categories.Update(model.CategoryId,entity);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
                 return RedirectToAction("Login");
             }

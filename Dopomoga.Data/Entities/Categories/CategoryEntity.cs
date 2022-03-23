@@ -10,5 +10,6 @@ namespace Dopomoga.Data.Entities.Categories
     {
         public string CategoryGeorgianName { get; set; }
         public string CategoryUkrainianName { get; set; }
+        public int Order { get; set; }
     }
 }
