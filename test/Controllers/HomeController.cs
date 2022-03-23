@@ -19,7 +19,7 @@ namespace test.Controllers
         }
 
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? category = null)
         {
             // Retrieves the requested culture
             var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
@@ -58,8 +58,20 @@ namespace test.Controllers
 
             postsResponse.Content.ForEach(x =>
             {
-                x.ThumbnailBase64 = Convert.ToBase64String(x.Thumbnail);
-                model.Posts.Add(x);
+                if(category == null && x.ShowOnMainMenu)
+                {
+                    x.ThumbnailBase64 = Convert.ToBase64String(x.Thumbnail);
+                    model.Posts.Add(x);
+                }
+                else
+                {
+                    if (x.CategoryId == category)
+                    {
+                        x.ThumbnailBase64 = Convert.ToBase64String(x.Thumbnail);
+                        model.Posts.Add(x);
+                    }
+                }
+                
             });
 
             response.Content.ForEach(x =>
