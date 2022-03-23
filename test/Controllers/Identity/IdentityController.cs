@@ -179,7 +179,12 @@ namespace test.Controllers.Identity
         [HttpGet]
         public IActionResult Info()
         {
-            
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult InfoPost()
+        {
             return View();
         }
 
