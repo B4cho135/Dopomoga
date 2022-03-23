@@ -56,8 +56,8 @@
                                 <span asp-validation-for="Image" class="text-danger"></span>
                             </div>
                             <div style="padding-top:20px;padding-bottom:20px;">
-                                  <input type="checkbox" asp-for="ShowOnMainMenu" id="show_on_home"  name="show_on_home" value="show_on_home">
-                                    <label for="show_on_home"> show on home page</label><br>
+                                  <input type="checkbox" asp-for="ShowOnMainMenu" name="ShowOnMainMenu">
+                                    <label asp-for="ShowOnMainMenu"> მთავარ გვერდზე გამოჩენა</label><br>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary" value="Create">დამატება</button>
