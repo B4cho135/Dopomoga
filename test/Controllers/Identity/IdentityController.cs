@@ -1,5 +1,6 @@
 ﻿using Dopomoga.API.SDK;
 using Dopomoga.Data.Entities.Categories;
+using Dopomoga.Data.Entities.PageInformation;
 using Dopomoga.Data.Entities.Posts;
 using Dopomoga.Models.Requests.Identity;
 using Microsoft.AspNetCore.Authorization;
@@ -207,14 +208,25 @@ namespace test.Controllers.Identity
         [HttpGet]
         public IActionResult Info()
         {
-            return View();
+            var model = new InfoViewModel();
+            return View(model);
         }
 
+
+
         [HttpPost]
-        public IActionResult InfoPost()
+        public async Task<IActionResult> CreateInfo(InfoViewModel model)
         {
-            return View();
+
+            var response = await _client.PageInformation.CreatePageInfo(new Dopomoga.Models.Requests.PageInformation.CreatePageInfoRequest()
+            {
+                PageTextInGeorgian = model.InfoGeorgian,
+                PageTextInUkrainian = model.InfoUkrainian,
+                PageType = model.PageType
+            });
+            return RedirectToAction("Info");
         }
+
 
         [HttpGet]
         public async Task<IActionResult> EditPost(int Id)

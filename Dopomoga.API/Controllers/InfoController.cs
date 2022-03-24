@@ -37,7 +37,6 @@ namespace Dopomoga.API.Controllers
                 PageType = model.PageType,
                 PageTextInGeorgian = model.PageTextInGeorgian,
                 PageTextInUkrainian = model.PageTextInUkrainian,
-                CreatedAt = DateTime.Now,
                 IsDeleted = false
             };
 
