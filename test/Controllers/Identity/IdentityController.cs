@@ -224,7 +224,18 @@ namespace test.Controllers.Identity
                 PageTextInUkrainian = model.InfoUkrainian,
                 PageType = model.PageType
             });
-            return RedirectToAction("Info");
+
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                return RedirectToAction("Login");
+            }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return RedirectToAction("Info", "Identity");
         }
 
 

@@ -15,6 +15,6 @@ namespace Dopomoga.API.SDK.Resources
         public Task<PageInformationEntity> GetPageInformation(string pageType);
 
         [Post("/api/info")]
-        public Task<PageInformationEntity> CreatePageInfo(CreatePageInfoRequest model);
+        public Task<ApiResponse<PageInformationEntity>> CreatePageInfo(CreatePageInfoRequest model);
     }
 }
