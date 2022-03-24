@@ -235,7 +235,7 @@ namespace test.Controllers.Identity
                 return RedirectToAction("Index", "Home");
             }
 
-            return RedirectToAction("Info", "Identity");
+            return RedirectToAction("Categories", "Identity");
         }
 
 
