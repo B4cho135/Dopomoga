@@ -93,9 +93,66 @@ namespace test.Controllers
             return RedirectToAction(nameof(Index));
         }
         
-        public IActionResult Privacy()
+        public async Task<IActionResult> Privacy(int? category = null)
         {
-            return View();
+            // Retrieves the requested culture
+            var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            // Culture contains the information of the requested culture
+            var culture = rqf.RequestCulture.Culture;
+
+            var response = await _apiClient.Categories.Get();
+
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                return RedirectToAction("Login", "Identity");
+            }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+
+            var postsResponse = await _apiClient.Posts.Get();
+
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                return RedirectToAction("Login", "Identity");
+            }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+
+
+            var model = new HomeViewModel();
+
+            postsResponse.Content.ForEach(x =>
+            {
+                if (category == null && x.ShowOnMainMenu)
+                {
+                    x.ThumbnailBase64 = Convert.ToBase64String(x.Thumbnail);
+                    model.Posts.Add(x);
+                }
+                else
+                {
+                    if (x.CategoryId == category)
+                    {
+                        x.ThumbnailBase64 = Convert.ToBase64String(x.Thumbnail);
+                        model.Posts.Add(x);
+                    }
+                }
+
+            });
+
+            response.Content.ForEach(x =>
+            {
+                model.Categories.Add(x);
+            });
+
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
