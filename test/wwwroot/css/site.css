@@ -92,7 +92,11 @@ html, body {
         margin-right: 0px;
     }
     #mainLogoDiv {
-        left: 7px;
+        margin-left: -60px;
+    }
+
+    #LogoSvg {
+        width:180px;
     }
 
     

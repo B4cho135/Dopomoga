@@ -16,6 +16,7 @@
     <link href="css/styles.css" rel="stylesheet" asp-append-version="true" />
 </head>
 <body style="height: 100%">
+    <div class="row">
     <header id="mainHeader">
         <div id="mainLogoDiv" style="position: absolute;
                                     width: 211px;
@@ -23,7 +24,7 @@
                                     left: 67px;
                                     top: 18.28px;
                                     z-index: 99">
-            <svg xmlns="http://www.w3.org/2000/svg" width="211" height="81" fill="none" viewBox="0 0 211 81">
+            <svg id="LogoSvg" xmlns="http://www.w3.org/2000/svg" width="211" height="81" fill="none" viewBox="0 0 211 81">
                 <path fill="#F8BF0C" d="M211 63.256C140.015 34.318 70.988 101.814 0 72.878c14.066-23.951 28.134-47.9 42.2-71.849 41.349 19.96 85.251-14.189 126.6 5.774 14.066 18.816 28.134 37.633 42.2 56.453z" />
                 <path fill="#017FCD" d="M187.064 31.234c-54.162-23.855-108.966 24.744-163.125.89 6.087-10.365 12.174-20.731 18.264-31.095C83.549 20.989 127.45-13.16 168.8 6.803l18.264 24.431z" />
                 <path fill="#D8D8D8" d="M154.545 68.79c2.451 0 4.219.808 4.219 2.891 0 1.238-.708 2.087-1.76 2.432 1.167.361 2.009 1.237 2.009 2.604 0 2.132-1.668 3.048-4.25 3.048h-3.875V68.79h3.657zm-2.315 1.183v3.638h2.275c1.608 0 2.852-.36 2.852-1.835 0-1.434-1.25-1.803-2.86-1.803h-2.267zm0 4.814v3.795h2.473c1.751 0 2.9-.431 2.9-1.906 0-1.458-1.149-1.89-2.9-1.89h-2.473zM169.064 79.765h-7.351V68.79h7.276v1.183h-5.932v3.676h5.726v1.176h-5.726v3.754h6.007v1.186zM179.599 69.98h-3.763v9.785h-1.333v-9.784h-3.763V68.79h8.862v1.19h-.003zM190.566 79.765h-1.432l-1.324-3.056h-5.775l-1.319 3.056h-1.392l4.791-10.975h1.66l4.791 10.975zm-8.018-4.248h4.751l-2.375-5.48-2.376 5.48z" />
@@ -47,6 +48,7 @@
                         text-align: left;
                         margin-top:10px;
                         margin-left:0px;
+                        overflow-x: hidden;
                         ">+995 577 123 456  |  info@dopomoga.ge</p>
             </div>
         </div>
@@ -190,17 +192,17 @@
         </nav>
 
     </header>
+    </div>
     <div class="">
         <main role="main" class="pb-3 bg-light" @* style="background-color:white"*@>
             @RenderBody()
         </main>
     </div>
 
-    @*<footer class="border-top footer text-muted">
-        <div class="container">
+
+    @*<footer class="footer text-muted">
         &copy; 2022 - Dopomoga - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-        </footer>*@
+    </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
