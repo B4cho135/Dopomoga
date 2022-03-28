@@ -28,48 +28,82 @@
 
 <div class="row" style="height:100vh;">
 
-    <div class="col-md-3" style="background: #F8BF0C">
-        <div class="row" style="height: 40px; background: #E6AE00">
-            <p class="textFontBold" style="margin-left:30px">test</p>
-        </div>
+    <div class="col-md-3" style="background: #F8BF0C;">
+        
+        <div style="margin-top:30px;">
         @foreach (var category in Model.Categories)
         {
-            <div class="row" style="height: 40px;">
-                <p class="textFontBold" style="margin-left:30px">@category.CategoryGeorgianName</p>
+            <div class="row categoryItem">
+                <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
             </div>
         }
+        </div>
     </div>
 
-    <div class="col-md-9 bg-light" style="background: url('/content/image/background.svg') no-repeat bottom;">
+    <div class="col-md-9 bg-light" style="background: url('/content/images/background.svg') no-repeat bottom; background-position: 50% 115%;">
         <div class="container" style="margin-top:30px">
             <div class="row">
+                @if(!Model.ShowCategories)
+                {
+                    
                 <div class="col-md-8">
-                    <div class="card mb-3">
-                        <img class="card-img-top" src="https://static.euronews.com/articles/stories/06/43/76/76/1440x810_cmsv2_8b9c9503-4d71-5a47-b199-fd6e1185ff06-6437676.jpg" alt="Card image cap">
+                    @if(Model.Posts.ElementAtOrDefault(0) != null)
+                    {
+                        <div class="card-transparent mb-2">
+                        <img class="card-img-top main-card-size" src="data:image/png;base64,@Model.Posts[0].ThumbnailBase64" alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text"><small class="text-muted">2022-03-26</small></p>
+                            <p class="card-text"><small class="text-muted">@Model.Posts[0].CreatedAt</small></p>
                             <hr />
-                            <p class="textFont">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-
+                            <p class="textFont">@Model.Posts[0].GeorgianTitle</p>
                         </div>
-                    </div>
+                        </div>
+                    }
+                    
                 </div>
                 <div class="col-md-4">
-                    <div class="card mb-3">
-                        <img class="card-img-top" src="https://static.euronews.com/articles/stories/06/43/76/76/1440x810_cmsv2_8b9c9503-4d71-5a47-b199-fd6e1185ff06-6437676.jpg" alt="Card image cap">
+
+                    @if(Model.Posts.ElementAtOrDefault(1) != null)
+                    {
+                        <div class="card-transparent mb-2">
+                        <img class="card-img-top side-card-size" src="data:image/png;base64,@Model.Posts[1].ThumbnailBase64" alt="Card image cap">
                         <div class="card-body">
+                            <p class="card-text"><small class="text-muted">@Model.Posts[1].CreatedAt</small></p>
                             <hr />
-                            <p class="textFont">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="textFont">@Model.Posts[1].GeorgianTitle</p>
                         </div>
-                    </div>
-                    <div class="card mb-3">
-                        <img class="card-img-top" src="https://static.euronews.com/articles/stories/06/43/76/76/1440x810_cmsv2_8b9c9503-4d71-5a47-b199-fd6e1185ff06-6437676.jpg" alt="Card image cap">
+                        </div>
+                    }
+                   @if(Model.Posts.ElementAtOrDefault(2) != null)
+                    {
+                        <div class="card-transparent mb-2">
+                        <img class="card-img-top side-card-size" src="data:image/png;base64,@Model.Posts[2].ThumbnailBase64" alt="Card image cap">
                         <div class="card-body">
+                            <p class="card-text"><small class="text-muted">@Model.Posts[2].CreatedAt</small></p>
                             <hr />
-                            <p class="textFont">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="textFont">@Model.Posts[1].GeorgianTitle</p>
                         </div>
+                        </div>
+                    }
                     </div>
-                </div>
+                }
+                else
+                {
+                    <div class="row justify-content-evenly">
+
+                    @foreach(var post in @Model.Posts)
+                    {
+                        <div class="card-transparent" style="width: 16rem;">
+                          <img class="card-img-top" src="data:image/png;base64,@post.ThumbnailBase64" alt="Card image cap">
+                          <div class="card-body">
+                           <p class="card-text"><small class="text-muted">@post.CreatedAt</small></p>
+                            <hr />
+                            <p class="textFont">@post.GeorgianTitle</p>
+                          </div>
+                        </div>
+
+                    }
+                    </div>
+                }
             </div>
         </div>
     </div>

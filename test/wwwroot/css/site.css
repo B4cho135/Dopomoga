@@ -26,3 +26,70 @@ html, body {
 .footer {
     background: yellow;
 }
+
+.textFont {
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: black;
+}
+
+.textFontBold {
+    font-family: Roboto;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: white;
+}
+
+
+.categoryItem :hover {
+    background-color: #E6AE00;
+
+}
+
+#topInfoP {
+    margin-right: 30px;
+}
+
+.textStyle {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 20px;
+    padding-top: 10px;
+    color: #FFFFFF;
+}
+
+.main-card-size {
+    width: 100%;
+    height: 25vw;
+    object-fit: fill;
+}
+
+.side-card-size {
+    width: 100%;
+    height: 10vw;
+    object-fit: fill;
+}
+
+
+@media only screen and (max-width: 600px) {
+    #toggle_button {
+        margin-left: 150px;
+    }
+    #mainPageP {
+        margin-left: 40px;
+    }
+    #topInfoP {
+        margin-right: 0px;
+    }
+}

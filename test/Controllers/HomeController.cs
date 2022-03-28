@@ -53,7 +53,6 @@ namespace test.Controllers
             }
             
 
-
             var model = new HomeViewModel();
 
             postsResponse.Content.ForEach(x =>
@@ -78,6 +77,14 @@ namespace test.Controllers
             {
                 model.Categories.Add(x);
             });
+
+            if(category == null)
+            {
+                model.Posts = model.Posts.OrderBy(x => x.CreatedAt).Where(x => x.ShowOnMainMenu).ToList();
+                return View(model);
+            }
+
+            model.ShowCategories = true;
 
             return View(model);
         }
@@ -159,6 +166,76 @@ namespace test.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> AboutUs()
+        {
+            var model = new SharedViewModel();
+
+            var response = await _apiClient.Categories.Get();
+
+            response.Content.ForEach(x =>
+            {
+                model.Categories.Add(x);
+            });
+
+            var pageInfo = await _apiClient.PageInformation.GetPageInformation("aboutus");
+
+            model.Info = pageInfo;
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Contacts()
+        {
+            var model = new SharedViewModel();
+
+            var response = await _apiClient.Categories.Get();
+
+            response.Content.ForEach(x =>
+            {
+                model.Categories.Add(x);
+            });
+
+            try
+            {
+                var pageInfo = await _apiClient.PageInformation.GetPageInformation("contact");
+
+                model.Info = pageInfo;
+            }
+            catch (Exception ex)
+            {
+                return View(model);
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> FAQ()
+        {
+            var model = new SharedViewModel();
+
+            var response = await _apiClient.Categories.Get();
+
+            response.Content.ForEach(x =>
+            {
+                model.Categories.Add(x);
+            });
+
+
+            try
+            {
+                var pageInfo = await _apiClient.PageInformation.GetPageInformation("faq");
+
+                model.Info = pageInfo;
+            }
+            catch (Exception ex)
+            {
+                return View(model);
+            }
+            return View(model);
         }
     }
 }

@@ -5,6 +5,7 @@ namespace test.Models.Home
 {
     public class HomeViewModel
     {
+        public bool ShowCategories { get; set; } = false;
         public List<CategoryEntity> Categories { get; set; } = new List<CategoryEntity>();
         public List<PostEntity> Posts { get; set; } = new List<PostEntity>();
     }

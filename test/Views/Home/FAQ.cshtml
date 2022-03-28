@@ -1,0 +1,27 @@
+﻿@model test.Models.Home.SharedViewModel;
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
+
+<div class="row" style="height:100vh;">
+
+    <div class="col-md-3" style="background: #F8BF0C;">
+        
+        <div style="margin-top:30px;">
+        @foreach (var category in Model.Categories)
+        {
+            <div class="row categoryItem">
+                <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+            </div>
+        }
+        </div>
+    </div>
+
+    <div class="col-md-9 bg-light" style="background: url('/content/images/background.svg') no-repeat bottom; background-position: 50% 115%;">
+        <div class="container" style="margin-top:30px">
+            <div class="row">
+                @Html.Raw(Model.Info.PageTextInGeorgian)
+            </div>
+        </div>
+    </div>
+</div>
