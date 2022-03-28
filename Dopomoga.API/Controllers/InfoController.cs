@@ -29,20 +29,33 @@ namespace Dopomoga.API.Controllers
             return Ok(infoEntity);
         }
 
-        [HttpPost]
-        public IActionResult CreatePageInfo(CreatePageInfoRequest model)
+        [HttpPut()]
+        public IActionResult UpdatePageInfo(CreatePageInfoRequest model)
         {
-            var entity = new PageInformationEntity()
+
+            var pageInfo = _context.PageInformation.FirstOrDefault(x => x.PageType == model.PageType);
+
+            if(pageInfo == null)
             {
-                PageType = model.PageType,
-                PageTextInGeorgian = model.PageTextInGeorgian,
-                PageTextInUkrainian = model.PageTextInUkrainian,
-                IsDeleted = false
-            };
+                return NotFound();
+            }
+
+            pageInfo.PageTextInGeorgian = model.PageTextInGeorgian;
+            pageInfo.PageTextInUkrainian = model.PageTextInUkrainian;
+            pageInfo.IsDeleted = false;
+
+
+            //var entity = new PageInformationEntity()
+            //{
+            //    PageType = model.PageType,
+            //    PageTextInGeorgian = model.PageTextInGeorgian,
+            //    PageTextInUkrainian = model.PageTextInUkrainian,
+            //    IsDeleted = false
+            //};
 
             try
             {
-                _context.PageInformation.Add(entity);
+                _context.PageInformation.Update(pageInfo);
                 _context.SaveChanges();
 
                 return NoContent();

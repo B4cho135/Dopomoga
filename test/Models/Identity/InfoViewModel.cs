@@ -6,9 +6,9 @@ namespace test.Models.Identity
     {
         public List<SelectListItem> InfoType { get; set; } = new List<SelectListItem>()
         {
-            new SelectListItem() { Text = "ჩვენს შესახებ", Value = "AboutUs"},
-            new SelectListItem() { Text = "საკონტაქტო", Value = "Contact"},
-            new SelectListItem(){ Text = "FAQ", Value = "FAQ"}
+            new SelectListItem() { Text = "ჩვენს შესახებ", Value = "aboutus"},
+            new SelectListItem() { Text = "საკონტაქტო", Value = "contact"},
+            new SelectListItem(){ Text = "FAQ", Value = "faq"}
         };
         public string InfoGeorgian { get; set; }
         public string InfoUkrainian { get; set; }

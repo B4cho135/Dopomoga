@@ -218,7 +218,7 @@ namespace test.Controllers.Identity
         public async Task<IActionResult> CreateInfo(InfoViewModel model)
         {
 
-            var response = await _client.PageInformation.CreatePageInfo(new Dopomoga.Models.Requests.PageInformation.CreatePageInfoRequest()
+            var response = await _client.PageInformation.UpdatePageInfo(new Dopomoga.Models.Requests.PageInformation.CreatePageInfoRequest()
             {
                 PageTextInGeorgian = model.InfoGeorgian,
                 PageTextInUkrainian = model.InfoUkrainian,
