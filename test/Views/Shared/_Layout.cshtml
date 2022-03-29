@@ -16,6 +16,23 @@
     <link href="css/styles.css" rel="stylesheet" asp-append-version="true" />
 </head>
 <body style="height: 100%">
+
+    
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@inject Microsoft.Extensions.Options.IOptions<Microsoft.AspNetCore.Builder.RequestLocalizationOptions> locOptions
+
+
+@{
+    var culture = Context.Features.Get<Microsoft.AspNetCore.Localization.IRequestCultureFeature>();
+    var cultureList = locOptions.Value.SupportedCultures.Select(
+        x => new SelectListItem ()
+        {
+            Value = x.Name,
+            Text = x.Name == "en" ? "ქართული" : "український"
+        }
+    ).ToList();
+}
+
     <div class="row">
     <header id="mainHeader">
         <div id="mainLogoDiv" style="position: absolute;
@@ -75,7 +92,7 @@
                                                                         line-height: 23px;
                                                                         letter-spacing: 0.1em;
                                                                         text-align: left;
-                                                                        color:white;">მთავარი</p>
+                                                                        color:white;">@localizer["hehe"]</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -132,33 +149,56 @@
                                             ">UA</p>
                                     </li>
                                     <li>
-                                        <div style="width:25px; height:25px; margin-right:5px;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 26 26">
-                                                <path fill="#fff" stroke="#fff" stroke-width="2" d="M1 12.683C1 6.23 6.23 1 12.683 1h.634C19.77 1 25 6.23 25 12.683c0 6.452-5.23 11.683-11.683 11.683h-.634C6.23 24.366 1 19.136 1 12.683z" />
-                                                <path fill="#F22222" d="M25.574 11.508H.426v2.984h25.148v-2.984z" />
-                                                <path fill="#F22222" d="M11.508 0v25.148h2.984V0h-2.984zM9.924 17.378l-1.056.151.15-1.056h-1.96l.15 1.056-1.055-.15v1.96l1.056-.15-.151 1.055h1.96l-.15-1.055 1.056.15v-1.96zM19.847 17.378l-1.056.151.151-1.056h-1.96l.15 1.056-1.056-.15v1.96l1.056-.15-.15 1.055h1.96l-.15-1.055 1.055.15v-1.96z" />
-                                                <g>
-                                                    <path fill="#F22222" d="M9.924 6.66l-1.056.151.15-1.055h-1.96l.15 1.055-1.055-.15v1.96l1.056-.15-.151 1.056h1.96l-.15-1.056 1.056.15v-1.96zM19.847 6.66l-1.056.151.151-1.055h-1.96l.15 1.055-1.056-.15v1.96l1.056-.15-.15 1.056h1.96l-.15-1.056 1.055.15v-1.96z" />
-                                                </g>
-                                                <g>
-                                                    <mask id="a" width="26" height="26" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha">
-                                                        <path fill="#fff" d="M0 12.683C0 5.678 5.678 0 12.683 0h.634C20.322 0 26 5.678 26 12.683s-5.678 12.683-12.683 12.683h-.634C5.678 25.366 0 19.688 0 12.683z" />
-                                                        <path stroke="#CDCDCD" d="M0 12.683C0 5.678 5.678 0 12.683 0h.634C20.322 0 26 5.678 26 12.683s-5.678 12.683-12.683 12.683h-.634C5.678 25.366 0 19.688 0 12.683z" />
-                                                    </mask>
-                                                    <g mask="url(#a)">
-                                                        <path stroke="#CDCDCD" stroke-width="2" d="M17.488 12.683C17.488 6.23 22.718 1 29.17 1h.634c6.452 0 11.683 5.23 11.683 11.683 0 6.452-5.23 11.683-11.683 11.683h-.634c-6.453 0-11.683-5.23-11.683-11.683z" />
-                                                        <path fill="#017FCD" d="M-1.268-1.902h28.537v14.585H-1.268z" />
-                                                        <path fill="#F8BF0C" d="M-1.268 12.683h28.537v14.585H-1.268z" />
+                                      
+                                            <div style="width:25px; height:25px; margin-right:5px;"  
+                                            onclick="
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: '@Url.Action("CultureManagement", "Home", new {culture = "uk"})',
+                                                    contentType: 'application/json; charset=utf-8',
+                                                    data: { culture: 'en' },
+                                                    dataType: 'json',
+                                                   success: function() { location.reload(); },
+                                                    error: function () { location.reload();}
+                                                });
+">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 26 26" >
+                                                    <path fill="#fff" stroke="#fff" stroke-width="2" d="M1 12.683C1 6.23 6.23 1 12.683 1h.634C19.77 1 25 6.23 25 12.683c0 6.452-5.23 11.683-11.683 11.683h-.634C6.23 24.366 1 19.136 1 12.683z" />
+                                                    <path fill="#F22222" d="M25.574 11.508H.426v2.984h25.148v-2.984z" />
+                                                    <path fill="#F22222" d="M11.508 0v25.148h2.984V0h-2.984zM9.924 17.378l-1.056.151.15-1.056h-1.96l.15 1.056-1.055-.15v1.96l1.056-.15-.151 1.055h1.96l-.15-1.055 1.056.15v-1.96zM19.847 17.378l-1.056.151.151-1.056h-1.96l.15 1.056-1.056-.15v1.96l1.056-.15-.15 1.055h1.96l-.15-1.055 1.055.15v-1.96z" />
+                                                    <g>
+                                                        <path fill="#F22222" d="M9.924 6.66l-1.056.151.15-1.055h-1.96l.15 1.055-1.055-.15v1.96l1.056-.15-.151 1.056h1.96l-.15-1.056 1.056.15v-1.96zM19.847 6.66l-1.056.151.151-1.055h-1.96l.15 1.055-1.056-.15v1.96l1.056-.15-.15 1.056h1.96l-.15-1.056 1.055.15v-1.96z" />
                                                     </g>
-                                                </g>
-                                                <path stroke="#fff" d="M.5 12.683C.5 5.954 5.954.5 12.683.5h.634C20.046.5 25.5 5.954 25.5 12.683c0 6.728-5.454 12.183-12.183 12.183h-.634C5.954 24.866.5 19.41.5 12.683z" />
-                                            </svg>
+                                                    <g>
+                                                        <mask id="a" width="26" height="26" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+                                                            <path fill="#fff" d="M0 12.683C0 5.678 5.678 0 12.683 0h.634C20.322 0 26 5.678 26 12.683s-5.678 12.683-12.683 12.683h-.634C5.678 25.366 0 19.688 0 12.683z" />
+                                                            <path stroke="#CDCDCD" d="M0 12.683C0 5.678 5.678 0 12.683 0h.634C20.322 0 26 5.678 26 12.683s-5.678 12.683-12.683 12.683h-.634C5.678 25.366 0 19.688 0 12.683z" />
+                                                        </mask>
+                                                        <g mask="url(#a)">
+                                                            <path stroke="#CDCDCD" stroke-width="2" d="M17.488 12.683C17.488 6.23 22.718 1 29.17 1h.634c6.452 0 11.683 5.23 11.683 11.683 0 6.452-5.23 11.683-11.683 11.683h-.634c-6.453 0-11.683-5.23-11.683-11.683z" />
+                                                            <path fill="#017FCD" d="M-1.268-1.902h28.537v14.585H-1.268z" />
+                                                            <path fill="#F8BF0C" d="M-1.268 12.683h28.537v14.585H-1.268z" />
+                                                        </g>
+                                                    </g>
+                                                    <path stroke="#fff" d="M.5 12.683C.5 5.954 5.954.5 12.683.5h.634C20.046.5 25.5 5.954 25.5 12.683c0 6.728-5.454 12.183-12.183 12.183h-.634C5.954 24.866.5 19.41.5 12.683z" />
+                                                </svg>
 
-                                        </div>
+                                            </div>
 
                                     </li>
                                     <li>
-                                        <div style="width:25px; height:25px; margin-right:10px;">
+                                        <div style="width:25px; height:25px; margin-right:10px;" 
+                                            onclick="
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: '@Url.Action("CultureManagement", "Home", new {culture = "en"})',
+                                                    contentType: 'application/json; charset=utf-8',
+                                                    data: { culture: 'en' },
+                                                    dataType: 'json',
+                                                    success: function() { location.reload(); },
+                                                    error: function () { location.reload();}
+                                                });
+                                                ">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 26 26">
                                                 <path fill="#F22222" d="M25.574 11.508H.426v2.984h25.148v-2.984z" />
                                                 <path fill="#F22222" d="M11.508 0v25.148h2.984V0h-2.984zM9.924 17.378l-1.056.151.15-1.056h-1.96l.15 1.056-1.055-.15v1.96l1.056-.15-.151 1.055h1.96l-.15-1.055 1.056.15v-1.96zM19.847 17.378l-1.056.151.151-1.056h-1.96l.15 1.056-1.056-.15v1.96l1.056-.15-.15 1.055h1.96l-.15-1.055 1.055.15v-1.96z" />
@@ -205,7 +245,7 @@
   <div style="height:120px;  bottom: 0;
     color: #707070;
     left: 0;
-    position: relative; //changed to relative from fixed also works if position is not there
+    position: relative;
     font-size: small;
     width:100%;">
       <div class="row">
@@ -268,12 +308,10 @@
                                 font-size: 11px;
                                 line-height: 15px;
                                 margin-top: 20px;
-                                /* or 136% */
 
                                 letter-spacing: 0.1em;
 
                                 color: #929292;">ვებგვერდის შექმნა შესაძლებელი გახდა ამერიკელი ხალხის გულუხვი დახმარების წყალობით, ამერიკის შეერთებული შტატების საერთაშორისო განვითარების სააგენტოს (USAID) დაფინანსებით. ვებგვერდზე განთავსებულ მასალაზე პასუსისმგებელია მხოლოდ საინიციატივო ჯგუფი და შესაძლოა არ გამოხატავდეს ამერიკის შეერთებული შტატების საერთაშორისო განვითარების სააგენტოს (USAID), აღმოსავლეთ-დასავლეთის მართვის ინსტიტუტის (EWMI), ან ამერიკის შეერთებული შტატების მთავრობის შეხედულებებს.</p>
-
                   </div>
                   <div class="col-md-3">
                        <p style="height: 16px;
@@ -292,12 +330,6 @@
                        <i class="bi bi-instagram fa-lg" style="margin-left:20px;"></i>
                    
                    </p>
-
-                       @*<div style="width:20px; height:20px;">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
-                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"/>
-                            </svg>
-                       </div>*@
                   </div>
               </div>
 
@@ -315,6 +347,12 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/Themes/ckeditor_full/ckeditor.js" asp-append-version="true"></script>
+    <script>
+        function alo()
+        {
+            alert("alo");
+        }
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

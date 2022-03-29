@@ -120,4 +120,7 @@
   <data name="Category" xml:space="preserve">
     <value>категорія</value>
   </data>
+  <data name="hehe" xml:space="preserve">
+    <value>huhu</value>
+  </data>
 </root>

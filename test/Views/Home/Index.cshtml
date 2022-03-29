@@ -36,15 +36,27 @@
             if(Model.ChosenCategoryId == category.Id)
             {
                 <div class="row activeCategory">
-
-                    <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
-                    </div>
+                    @if(Model.Culture == "uk")
+                    {
+                        <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryUkrainianName</p></a>
+                    }
+                    else
+                    {
+                        <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                    }
+                </div>
                 }
                 else
                 {
                      <div class="row categoryItem">
-
-                    <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                         @if(Model.Culture == "uk")
+                        {
+                            <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryUkrainianName</p></a>
+                        }
+                        else
+                        {
+                            <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                        }
                     </div>
                 }
 

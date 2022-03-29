@@ -79,7 +79,6 @@ namespace test.Controllers
                             post.ThumbnailBase64 = Convert.ToBase64String(post.Thumbnail);
                             model.Posts.Add(post);
                         }
-                        
                     }
                 }
             }
@@ -92,11 +91,12 @@ namespace test.Controllers
             if(category == null)
             {
                 model.Posts = model.Posts.OrderBy(x => x.CreatedAt).Where(x => x.ShowOnMainMenu).ToList();
+                model.Culture = culture.IetfLanguageTag;
                 return View(model);
             }
 
             model.ShowCategories = true;
-
+            model.Culture = culture.IetfLanguageTag;
             return View(model);
         }
 
@@ -104,13 +104,14 @@ namespace test.Controllers
         [HttpPost]
         public IActionResult CultureManagement(string culture)
         {
+
             Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName, CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
                 new CookieOptions { Expires = DateTimeOffset.Now.AddDays(30)});
 
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
         }
-        
+
         public async Task<IActionResult> Privacy(int? category = null)
         {
             // Retrieves the requested culture
