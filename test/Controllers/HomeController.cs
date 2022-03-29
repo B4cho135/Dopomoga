@@ -55,23 +55,29 @@ namespace test.Controllers
 
             var model = new HomeViewModel();
 
-            postsResponse.Content.ForEach(x =>
+            foreach(var post in postsResponse.Content)
             {
-                if(category == null && x.ShowOnMainMenu)
+                if (category == null && post.ShowOnMainMenu)
                 {
-                    x.ThumbnailBase64 = Convert.ToBase64String(x.Thumbnail);
-                    model.Posts.Add(x);
+                    if(post.Thumbnail != null)
+                    {
+                        post.ThumbnailBase64 = Convert.ToBase64String(post.Thumbnail);
+                        model.Posts.Add(post);
+                    }
                 }
                 else
                 {
-                    if (x.CategoryId == category)
+                    if (post.CategoryId == category)
                     {
-                        x.ThumbnailBase64 = Convert.ToBase64String(x.Thumbnail);
-                        model.Posts.Add(x);
+                        if (post.Thumbnail != null)
+                        {
+                            post.ThumbnailBase64 = Convert.ToBase64String(post.Thumbnail);
+                            model.Posts.Add(post);
+                        }
+                        
                     }
                 }
-                
-            });
+            }
 
             response.Content.ForEach(x =>
             {

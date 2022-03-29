@@ -5,7 +5,7 @@
 <style>
     .textFont {
         font-family: Roboto;
-        font-size: 18px;
+        font-size: 14px;
         font-style: normal;
         font-weight: 500;
         line-height: 25px;
@@ -52,7 +52,7 @@
                         <div class="card-transparent mb-2">
                         <img class="card-img-top main-card-size" src="data:image/png;base64,@Model.Posts[0].ThumbnailBase64" alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text"><small class="text-muted">@Model.Posts[0].CreatedAt</small></p>
+                            <p class="card-text"><small class="text-muted">@Model.Posts[0].CreatedAt.ToString("dd/MM/yyyy")</small></p>
                             <hr />
                             <p class="textFont">@Model.Posts[0].GeorgianTitle</p>
                         </div>
@@ -67,7 +67,7 @@
                         <div class="card-transparent mb-2">
                         <img class="card-img-top side-card-size" src="data:image/png;base64,@Model.Posts[1].ThumbnailBase64" alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text"><small class="text-muted">@Model.Posts[1].CreatedAt</small></p>
+                            <p class="card-text"><small class="text-muted">@Model.Posts[1].CreatedAt.ToString("dd/MM/yyyy")</small></p>
                             <hr />
                             <p class="textFont">@Model.Posts[1].GeorgianTitle</p>
                         </div>
@@ -78,7 +78,7 @@
                         <div class="card-transparent mb-2">
                         <img class="card-img-top side-card-size" src="data:image/png;base64,@Model.Posts[2].ThumbnailBase64" alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text"><small class="text-muted">@Model.Posts[2].CreatedAt</small></p>
+                            <p class="card-text"><small class="text-muted">@Model.Posts[2].CreatedAt.ToString("dd/MM/yyyy")</small></p>
                             <hr />
                             <p class="textFont">@Model.Posts[1].GeorgianTitle</p>
                         </div>
@@ -95,7 +95,7 @@
                         <div class="card-transparent" style="width: 16rem;">
                           <img class="card-img-top" src="data:image/png;base64,@post.ThumbnailBase64" alt="Card image cap">
                           <div class="card-body">
-                           <p class="card-text"><small class="text-muted">@post.CreatedAt</small></p>
+                           <p class="card-text"><small class="text-muted">@post.CreatedAt.ToString("dd/MM/yyyy")</small></p>
                             <hr />
                             <p class="textFont">@post.GeorgianTitle</p>
                           </div>
