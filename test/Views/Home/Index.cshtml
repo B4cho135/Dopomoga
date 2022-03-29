@@ -33,9 +33,21 @@
         <div style="margin-top:30px;">
         @foreach (var category in Model.Categories)
         {
-            <div class="row categoryItem">
-                <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
-            </div>
+            if(Model.ChosenCategoryId == category.Id)
+            {
+                <div class="row activeCategory">
+
+                    <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                    </div>
+                }
+                else
+                {
+                     <div class="row categoryItem">
+
+                    <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                    </div>
+                }
+
         }
         </div>
     </div>
@@ -45,7 +57,6 @@
             <div class="row">
                 @if(!Model.ShowCategories)
                 {
-                    
                 <div class="col-md-8">
                     @if(Model.Posts.ElementAtOrDefault(0) != null)
                     {

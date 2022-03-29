@@ -21,6 +21,8 @@ namespace test.Controllers
 
         public async Task<IActionResult> Index(int? category = null)
         {
+
+
             // Retrieves the requested culture
             var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
             // Culture contains the information of the requested culture
@@ -55,7 +57,10 @@ namespace test.Controllers
 
             var model = new HomeViewModel();
 
-            foreach(var post in postsResponse.Content)
+
+            model.ChosenCategoryId = category;
+
+            foreach (var post in postsResponse.Content)
             {
                 if (category == null && post.ShowOnMainMenu)
                 {

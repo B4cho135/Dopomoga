@@ -23,9 +23,11 @@ html, body {
         height: 60px;
     }
 
-.footer {
-    background: yellow;
+
+.activeCategory {
+    background-color: #E6AE00;
 }
+
 
 .textFont {
     font-family: Roboto;
