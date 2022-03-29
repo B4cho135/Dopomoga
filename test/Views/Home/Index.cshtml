@@ -77,7 +77,14 @@
                         <div class="card-body">
                             <p class="card-text"><small class="text-muted">@Model.Posts[0].CreatedAt.ToString("dd/MM/yyyy")</small></p>
                             <hr />
-                            <p class="textFont">@Model.Posts[0].GeorgianTitle</p>
+                            @if(Model.Culture == "uk")
+                            {
+                                <p class="textFont">@Model.Posts[0].UkrainianTitle</p>
+                            }
+                            else
+                            {
+                                <p class="textFont">@Model.Posts[0].GeorgianTitle</p>
+                            }
                         </div>
                         </div>
                     }
@@ -92,7 +99,14 @@
                         <div class="card-body">
                             <p class="card-text"><small class="text-muted">@Model.Posts[1].CreatedAt.ToString("dd/MM/yyyy")</small></p>
                             <hr />
-                            <p class="textFont">@Model.Posts[1].GeorgianTitle</p>
+                             @if(Model.Culture == "uk")
+                            {
+                                <p class="textFont">@Model.Posts[1].UkrainianTitle</p>
+                            }
+                            else
+                            {
+                                <p class="textFont">@Model.Posts[1].GeorgianTitle</p>
+                            }
                         </div>
                         </div>
                     }
@@ -103,7 +117,14 @@
                         <div class="card-body">
                             <p class="card-text"><small class="text-muted">@Model.Posts[2].CreatedAt.ToString("dd/MM/yyyy")</small></p>
                             <hr />
-                            <p class="textFont">@Model.Posts[1].GeorgianTitle</p>
+                             @if(Model.Culture == "uk")
+                            {
+                                <p class="textFont">@Model.Posts[2].UkrainianTitle</p>
+                            }
+                            else
+                            {
+                                <p class="textFont">@Model.Posts[2].GeorgianTitle</p>
+                            }
                         </div>
                         </div>
                     }
@@ -120,7 +141,14 @@
                           <div class="card-body">
                            <p class="card-text"><small class="text-muted">@post.CreatedAt.ToString("dd/MM/yyyy")</small></p>
                             <hr />
-                            <p class="textFont">@post.GeorgianTitle</p>
+                             @if(Model.Culture == "uk")
+                            {
+                                <p class="textFont">@post.UkrainianTitle</p>
+                            }
+                            else
+                            {
+                                <p class="textFont">@post.GeorgianTitle</p>
+                            }
                           </div>
                         </div>
 

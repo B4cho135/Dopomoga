@@ -100,6 +100,12 @@ namespace test.Controllers
             return View(model);
         }
 
+        //[HttpGet]
+        //public async Task<IActionResult> PostInternalPage()
+        //{
+
+        //}
+
 
         [HttpPost]
         public IActionResult CultureManagement(string culture)
