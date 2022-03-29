@@ -30,9 +30,9 @@
 
                 @if (@Model.Culture == "en")
                 {
-                    <div class="card-transparent text-center">
+                    <div class="card-transparent text-center" style="white-space: normal;"> 
                         <div class="card-body">
-                            <img class="card-img-top" src="data:image/png;base64,@Model.Post.ThumbnailBase64" alt="Card image cap" style="width:800px; height:240px;">
+                            <img src="data:image/png;base64,@Model.Post.ThumbnailBase64" class="img-fluid" alt="Responsive image">
                             <h5 class="card-title" style="margin-top:30px;">@Model.Post.GeorgianTitle</h5>
                             <p class="textFont" style="margin-top:30px;">@Model.Post.GeorgianDescription</p>
                             <a href="@Model.Post.RedirectUrl" class="btn btn-primary">ვრცლად ნახვა</a>
@@ -42,8 +42,8 @@
                 else
                 {
                     <div class="card-transparent text-center">
-                        <div class="card-body">
-                            <img class="card-img-top" src="data:image/png;base64,@Model.Post.ThumbnailBase64" alt="Card image cap" style="width:800px; height:240px;">
+                        <div class="card-body" style="white-space: normal;">
+                             <img src="data:image/png;base64,@Model.Post.ThumbnailBase64" class="img-fluid" alt="Responsive image">
                             <h5 class="card-title" style="margin-top:30px;">@Model.Post.UkrainianTitle</h5>
                             <p class="textFont" style="margin-top:30px;">@Model.Post.UkrainianDescription</p>
                             <a href="@Model.Post.RedirectUrl" class="btn btn-primary">Читати більше</a>

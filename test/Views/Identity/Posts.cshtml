@@ -69,6 +69,17 @@
                         </form>
                     </div>
 
+                    <form asp-action="EditPost" asp-controller="Identity" method="get">
+                        <div class="row" style="margin-top:50px;">
+                            <div class="col">
+                                <select asp-for="Id" asp-items="@Model.Posts" class="form-control"></select>
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-danger"> რედაქტირება</button>
+                            </div>
+                        </div>
+                    </form>
+
                     <form asp-action="DeletePost" asp-controller="Identity" method="post">
                         <div class="row" style="margin-top:50px;">
                             <div class="col">
