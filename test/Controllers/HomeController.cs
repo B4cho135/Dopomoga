@@ -100,11 +100,45 @@ namespace test.Controllers
             return View(model);
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> PostInternalPage()
-        //{
+        [HttpGet]
+        public async Task<IActionResult> PostInternalPage(int id)
+        {
+            
+            // Retrieves the requested culture
+            var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            // Culture contains the information of the requested culture
+            var culture = rqf.RequestCulture.Culture;
 
-        //}
+            var response = await _apiClient.Categories.Get();
+
+            var post = await _apiClient.Posts.GetById(id);
+
+            if(!post.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var model = new SharedViewModel();
+
+
+
+            response.Content.ForEach(x =>
+            {
+                model.Categories.Add(x);
+            });
+
+            model.Post = post.Content;
+            model.Post.ThumbnailBase64 = Convert.ToBase64String(post.Content.Thumbnail);
+            model.Culture = culture.IetfLanguageTag;
+
+            return View(model);
+        }
 
 
         [HttpPost]

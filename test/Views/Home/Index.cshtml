@@ -73,6 +73,7 @@
                     @if(Model.Posts.ElementAtOrDefault(0) != null)
                     {
                         <div class="card-transparent mb-2">
+                            <a href="@Url.Action("PostInternalPage", "Home", new { id = @Model.Posts[0].Id})" style=" text-decoration: none;">
                         <img class="card-img-top main-card-size" src="data:image/png;base64,@Model.Posts[0].ThumbnailBase64" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text"><small class="text-muted">@Model.Posts[0].CreatedAt.ToString("dd/MM/yyyy")</small></p>
@@ -86,7 +87,8 @@
                                 <p class="textFont">@Model.Posts[0].GeorgianTitle</p>
                             }
                         </div>
-                        </div>
+                        </a>
+                    </div>
                     }
                     
                 </div>
@@ -95,6 +97,7 @@
                     @if(Model.Posts.ElementAtOrDefault(1) != null)
                     {
                         <div class="card-transparent mb-2">
+                            <a href="@Url.Action("PostInternalPage", "Home", new { id = @Model.Posts[1].Id})" style=" text-decoration: none;">
                         <img class="card-img-top side-card-size" src="data:image/png;base64,@Model.Posts[1].ThumbnailBase64" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text"><small class="text-muted">@Model.Posts[1].CreatedAt.ToString("dd/MM/yyyy")</small></p>
@@ -108,11 +111,13 @@
                                 <p class="textFont">@Model.Posts[1].GeorgianTitle</p>
                             }
                         </div>
+                        </a>
                         </div>
                     }
                    @if(Model.Posts.ElementAtOrDefault(2) != null)
                     {
                         <div class="card-transparent mb-2">
+                        <a href="@Url.Action("PostInternalPage", "Home", new { id = @Model.Posts[2].Id})" style=" text-decoration: none;">
                         <img class="card-img-top side-card-size" src="data:image/png;base64,@Model.Posts[2].ThumbnailBase64" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text"><small class="text-muted">@Model.Posts[2].CreatedAt.ToString("dd/MM/yyyy")</small></p>
@@ -126,6 +131,7 @@
                                 <p class="textFont">@Model.Posts[2].GeorgianTitle</p>
                             }
                         </div>
+                        </a>
                         </div>
                     }
                     </div>
@@ -136,21 +142,25 @@
 
                     @foreach(var post in @Model.Posts)
                     {
-                        <div class="card-transparent" style="width: 16rem;">
-                          <img class="card-img-top" src="data:image/png;base64,@post.ThumbnailBase64" alt="Card image cap">
-                          <div class="card-body">
-                           <p class="card-text"><small class="text-muted">@post.CreatedAt.ToString("dd/MM/yyyy")</small></p>
-                            <hr />
-                             @if(Model.Culture == "uk")
-                            {
-                                <p class="textFont">@post.UkrainianTitle</p>
-                            }
-                            else
-                            {
-                                <p class="textFont">@post.GeorgianTitle</p>
-                            }
-                          </div>
-                        </div>
+                       
+                            <div class="card-transparent" style="width: 16rem;">
+                                 <a href="@Url.Action("PostInternalPage", "Home", new { id = post.Id})" style=" text-decoration: none;">
+                              <img class="card-img-top" src="data:image/png;base64,@post.ThumbnailBase64" alt="Card image cap">
+                              <div class="card-body">
+                               <p class="card-text"><small class="text-muted">@post.CreatedAt.ToString("dd/MM/yyyy")</small></p>
+                                <hr />
+                                 @if(Model.Culture == "uk")
+                                {
+                                    <p class="textFont">@post.UkrainianTitle</p>
+                                }
+                                else
+                                {
+                                    <p class="textFont">@post.GeorgianTitle</p>
+                                }
+                              </div>
+                                </a>
+                            </div>
+                        
 
                     }
                     </div>

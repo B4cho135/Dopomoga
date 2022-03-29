@@ -6,21 +6,50 @@
 <div class="row" style="height:100vh;">
 
     <div class="col-md-3" style="background: #F8BF0C;">
-        
+
         <div style="margin-top:30px;">
-        @foreach (var category in Model.Categories)
-        {
-            <div class="row categoryItem">
-                <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
-            </div>
-        }
+            @foreach (var category in Model.Categories)
+            {
+                <div class="row categoryItem">
+                    @if (Model.Culture == "uk")
+                    {
+                        <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryUkrainianName</p></a>
+                    }
+                    else
+                    {
+                        <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                    }
+                </div>
+            }
         </div>
     </div>
 
     <div class="col-md-9 bg-light" style="background: url('/content/images/background.svg') no-repeat bottom; background-position: 50% 115%;">
         <div class="container" style="margin-top:30px">
             <div class="row">
-                @Html.Raw(Model.Info.PageTextInGeorgian)
+
+                @if (@Model.Culture == "en")
+                {
+                    <div class="card-transparent text-center">
+                        <div class="card-body">
+                            <img class="card-img-top" src="data:image/png;base64,@Model.Post.ThumbnailBase64" alt="Card image cap" style="width:800px; height:240px;">
+                            <h5 class="card-title" style="margin-top:30px;">@Model.Post.GeorgianTitle</h5>
+                            <p class="textFont" style="margin-top:30px;">@Model.Post.GeorgianDescription</p>
+                            <a href="@Model.Post.RedirectUrl" class="btn btn-primary">ვრცლად ნახვა</a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="card-transparent text-center">
+                        <div class="card-body">
+                            <img class="card-img-top" src="data:image/png;base64,@Model.Post.ThumbnailBase64" alt="Card image cap" style="width:800px; height:240px;">
+                            <h5 class="card-title" style="margin-top:30px;">@Model.Post.UkrainianTitle</h5>
+                            <p class="textFont" style="margin-top:30px;">@Model.Post.UkrainianDescription</p>
+                            <a href="@Model.Post.RedirectUrl" class="btn btn-primary">Читати більше</a>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
@@ -29,7 +58,7 @@
 <script>
     window.onload = function() {
 
-        $("#faqP").css("color", "white");
+        $("#faqP").css("color", "#62B9EF");
         $("#mainPageP").css("color", "#62B9EF");
         $("#contactsP").css("color", "#62B9EF");
         $("#aboutUsP").css("color", "#62B9EF");
