@@ -11,8 +11,15 @@
         @foreach (var category in Model.Categories)
         {
             <div class="row categoryItem">
-                <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
-            </div>
+                    @if (Model.Culture == "uk")
+                    {
+                        <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryUkrainianName</p></a>
+                    }
+                    else
+                    {
+                        <a style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                    }
+                </div>
         }
         </div>
     </div>
@@ -20,7 +27,14 @@
     <div class="col-md-9 bg-light" style="background: url('/content/images/background.svg') no-repeat bottom; background-position: 50% 115%;">
         <div class="container" style="margin-top:30px">
             <div class="row">
-                @Html.Raw(Model.Info.PageTextInGeorgian)
+                @if(@Model.Culture == "en")
+                {
+                    @Html.Raw(Model.Info.PageTextInGeorgian)
+                }
+                else
+                {
+                    @Html.Raw(Model.Info.PageTextInUkrainian)
+                }
             </div>
         </div>
     </div>

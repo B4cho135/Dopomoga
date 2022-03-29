@@ -224,7 +224,14 @@ namespace test.Controllers
         [HttpGet]
         public async Task<IActionResult> AboutUs()
         {
+            // Retrieves the requested culture
+            var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            // Culture contains the information of the requested culture
+            var culture = rqf.RequestCulture.Culture;
+
             var model = new SharedViewModel();
+
+            model.Culture = culture.IetfLanguageTag;
 
             var response = await _apiClient.Categories.Get();
 
@@ -242,8 +249,14 @@ namespace test.Controllers
         [HttpGet]
         public async Task<IActionResult> Contacts()
         {
+
+            // Retrieves the requested culture
+            var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            // Culture contains the information of the requested culture
+            var culture = rqf.RequestCulture.Culture;
             var model = new SharedViewModel();
 
+            model.Culture = culture.IetfLanguageTag;
             var response = await _apiClient.Categories.Get();
 
             response.Content.ForEach(x =>
@@ -267,7 +280,15 @@ namespace test.Controllers
         [HttpGet]
         public async Task<IActionResult> FAQ()
         {
+            // Retrieves the requested culture
+            var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            // Culture contains the information of the requested culture
+            var culture = rqf.RequestCulture.Culture;
+
+
             var model = new SharedViewModel();
+
+            model.Culture = culture.IetfLanguageTag;
 
             var response = await _apiClient.Categories.Get();
 
