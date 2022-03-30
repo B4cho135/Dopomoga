@@ -19,7 +19,7 @@ namespace test.Controllers
         }
 
 
-        public async Task<IActionResult> Index(int? category = null)
+        public async Task<IActionResult> Index(int? category = null, string searchWord = null)
         {
 
 

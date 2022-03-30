@@ -2,6 +2,12 @@
 
 @inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+@inject IHtmlLocalizer<SharedResources> SharedHtmlLocalizer
+
+
 <style>
     .textFont {
         font-family: Roboto;
@@ -26,7 +32,7 @@
     }
 </style>
 
-<div class="row" style="height:100vh;">
+<div class="row" style="height:100vh; position:relative">
 
     <div class="col-md-3" style="background: #F8BF0C;">
         
@@ -146,7 +152,7 @@
                             /* or 146% */
 
 
-                            color: #626262;">ტურიზმის ეროვნული ადმინისტრაციის ცხელი ხაზი <br> <span style="color:darkblue">144-3</span></p>
+                            color: #626262;">@SharedLocalizer["Info1"] <br> <span style="color:darkblue">144-3</span></p>
             </div>
             <div class="col-sm">
                 <p style="font-family: 'Roboto';
@@ -157,7 +163,7 @@
                             /* or 146% */
 
 
-                            color: #626262;">უკრაინის საელჩო საქართველოში  <br> <span style="color:darkblue">032 231 11 61</span> </p>
+                            color: #626262;">@SharedLocalizer["Info2"]  <br> <span style="color:darkblue">032 231 11 61</span> </p>
             </div>
            <div class="col-sm">
                 <p style="font-family: 'Roboto';
@@ -168,7 +174,7 @@
                             /* or 146% */
 
 
-                            color: #626262;">საზოგადოებრივი უსაფრთხოების მართვის ცენტრი   <br> <span style="color:darkblue">112</span> </p>
+                            color: #626262;">@SharedLocalizer["Info3"]   <br> <span style="color:darkblue">112</span> </p>
             </div>
            <div class="col-sm"></div>
         </div>
@@ -197,8 +203,6 @@
                               </div>
                                 </a>
                             </div>
-                        
-
                     }
                     </div>
                 }
@@ -208,3 +212,6 @@
         
     </div>
 </div>
+
+
+ 

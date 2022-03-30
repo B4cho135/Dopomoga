@@ -20,11 +20,17 @@ namespace Dopomoga.API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Get()
+        public IActionResult Get(string searchWord = null)
         {
             try
             {
+
                 var posts = _context.Posts.Include(x => x.Category).Where(x => !x.IsDeleted).OrderByDescending(x => x.UpdatedAt).ToList();
+
+                if(!string.IsNullOrEmpty(searchWord))
+                {
+
+                }
 
                 return Ok(posts);
             }
