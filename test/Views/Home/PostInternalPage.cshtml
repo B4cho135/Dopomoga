@@ -1,7 +1,5 @@
 ﻿@model test.Models.Home.SharedViewModel;
 
-@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
-
 
 <div class="row" style="height:100vh;">
 
@@ -30,9 +28,11 @@
 
                 @if (@Model.Culture == "en")
                 {
-                    <div class="card-transparent" style="white-space: normal;"> 
-                        <div class="card-body">
-                            <img src="data:image/png;base64,@Model.Post.ThumbnailBase64" class="img-fluid" alt="Responsive image">
+                    <div class="card-transparent">
+                        <div class="card-body" style="word-wrap: break-word">
+                            <div style="display:flex; justify-content: center">
+                            <img src="data:image/png;base64,@Model.Post.ThumbnailBase64" class="img-fluid mx-auto" alt="Responsive image">
+                             </div>
                             <h5 class="card-title  text-center" style="margin-top:30px;">@Model.Post.GeorgianTitle</h5>
                             <p class="textFont" style="margin-top:30px;">@Html.Raw(Model.Post.GeorgianDescription)</p>
                             <a href="@Model.Post.RedirectUrl" class="btn btn-primary"> იხილეთ ორგანიზაციის გვერდი</a>
@@ -42,8 +42,10 @@
                 else
                 {
                     <div class="card-transparent">
-                        <div class="card-body" style="white-space: normal;">
-                             <img src="data:image/png;base64,@Model.Post.ThumbnailBase64" class="img-fluid" alt="Responsive image">
+                        <div class="card-body" style="word-wrap: break-word">
+                            <div style="display:flex; justify-content: center">
+                            <img src="data:image/png;base64,@Model.Post.ThumbnailBase64" class="img-fluid mx-auto" alt="Responsive image">
+                             </div>
                             <h5 class="card-title  text-center" style="margin-top:30px;">@Model.Post.UkrainianTitle</h5>
                             <p class="textFont" style="margin-top:30px;">@Html.Raw(Model.Post.UkrainianDescription)</p>
                             <a href="@Model.Post.RedirectUrl" class="btn btn-primary">Перейти на сторінку організації</a>
