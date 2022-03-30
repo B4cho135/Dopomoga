@@ -14,7 +14,7 @@
 
             <div class="container container_margin">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <form asp-action="CreatePost" asp-controller="Identity" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label asp-for="TitleGeorgian" class="control-label"></label>
@@ -35,7 +35,7 @@
                             </div>
                             <div class="form-group">
                                 <label asp-for="DescriptionUkrainian" class="control-label"></label>
-                                <textarea asp-for="DescriptionUkrainian" class="form-control"></textarea>
+                                <textarea asp-for="DescriptionUkrainian" class="form-control" id="DescriptionUkrainian"></textarea>
                                 <span asp-validation-for="DescriptionUkrainian" class="text-danger"></span>
                             </div>
 
@@ -96,3 +96,20 @@
         </div>
     </div>
 </div>
+
+
+<script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#DescriptionUkrainian' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+    ClassicEditor
+    .create(document.querySelector( '#DescriptionGeorgian' ) )
+    .catch( error => {
+        console.error( error );
+    } );
+</script>
