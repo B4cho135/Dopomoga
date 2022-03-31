@@ -10,14 +10,14 @@
 
 <style>
     .textFont {
-        font-family: Roboto;
-        font-size: 14px;
+        font-family: Spartan;
+        font-size: 18px;
         font-style: normal;
         font-weight: 500;
         line-height: 25px;
         letter-spacing: 0em;
         text-align: left;
-        color: black;
+        color: #6c757d;
     }
 
     .textFontBold {
@@ -82,15 +82,13 @@
                             <a href="@Url.Action("PostInternalPage", "Home", new { id = @Model.Posts[0].Id})" style=" text-decoration: none;">
                         <img class="card-img-top main-card-size" src="data:image/png;base64,@Model.Posts[0].ThumbnailBase64" alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text"><small class="text-muted">@Model.Posts[0].CreatedAt.ToString("dd/MM/yyyy")</small></p>
-                            <hr />
                             @if(Model.Culture == "uk")
                             {
-                                <p class="textFont">@Model.Posts[0].UkrainianTitle</p>
+                                <p class="textFont"><b>@Model.Posts[0].UkrainianTitle</b></p>
                             }
                             else
                             {
-                                <p class="textFont">@Model.Posts[0].GeorgianTitle</p>
+                                <p class="textFont"><b>@Model.Posts[0].GeorgianTitle</b></p>
                             }
                         </div>
                         </a>
@@ -106,15 +104,13 @@
                             <a href="@Url.Action("PostInternalPage", "Home", new { id = @Model.Posts[1].Id})" style=" text-decoration: none;">
                         <img class="card-img-top side-card-size" src="data:image/png;base64,@Model.Posts[1].ThumbnailBase64" alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text"><small class="text-muted">@Model.Posts[1].CreatedAt.ToString("dd/MM/yyyy")</small></p>
-                            <hr />
                              @if(Model.Culture == "uk")
                             {
-                                <p class="textFont">@Model.Posts[1].UkrainianTitle</p>
+                                <p class="textFont"><b>@Model.Posts[1].UkrainianTitle</b></p>
                             }
                             else
                             {
-                                <p class="textFont">@Model.Posts[1].GeorgianTitle</p>
+                                <p class="textFont"><b>@Model.Posts[1].GeorgianTitle</b></p>
                             }
                         </div>
                         </a>
@@ -126,15 +122,13 @@
                         <a href="@Url.Action("PostInternalPage", "Home", new { id = @Model.Posts[2].Id})" style=" text-decoration: none;">
                         <img class="card-img-top side-card-size" src="data:image/png;base64,@Model.Posts[2].ThumbnailBase64" alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text"><small class="text-muted">@Model.Posts[2].CreatedAt.ToString("dd/MM/yyyy")</small></p>
-                            <hr />
                              @if(Model.Culture == "uk")
                             {
-                                <p class="textFont">@Model.Posts[2].UkrainianTitle</p>
+                                <p class="textFont"><b>@Model.Posts[2].UkrainianTitle</b></p>
                             }
                             else
                             {
-                                <p class="textFont">@Model.Posts[2].GeorgianTitle</p>
+                                <p class="textFont"><b>@Model.Posts[2].GeorgianTitle</b></p>
                             }
                         </div>
                         </a>
@@ -190,15 +184,13 @@
                                  <a href="@Url.Action("PostInternalPage", "Home", new { id = post.Id})" style=" text-decoration: none;">
                               <img class="card-img-top" src="data:image/png;base64,@post.ThumbnailBase64" alt="Card image cap">
                               <div class="card-body">
-                               <p class="card-text"><small class="text-muted">@post.CreatedAt.ToString("dd/MM/yyyy")</small></p>
-                                <hr />
                                  @if(Model.Culture == "uk")
                                 {
-                                    <p class="textFont">@post.UkrainianTitle</p>
+                                    <p class="textFont"><b>@post.UkrainianTitle</b></p>
                                 }
                                 else
                                 {
-                                    <p class="textFont">@post.GeorgianTitle</p>
+                                    <p class="textFont"><b>@post.GeorgianTitle</b></p>
                                 }
                               </div>
                                 </a>

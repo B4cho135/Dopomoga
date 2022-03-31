@@ -63,7 +63,7 @@
             </div>
             <div class="row" style="height:50px; background: #E9E9E9">
                 <div class="d-flex justify-content-end">
-                    <p id="topInfoP" style="font-family: Roboto;
+                   @* <p id="topInfoP" style="font-family: Roboto;
                         font-size: 13px;
                         font-style: normal;
                         font-weight: 700;
@@ -73,7 +73,7 @@
                         margin-top:10px;
                         margin-left:0px;
                         overflow-x: hidden;
-                        ">+995 577 123 456  |  info@dopomoga.ge</p>
+                        ">+995 577 123 456  |  info@dopomoga.ge</p>*@
                 </div>
             </div>
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light" style="background: #017FCD">
@@ -109,7 +109,7 @@
                                                 <p id="aboutUsP" style="font-family: Roboto;
                                                                         font-size: 20px;
                                                                         font-style: normal;
-                                                                        font-weight: 700;
+                                                                        font-weight: 700;  
                                                                         line-height: 23px;
                                                                         letter-spacing: 0.1em;
                                                                         text-align: left;
@@ -237,7 +237,7 @@
 
 
                                     </div>
-                                    <div style="position:relative; margin-top:10px;">
+                                   @* <div style="position:relative; margin-top:10px;">
                                         @using (Html.BeginForm("Index", "Home",FormMethod.Post, new { @class = "form-horizontal"}))
                                         {
                                         <input name="searchWord" style="border-radius: 30px; outline: none;height:40px;font-size:14pt;" />
@@ -248,7 +248,7 @@
                                                         <path stroke="#CDCDCD" d="M31.605 24.989l-5.872-3.39" />
                                                     </svg>
 
-                                                    @*<button type="submit">ძებნა</button>*@
+                                                    <button type="submit">ძებნა</button>
 
                                             </div>
                                         }
@@ -264,7 +264,7 @@
                                             </a>
                                         </div>
                                         </form>*@
-                                    </div>
+                                    @*</div>*@
                                 </div>
                             </div>
                         </div>

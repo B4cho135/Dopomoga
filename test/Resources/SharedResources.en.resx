@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutUs" xml:space="preserve">
-    <value>ჩვენს შესახებ</value>
+    <value>ჩვენ შესახებ</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>კონტაქტები</value>
+    <value>დაგვიკავშირდით</value>
   </data>
   <data name="FAQ" xml:space="preserve">
     <value>FAQ</value>
