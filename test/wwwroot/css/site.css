@@ -24,7 +24,7 @@ html, body {
     }
 
 .activeCategory {
-    background-color: #E6AE00;
+    background-color: #A1A1A1;
 }
 
 
@@ -52,8 +52,7 @@ html, body {
 
 
 .categoryItem :hover {
-    background-color: #E6AE00;
-
+    background-color: #A1A1A1;
 }
 
 #topInfoP {
