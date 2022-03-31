@@ -81,23 +81,30 @@ html, body {
     object-fit: fill;
 }
 
+@media only screen and (max-width: 1000px) {
+    #toggle_button {
+        float:right;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     #toggle_button {
         margin-left: 150px;
     }
+
     #mainPageP {
         margin-left: 40px;
     }
+
     #topInfoP {
         margin-right: 0px;
     }
+
     #mainLogoDiv {
         margin-left: -60px;
     }
 
     #LogoSvg {
-        width:180px;
+        width: 180px;
     }
-
-    
 }
