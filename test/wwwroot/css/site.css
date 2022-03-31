@@ -1,3 +1,9 @@
+
+@font-face {
+    font-family: 'FiraGO-SemiBold';
+    src: url('~/content/fonts/FiraGO-SemiBold.ttf') format('truetype');
+}
+
 html, body {
     height: 100%;
     margin: 0;

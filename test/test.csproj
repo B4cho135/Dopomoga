@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
+    <Folder Include="wwwroot\content\fonts\" />
   </ItemGroup>
 
   <ItemGroup>
