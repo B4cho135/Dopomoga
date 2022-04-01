@@ -1,7 +1,7 @@
 
 @font-face {
     font-family: 'FiraGO-SemiBold';
-    src: url('~/content/fonts/FiraGO-SemiBold.ttf') format('truetype');
+    src: url('FiraGO-SemiBold.ttf') format('truetype');
 }
 
 html, body {
