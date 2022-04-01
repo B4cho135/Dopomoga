@@ -100,7 +100,7 @@
                         @if (Model.Posts.ElementAtOrDefault(1) != null)
                         {
                             <div class="card-transparent mb-2">
-                                <a href="@Url.Action("PostInternalPage", "Home", new { id = @Model.Posts[1].Id})" style=" text-decoration: none;">
+                                <a href="@Url.Action("PostInternalPage", "Home", new { id = @Model.Posts[1].Id})" style=" text-decoration: none; color:black;">
                                     <img class="card-img-top side-card-size" src="data:image/png;base64,@Model.Posts[1].ThumbnailBase64" alt="Card image cap">
                                     <div class="card-body">
                                         @if (Model.Culture == "uk")
@@ -135,8 +135,8 @@
                         }
                     </div>
 
-                    <div class="row" style="bottom:0px;">
-                        @* <div class="col-sm">
+                    @*<div class="row" style="bottom:0px;">
+                         <div class="col-sm">
                             <p style="font-family: 'Roboto';
                             font-style: normal;
                             font-weight: 800;
@@ -168,8 +168,8 @@
 
 
                             color: #626262;">@SharedLocalizer["Info3"]   <br> <span style="color:darkblue">112</span> </p>
-                            </div>*@
-                        <div class="col-sm"></div>
+                            </div>
+                        <div class="col-sm"></div>*@
                     </div>
                 }
                 else
