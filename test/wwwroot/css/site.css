@@ -40,7 +40,8 @@ html, body {
     font-style: normal;
     font-weight: 500;
     line-height: 25px;
-    letter-spacing: 0em;
+    letter-spacing: -.03em;
+    font-feature-settings: 'case' on;
     text-align: left;
     color: black;
 }
@@ -51,7 +52,8 @@ html, body {
     font-style: normal;
     font-weight: 700;
     line-height: 25px;
-    letter-spacing: 0em;
+    letter-spacing: -.03em;
+    font-feature-settings: 'case' on;
     text-align: left;
     color: white;
 }
@@ -71,6 +73,8 @@ html, body {
     font-weight: 700;
     font-size: 21px;
     line-height: 20px;
+    letter-spacing: -.03em;
+    font-feature-settings: 'case' on;
     padding-top: 10px;
     color: #FFFFFF;
 }
@@ -108,6 +112,11 @@ html, body {
 
     #mainLogoDiv {
         margin-left: -60px;
+    }
+
+    #mainLogoBeta {
+        margin-left: -60px;
+        margin-top:50px;
     }
 
     #LogoSvg {

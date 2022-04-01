@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutUs" xml:space="preserve">
-    <value>Про нас</value>
+    <value>ПРО НАС</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>Зв'яжіться з нами</value>
+    <value>ЗВ’ЯЖІТЬСЯ З НАМИ</value>
   </data>
   <data name="FAQ" xml:space="preserve">
     <value>FAQ</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Головна сторінка</value>
+    <value>ГОЛОВНА СТОРІНКА</value>
   </data>
   <data name="Info1" xml:space="preserve">
     <value>Гаряча лінія Національної туристичної адміністрації</value>
