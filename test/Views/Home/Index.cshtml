@@ -119,9 +119,7 @@
                         {
                             <div class="card-transparent mb-2">
                                 <a href="@Url.Action("PostInternalPage", "Home", new { id = @Model.Posts[2].Id})" style=" text-decoration: none;">
-                                    <div style="width:232px;height:146px;">
                                     <img class="card-img-top side-card-size" src="data:image/png;base64,@Model.Posts[2].ThumbnailBase64" alt="Card image cap">
-                                    </div>
                                     <div class="card-body">
                                         @if (Model.Culture == "uk")
                                         {
