@@ -31,8 +31,11 @@
         font-feature-settings: 'case' on;
         text-align: left;
         color: white;
+
     }
 </style>
+
+@*<div id="loading"></div>*@
 
 <div class="row" style="height:100vh;">
     <div class="col-md-3" style="background: #B9B9B9;">
@@ -134,43 +137,6 @@
                             </div>
                         }
                     </div>
-
-                    @*<div class="row" style="bottom:0px;">
-                         <div class="col-sm">
-                            <p style="font-family: 'Roboto';
-                            font-style: normal;
-                            font-weight: 800;
-                            font-size: 13px;
-                            line-height: 19px;
-                            /* or 146% */
-
-
-                            color: #626262;">@SharedLocalizer["Info1"] <br> <span style="color:darkblue">144-3</span></p>
-                            </div>
-                            <div class="col-sm">
-                            <p style="font-family: 'Roboto';
-                            font-style: normal;
-                            font-weight: 800;
-                            font-size: 13px;
-                            line-height: 19px;
-                            /* or 146% */
-
-
-                            color: #626262;">@SharedLocalizer["Info2"]  <br> <span style="color:darkblue">032 231 11 61</span> </p>
-                            </div>
-                            <div class="col-sm">
-                            <p style="font-family: 'Roboto';
-                            font-style: normal;
-                            font-weight: 800;
-                            font-size: 13px;
-                            line-height: 19px;
-                            /* or 146% */
-
-
-                            color: #626262;">@SharedLocalizer["Info3"]   <br> <span style="color:darkblue">112</span> </p>
-                            </div>
-                        <div class="col-sm"></div>*@
-                    @*</div>*@
                 }
                 else
                 {
@@ -206,7 +172,6 @@
     <div class="row" style="background:#EEEEEE;">
         <div class=col-md-3>
             <div class="row">
-                @*<div style="position: relative; top:10px;margin-left: 15px;">*@
 
                     <div class="flex-lg-wrap">
                         <div style="float:left">
@@ -236,7 +201,6 @@
                      <img src="~/content/images/EWMI.png" width="120px" height="50px;"/>
                  </div>
                  </div>
-                @*</div>*@
                
 
             </div>
@@ -281,7 +245,15 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
-<script src="~/Themes/ckeditor_full/ckeditor.js" asp-append-version="true"></script>
 
+@*
+<script>
+   
+    
+     window.onload = function() {
 
-
+      $('#load').hide();
+    };
+    
+</script>
+*@
