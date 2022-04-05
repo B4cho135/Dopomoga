@@ -24,7 +24,8 @@
 </head>
 <body style="height: 100%">
 
-
+    
+    <div id="load"></div>
     @inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
     @inject Microsoft.Extensions.Options.IOptions<Microsoft.AspNetCore.Builder.RequestLocalizationOptions> locOptions
 
@@ -106,14 +107,19 @@
                 <div style="width:25px; height:25px; margin-right:5px;
                                             margin-top:12px;"
                      onclick="
+                                                $('#load').show();
                                                 $.ajax({
                                                     type: 'POST',
                                                     url: '@Url.Action("CultureManagement", "Home", new {culture = "uk"})',
                                                     contentType: 'application/json; charset=utf-8',
                                                     data: { culture: 'en' },
                                                     dataType: 'json',
-                                                   success: function() { location.reload(); },
-                                                    error: function () { location.reload();}
+                                                    success: function () {
+                                                        location.reload();
+                                                    },
+                                                    error: function () { 
+                                                        location.reload();
+                                                    }
                                                 });
 ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 26 26">
@@ -142,15 +148,19 @@
                 <div style="width:25px; height:25px; margin-right:30px;margin-top:12px;float:right;margin-right:30px;"
                      onclick="
                                     
-                                    
+                                                $('#load').show();
                                                 $.ajax({
                                                     type: 'POST',
                                                     url: '@Url.Action("CultureManagement", "Home", new {culture = "en"})',
                                                     contentType: 'application/json; charset=utf-8',
                                                     data: { culture: 'en' },
                                                     dataType: 'json',
-                                                    success: function() { location.reload(); },
-                                                    error: function () { location.reload();}
+                                                    success: function() { 
+                                                        location.reload();
+                                                    },
+                                                    error: function () {
+                                                        location.reload();
+                                                    }
                                                 });
                                                 ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 26 26">

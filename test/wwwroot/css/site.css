@@ -105,8 +105,8 @@ a {
     height: 10vw;
     object-fit: fill;
 }
-/*
-#loading {
+
+#load {
     display: flex;
     position: fixed;
     z-index: 100;
@@ -116,8 +116,9 @@ a {
     background-image: url("https://c.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif");
     background-repeat: no-repeat;
     background-position: center;
+    background-size: 20px;
 }
-*/
+
 
 @media only screen and (max-width: 1000px) {
     #toggle_button {

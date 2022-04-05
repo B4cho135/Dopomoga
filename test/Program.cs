@@ -37,7 +37,7 @@ builder.Services.Configure<RequestLocalizationOptions>(opt =>
         new CultureInfo("uk"),
     };
 
-    opt.DefaultRequestCulture = new RequestCulture("en");
+    opt.DefaultRequestCulture = new RequestCulture("uk");
     opt.SupportedCultures = supportedCultures;
     opt.SupportedUICultures = supportedCultures;
 });
