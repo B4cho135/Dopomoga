@@ -276,30 +276,39 @@ namespace test.Controllers.Identity
         [HttpPost]
         public async Task<IActionResult> EditPost(PostViewModel model, IFormFile Image)
         {
-            var entity = new PostEntity()
+
+            var postResponse = await _client.Posts.GetById(model.Id);
+
+            if(!postResponse.IsSuccessStatusCode)
             {
-                Id = model.Id,
-                GeorgianTitle = model.TitleGeorgian,
-                GeorgianDescription = model.DescriptionGeorgian,
-                UkrainianTitle = model.TitleUkrainian,
-                UkrainianDescription = model.DescriptionUkrainian,
-                CategoryId = model.CategoryId,
-                Thumbnail = model.Image,
-                RedirectUrl = model.RedirectUrl,
-                ShowOnMainMenu=model.ShowOnMainMenu,
-            };
+                return RedirectToAction("Categories");
+            }
+
+            var post = postResponse.Content;
+
+            post.Id = model.Id;
+            post.GeorgianTitle = model.TitleGeorgian;
+            post.GeorgianDescription = model.DescriptionGeorgian;
+            post.UkrainianTitle = model.TitleUkrainian;
+            post.UkrainianDescription = model.DescriptionUkrainian;
+            post.CategoryId = model.CategoryId;
+            post.Thumbnail = model.Image;
+            post.RedirectUrl = model.RedirectUrl;
+            post.ShowOnMainMenu = model.ShowOnMainMenu;
+
+
             if (Image != null)
             {
                 using (var stream = new MemoryStream())
                 {
                     await Image.CopyToAsync(stream);
-                    entity.Thumbnail = stream.ToArray();
+                    post.Thumbnail = stream.ToArray();
 
 
                 }
             }
 
-            var response = await _client.Posts.Update(model.Id,entity);
+            var response = await _client.Posts.Update(model.Id, post);
 
             if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {

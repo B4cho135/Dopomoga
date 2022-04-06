@@ -1,75 +1,79 @@
 ﻿@model test.Models.Identity.PostViewModel;
 
 <div class="container">
-<div class="row">
-    <div class="col-md-2" style="margin-top:40px;">
-        <div class="list-group">
+    <div class="row">
+        <div class="col-md-2" style="margin-top:40px;">
+            <div class="list-group">
 
-                 <a class="list-group-item list-group-item-action list-group-item-light p-1" href="@Url.Action("Categories", "Identity")"> კატეგორიები</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-1" href="@Url.Action("Categories", "Identity")"> კატეგორიები</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-1" href="@Url.Action("Posts", "Identity")"> პოსტები</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-1" href="@Url.Action("Info", "Identity")"> ინფორმაცია</a>
             </div>
-    </div>
-    <div class="col-md-10">
+        </div>
+        <div class="col-md-10">
 
-    <div class="container container_margin">
-        <div class="row">
-            <div class="col-md-4">
-                <form asp-action="EditPost" asp-controller="Identity" method="post" enctype="multipart/form-data">
-                    <input asp-for="Id" hidden/>
-                    <div class="form-group">
-                        <label asp-for="TitleGeorgian" class="control-label"></label>
-                        <input asp-for="TitleGeorgian" class="form-control" />
-                        <span asp-validation-for="TitleGeorgian" class="text-danger"></span>
-                    </div>
+            <div class="container container_margin">
+                <div class="row">
+                    <div class="col-md-4">
+                        <form asp-action="EditPost" asp-controller="Identity" method="post" enctype="multipart/form-data">
+                            <input asp-for="Id" hidden />
+                            <div class="form-group">
+                                <label asp-for="TitleGeorgian" class="control-label"></label>
+                                <input asp-for="TitleGeorgian" class="form-control" />
+                                <span asp-validation-for="TitleGeorgian" class="text-danger"></span>
+                            </div>
 
-                    <div class="form-group">
-                        <label asp-for="DescriptionGeorgian" class="control-label"></label>
-                        <textarea asp-for="DescriptionGeorgian" class="form-control"></textarea>
-                        <span asp-validation-for="DescriptionGeorgian" class="text-danger"></span>
-                    </div>
+                            <div class="form-group">
+                                <label asp-for="DescriptionGeorgian" class="control-label"></label>
+                                <textarea asp-for="DescriptionGeorgian" class="form-control"></textarea>
+                                <span asp-validation-for="DescriptionGeorgian" class="text-danger"></span>
+                            </div>
 
-                    <div class="form-group">
-                        <label asp-for="TitleUkrainian" class="control-label"></label>
-                        <input asp-for="TitleUkrainian" class="form-control" />
-                        <span asp-validation-for="TitleUkrainian" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="DescriptionUkrainian" class="control-label"></label>
-                        <textarea asp-for="DescriptionUkrainian" class="form-control"></textarea>
-                        <span asp-validation-for="DescriptionUkrainian" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="RedirectUrl" class="control-label"></label>
-                        <input asp-for="RedirectUrl" class="form-control" />
-                        <span asp-validation-for="RedirectUrl" class="text-danger"></span>
-                    </div>
-                     <div class="form-group">
-                        <label asp-for="CategoryId" class="control-label"></label>
-                        <select asp-for="CategoryId" class="form-control" asp-items="@Model.Categories"></select>
-                        <span asp-validation-for="CategoryId" class="text-danger"></span>
-                    </div>
+                            <div class="form-group">
+                                <label asp-for="TitleUkrainian" class="control-label"></label>
+                                <input asp-for="TitleUkrainian" class="form-control" />
+                                <span asp-validation-for="TitleUkrainian" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DescriptionUkrainian" class="control-label"></label>
+                                <textarea asp-for="DescriptionUkrainian" class="form-control"></textarea>
+                                <span asp-validation-for="DescriptionUkrainian" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="RedirectUrl" class="control-label"></label>
+                                <input asp-for="RedirectUrl" class="form-control" />
+                                <span asp-validation-for="RedirectUrl" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CategoryId" class="control-label"></label>
+                                <select asp-for="CategoryId" class="form-control" asp-items="@Model.Categories"></select>
+                                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                            </div>
 
-                    <div class="form-group">
-                        <label asp-for="Image" class="control-label"></label>
-                        <input type="file" id="files" asp-for="Image" />
-                        <span asp-validation-for="Image" class="text-danger"></span>
+                            <div class="form-group">
+                                <label asp-for="Image" class="control-label"></label>
+                                <input type="file" id="files" asp-for="Image" />
+                                <span asp-validation-for="Image" class="text-danger"></span>
+                            </div>
+                            <div style="padding-top:20px;padding-bottom:20px;">
+                                <input type="checkbox" asp-for="ShowOnMainMenu" name="ShowOnMainMenu">
+                                <label asp-for="ShowOnMainMenu"> მთავარ გვერდზე გამოჩენა</label><br>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary" value="Create" style="margin-left:20px">დამატება</button>
+                            </div>
+
+                            <span class="form-group">
+
+                            </span>
+                        </form>
                     </div>
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary" value="Create" style="margin-left:20px">დამატება</button>
-                    </div>
-
-                    <span class="form-group">
-
-                    </span>
-                </form>
+                </div>
             </div>
+
         </div>
     </div>
-           
-    </div>
-</div>
 </div>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
@@ -86,4 +90,10 @@
     .catch( error => {
         console.error( error );
     } );
+
+
+     window.onload = function() {
+
+        $('#load').hide();
+    };
 </script>
