@@ -90,7 +90,7 @@ namespace test.Controllers
 
             if(category == null)
             {
-                model.Posts = model.Posts.OrderBy(x => x.CreatedAt).Where(x => x.ShowOnMainMenu).ToList();
+                model.Posts = model.Posts.OrderByDescending(x => x.UpdatedAt).Where(x => x.ShowOnMainMenu).ToList();
                 model.Culture = culture.IetfLanguageTag;
                 return View(model);
             }
