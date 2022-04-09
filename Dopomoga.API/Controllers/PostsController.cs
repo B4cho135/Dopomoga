@@ -1,5 +1,6 @@
 ﻿using Dopomoga.Data;
 using Dopomoga.Data.Entities.Posts;
+using Dopomoga.Models.Requests.Posts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -77,11 +78,32 @@ namespace Dopomoga.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] PostEntity request)
+        public IActionResult Put(int id, [FromBody] UpdatePostRequest request)
         {
             try
             {
-                _context.Posts.Update(request);
+                var existingPost = _context.Posts.Include(x => x.Category).FirstOrDefault(c => c.Id == id);
+
+                if(existingPost == null)
+                {
+                    return NotFound();
+                }
+
+                existingPost.GeorgianTitle = request.GeorgianTitle;
+                existingPost.GeorgianDescription = request.GeorgianDescription;
+                existingPost.UkrainianTitle = request.UkrainianTitle;
+                existingPost.UkrainianDescription = request.UkrainianDescription;
+                existingPost.CategoryId = request.CategoryId;
+                existingPost.RedirectUrl = request.RedirectUrl;
+                existingPost.ShowOnMainMenu = request.ShowOnMainMenu;
+
+                if (request.Thumbnail != null)
+                {
+                    existingPost.Thumbnail = request.Thumbnail;
+                }
+
+
+                _context.Posts.Update(existingPost);
                 _context.SaveChanges();
 
                 return NoContent();
