@@ -29,20 +29,25 @@ builder.Services.AddScoped<ServiceHttpClient>();
 builder.Services.AddScoped<ApiClient>();
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.Configure<RequestLocalizationOptions>(opt =>
-{
-    var supportedCultures = new List<CultureInfo>()
+var supportedCultures = new List<CultureInfo>()
     {
-        new CultureInfo("en"),
         new CultureInfo("uk"),
+        new CultureInfo("en"),
     };
 
-    opt.DefaultRequestCulture = new RequestCulture("uk");
-    opt.SupportedCultures = supportedCultures;
-    opt.SupportedUICultures = supportedCultures;
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    options.DefaultRequestCulture = new RequestCulture("uk");
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedCultures;
+    options.RequestCultureProviders = new List<IRequestCultureProvider>
+        {
+            new QueryStringRequestCultureProvider(),
+            new CookieRequestCultureProvider()
+        };
 });
 
-builder.Services.AddScoped<RequestLocalizationCookiesMiddleware>();
+//builder.Services.AddScoped<RequestLocalizationCookiesMiddleware>();
 
 
 builder.Services.AddCors(c =>
