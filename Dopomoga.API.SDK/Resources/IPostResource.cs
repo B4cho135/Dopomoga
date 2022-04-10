@@ -11,7 +11,7 @@ namespace Dopomoga.API.SDK.Resources
     public interface IPostResource
     {
         [Get("/api/Posts")]
-        public Task<ApiResponse<List<PostEntity>>> Get();
+        public Task<ApiResponse<List<PostEntity>>> Get(string searchWord);
 
         [Get("/api/Posts/{id}")]
         public Task<ApiResponse<PostEntity>> GetById(int id);

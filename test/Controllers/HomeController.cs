@@ -42,7 +42,7 @@ namespace test.Controllers
             }
 
 
-            var postsResponse = await _apiClient.Posts.Get();
+            var postsResponse = await _apiClient.Posts.Get(searchWord);
 
             if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
@@ -67,19 +67,28 @@ namespace test.Controllers
                     if(post.Thumbnail != null)
                     {
                         post.ThumbnailBase64 = Convert.ToBase64String(post.Thumbnail);
-                        model.Posts.Add(post);
                     }
+                    model.Posts.Add(post);
                 }
-                else
+                else if(category != null)
                 {
                     if (post.CategoryId == category)
                     {
                         if (post.Thumbnail != null)
                         {
                             post.ThumbnailBase64 = Convert.ToBase64String(post.Thumbnail);
-                            model.Posts.Add(post);
                         }
+                        model.Posts.Add(post);
                     }
+                }
+                else
+                {
+                    if (post.Thumbnail != null)
+                    {
+                        post.ThumbnailBase64 = Convert.ToBase64String(post.Thumbnail);
+                    }
+
+                    model.Posts.Add(post);
                 }
             }
 
@@ -90,8 +99,12 @@ namespace test.Controllers
 
             if(category == null)
             {
-                model.Posts = model.Posts.OrderByDescending(x => x.UpdatedAt).Where(x => x.ShowOnMainMenu).ToList();
+                if(string.IsNullOrEmpty(searchWord))
+                {
+                    model.Posts = model.Posts.OrderByDescending(x => x.UpdatedAt).Where(x => x.ShowOnMainMenu).ToList();
+                }
                 model.Culture = culture.IetfLanguageTag;
+                model.ShowCategories = !string.IsNullOrEmpty(searchWord);
                 return View(model);
             }
 
@@ -171,7 +184,7 @@ namespace test.Controllers
             }
 
 
-            var postsResponse = await _apiClient.Posts.Get();
+            var postsResponse = await _apiClient.Posts.Get(null);
 
             if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {

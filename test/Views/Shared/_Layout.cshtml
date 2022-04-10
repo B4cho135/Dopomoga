@@ -313,7 +313,11 @@
                                     </li>
                                 </ul>
                                 <div class="d-flex">
-                                    <div style="width:30px; height:30px; margin-top:10px; margin-right:10px;margin-left:auto; cursor:pointer" onclick="window.open('https://t.me/+ugrIKNOeRGAzMzVi', '_blank');">
+
+                                    
+
+
+                                    <div style="width:30px; height:30px; margin-right:10px;margin-left:auto; cursor:pointer" onclick="window.open('https://t.me/+ugrIKNOeRGAzMzVi', '_blank');">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 48 47">
                                             <circle cx="23" cy="24" r="23" fill="white" />
                                             <path fill="#fff" stroke="none" d="M23.554 46.5c-12.693 0-23-10.325-23-23s10.307-23 23-23c12.692 0 23 10.307 23 23 0 12.692-10.326 23-23 23zm0-45.217c-12.245 0-22.218 9.973-22.218 22.217 0 12.244 9.973 22.218 22.218 22.218 12.244 0 22.217-9.974 22.217-22.218S35.798 1.283 23.554 1.283z" />
@@ -322,7 +326,7 @@
 
                                     </div>
 
-                                    <div style="width:30px; height:30px; margin-top:10px; margin-right:10px; cursor:pointer" onclick="window.open('https://instagram.com/dopomoga.ge?utm_medium=copy_link', '_blank');">
+                                    <div style="width:30px; height:30px; margin-right:10px; cursor:pointer" onclick="window.open('https://instagram.com/dopomoga.ge?utm_medium=copy_link', '_blank');">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 48 47">
                                             <circle cx="23" cy="24" r="23" fill="white" />
                                             <path fill="#fff" stroke="none" d="M24.344 46.5c-12.675 0-23-10.308-23-23 0-12.693 10.307-23 23-23 12.692 0 23 10.307 23 23 0 12.692-10.326 23-23 23zm0-45.217c-12.245 0-22.218 9.973-22.218 22.217 0 12.244 9.973 22.218 22.218 22.218 12.244 0 22.217-9.974 22.217-22.218S36.588 1.283 24.344 1.283z" />
@@ -331,12 +335,25 @@
                                         </svg>
                                     </div>
 
-                                    <div style="width:30px; height:30px; margin-top:10px; cursor:pointer" onclick="window.open('https://www.facebook.com/www.dopomoga.ge/', '_blank');">
+                                    <div style="width:30px; height:30px;  margin-right:10px; cursor:pointer" onclick="window.open('https://www.facebook.com/www.dopomoga.ge/', '_blank');">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 48 47">
                                             <circle cx="24" cy="23" r="22" fill="white" />
                                             <path fill="#fff" stroke="white" d="M24.156 46.5c-12.675 0-23-10.308-23-23 0-12.693 10.307-23 23-23 12.675 0 23 10.308 23 23s-10.325 23-23 23zm0-45.217c-12.244 0-22.217 9.973-22.217 22.217 0 12.244 9.973 22.218 22.217 22.218 12.244 0 22.218-9.974 22.218-22.218S36.4 1.283 24.155 1.283z" />
                                             <path fill="#017FCD" d="M20.7 36.977h5.511V23.19h3.838l.418-4.62h-4.256v-2.619c0-1.091.219-1.51 1.273-1.51h2.983V9.658h-3.801c-4.093 0-5.948 1.8-5.948 5.256v3.674h-2.856v4.675h2.856v13.714H20.7z" />
                                         </svg>
+                                    </div>
+
+                                    <div style="position:relative; margin-right:10px">
+                                        <input name="searchWord" id="searchWord" style="border-radius:20px; background-color:white;width: 200px; height:30px;border-color:transparent; outline:none" />
+                                        <div style="position:absolute; right:0px; top:-1px;">
+                                            <a style="cursor:pointer">
+    
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="38" height="35" fill="none" viewBox="0 0 38 35" onclick="press()">
+                                                  <circle cx="15.862" cy="15.812" r="10.942" stroke="#CDCDCD" transform="rotate(-60 15.862 15.812)"/>
+                                                  <path stroke="#CDCDCD" d="M31.605 24.989l-5.872-3.39"/>
+                                                </svg>
+                                             </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -351,7 +368,20 @@
             @RenderBody()
         </main>
     </div>
+    <script>
+    $('#press').click(function () {
+       
+    });
 
+    function press()
+    {
+        var url = '@Url.Action("Index", "Home")';
+        var textValue = $('#searchWord').val();
+
+        window.location.href = url + '?searchWord=' + textValue;
+    }
+    
+    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

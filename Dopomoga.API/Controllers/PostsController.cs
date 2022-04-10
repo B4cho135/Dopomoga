@@ -30,7 +30,7 @@ namespace Dopomoga.API.Controllers
 
                 if(!string.IsNullOrEmpty(searchWord))
                 {
-
+                    posts = posts.Where(x => (x.GeorgianTitle + x.UkrainianTitle).Contains(searchWord)).ToList();
                 }
 
                 return Ok(posts);
