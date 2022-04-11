@@ -83,7 +83,7 @@
                
 
                 <div style="width:25px; height:25px;
-                                            margin-top:12px; cursor:pointer"
+                                            margin-top:12px; margin-right:5px; cursor:pointer"
                      onclick="
                                                 $('#load').show();
                                                 $.ajax({
@@ -322,9 +322,22 @@
         </main>
     </div>
     <script>
-    $('#press').click(function () {
-       
+
+    document.querySelector('#searchWord').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            var url = '@Url.Action("Index", "Home")';
+            var textValue = $('#searchWord').val();
+
+            window.location.href = url + '?searchWord=' + textValue;
+        }
     });
+
+
+    //$("#searchButton").addEventListener('keypress', function (e) {
+    //    if (e.key === 'Enter') {
+    //      alert("adasdasf");
+    //    }
+    //});
 
     function press()
     {
