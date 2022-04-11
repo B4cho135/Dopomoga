@@ -96,7 +96,7 @@ namespace Dopomoga.API.Controllers
                 existingPost.CategoryId = request.CategoryId;
                 existingPost.RedirectUrl = request.RedirectUrl;
                 existingPost.ShowOnMainMenu = request.ShowOnMainMenu;
-                existingPost.UpdatedAt = DateTime.Now;
+                existingPost.UpdatedAt = DateTime.UtcNow;
 
                 if (request.Thumbnail != null)
                 {
