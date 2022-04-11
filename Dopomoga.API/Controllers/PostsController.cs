@@ -21,19 +21,32 @@ namespace Dopomoga.API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Get(string searchWord = null)
+        public IActionResult Get(string searchWord = null, int? page = null, int limit = 9, int? category = null)
         {
             try
             {
 
-                var posts = _context.Posts.Include(x => x.Category).Where(x => !x.IsDeleted).OrderByDescending(x => x.UpdatedAt).ToList();
+                var posts = _context.Posts.Include(x => x.Category).Where(x => !x.IsDeleted);
 
                 if(!string.IsNullOrEmpty(searchWord))
                 {
-                    posts = posts.Where(x => (x.GeorgianTitle + x.UkrainianTitle + x.GeorgianDescription + x.UkrainianDescription).Contains(searchWord)).ToList();
+                    posts = posts.Where(x => (x.GeorgianTitle + x.UkrainianTitle + x.GeorgianDescription + x.UkrainianDescription).Contains(searchWord));
                 }
 
-                return Ok(posts);
+                if(category.HasValue)
+                {
+                    posts = posts.Where(x => x.CategoryId == category.Value);
+                }
+
+                if(page != null)
+                {
+                    posts.Skip(page.Value * limit);
+                }
+
+                posts = posts.OrderByDescending(x => x.UpdatedAt);
+
+
+                return Ok(posts.Take(limit).ToList());
             }
             catch (Exception ex)
             {

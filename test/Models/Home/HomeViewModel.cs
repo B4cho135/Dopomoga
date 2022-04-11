@@ -11,5 +11,7 @@ namespace test.Models.Home
         public string Culture { get; set; }
         public List<CategoryEntity> Categories { get; set; } = new List<CategoryEntity>();
         public List<PostEntity> Posts { get; set; } = new List<PostEntity>();
+        public Pager Pager { get; set; }
+        public RouteValueDictionary RouteValue { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace test.Controllers
         }
 
 
-        public async Task<IActionResult> Index(int? category = null, string searchWord = null)
+        public async Task<IActionResult> Index(int? category = null, string searchWord = null, int? page = null)
         {
 
 
@@ -42,7 +42,7 @@ namespace test.Controllers
             }
 
 
-            var postsResponse = await _apiClient.Posts.Get(searchWord);
+            var postsResponse = await _apiClient.Posts.Get(searchWord, page, 9, category);
 
             if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
@@ -97,7 +97,7 @@ namespace test.Controllers
                 model.Categories.Add(x);
             });
 
-            if(category == null)
+            if (category == null)
             {
                 if(string.IsNullOrEmpty(searchWord))
                 {
@@ -105,11 +105,14 @@ namespace test.Controllers
                 }
                 model.Culture = culture.IetfLanguageTag;
                 model.ShowCategories = !string.IsNullOrEmpty(searchWord);
+
+                model.Pager = new Pager(3, 1, 9);
                 return View(model);
             }
 
             model.ShowCategories = true;
             model.Culture = culture.IetfLanguageTag;
+            model.Pager = new Pager(model.Posts.Count < 9 ? 9 : postsResponse.Content.Count, page.HasValue ? page - 1 : 0, 9);
             return View(model);
         }
 
@@ -184,7 +187,7 @@ namespace test.Controllers
             }
 
 
-            var postsResponse = await _apiClient.Posts.Get(null);
+            var postsResponse = await _apiClient.Posts.Get(null, null);
 
             if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
