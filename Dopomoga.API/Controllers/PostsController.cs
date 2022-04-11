@@ -21,7 +21,7 @@ namespace Dopomoga.API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Get(string searchWord = null, int? page = null, int limit = 9, int? category = null)
+        public IActionResult Get(string searchWord = null, int? page = null, int limit = 12, int? category = null)
         {
             try
             {
@@ -38,15 +38,63 @@ namespace Dopomoga.API.Controllers
                     posts = posts.Where(x => x.CategoryId == category.Value);
                 }
 
-                if(page != null)
+                if(page != null && page > 0)
                 {
-                    posts.Skip(page.Value * limit);
+                    posts = posts.Skip(page.Value * limit);
                 }
 
                 posts = posts.OrderByDescending(x => x.UpdatedAt);
 
 
                 return Ok(posts.Take(limit).ToList());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [HttpGet("Main")]
+        [AllowAnonymous]
+        public IActionResult GetMainPosts()
+        {
+            try
+            {
+                var posts = _context.Posts.Include(x => x.Category).Where(x => !x.IsDeleted && x.ShowOnMainMenu).OrderByDescending(x => x.UpdatedAt).ToList();
+
+                return Ok(posts);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [HttpGet("Quantity")]
+        [AllowAnonymous]
+        public IActionResult GetQuantity(string searchWord, int? categoryId)
+        {
+            try
+            {
+                var posts = _context.Posts.Include(x => x.Category).Where(x => !x.IsDeleted);
+
+                if(!string.IsNullOrEmpty(searchWord))
+                {
+                    var searchQuantity = posts.Where(x => (x.GeorgianTitle + x.UkrainianTitle + x.UkrainianDescription + x.GeorgianDescription).Contains(searchWord)).Count();
+
+                    return Ok(searchQuantity);
+                }
+
+                if(categoryId.HasValue)
+                {
+                    var categoryItemsQuantity = posts.Where(x => x.CategoryId == categoryId.Value).Count();
+
+                    return Ok(categoryItemsQuantity);
+                }
+
+                return Ok(posts.Count());
             }
             catch (Exception ex)
             {

@@ -20,7 +20,6 @@
         text-align: left;
         color: #6c757d;
     }
-
     .textFontBold {
         font-family: FiraGo-SemiBold !important;
         font-size: 21px;
@@ -184,7 +183,7 @@
                                         {
                                             <li class="page-item">
                                                 <a class="page-link" href="@Url.Action("Index",
-                                                                  new { category = Model.ChosenCategoryId, page = Model.Pager.CurrentPage
+                                                                  new {searchWord = Model.SearchWord, category = Model.ChosenCategoryId, page = Model.Pager.CurrentPage
                                                                   })" value="@(Model.Pager.CurrentPage)" aria-label="Previous">
                                                     <span aria-hidden="true">«</span>
                                                     <span class="sr-only">Previous</span>
@@ -198,7 +197,7 @@
                                         {
                                             <li class="page-item @(pageC - 1 == Model.Pager.CurrentPage ? " active" : "" )">
                                                 <a class="page-link" href="@Url.Action("Index",
-                                                                  new {  category = Model.ChosenCategoryId, page = pageC
+                                                                  new {searchWord = Model.SearchWord,  category = Model.ChosenCategoryId, page = pageC
                                                                   })" value="@(pageC)">@(pageC)</a>
                                             </li>
                                         }
@@ -207,7 +206,7 @@
                                         {
                                             <li class="page-item">
                                                 <a class="page-link" href="@Url.Action("Index",
-                                                                  new { category = Model.ChosenCategoryId,  page = (Model.Pager.CurrentPage + 2)
+                                                                  new {searchWord = Model.SearchWord, ChosenCategoryId  = Model.ChosenCategoryId,  page = (Model.Pager.CurrentPage + 2)
                                                                   })" value="@(Model.Pager.StartPage + 2)" aria-label="Next">
                                                     <span aria-hidden="true">»</span>
                                                     <span class="sr-only">Next</span>
@@ -219,39 +218,6 @@
                             </div>
                         </nav>
                     }
-
-
-
-
-
-
-@*
-
-
-
-
-                    <div class="row" id="categoriesRow">
-
-                        @foreach (var post in @Model.Posts)
-                        {
-
-                            <div class="card-transparent" style="width: 16rem;">
-                                <a href="@Url.Action("PostInternalPage", "Home", new { id = post.Id})" style=" text-decoration: none;">
-                                    <img class="card-img-top" src="data:image/png;base64,@post.ThumbnailBase64" alt="Card image cap" style="width:232px;height:146px;">
-                                    <div class="card-body">
-                                        @if (Model.Culture == "uk")
-                                        {
-                                            <p class="textFont"><b>@post.UkrainianTitle</b></p>
-                                        }
-                                        else
-                                        {
-                                            <p class="textFont"><b>@post.GeorgianTitle</b></p>
-                                        }
-                                    </div>
-                                </a>
-                            </div>
-                        }
-                    </div>*@
                 }
             </div>
 

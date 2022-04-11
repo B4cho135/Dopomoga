@@ -22,6 +22,7 @@ namespace test.Controllers
         public async Task<IActionResult> Index(int? category = null, string searchWord = null, int? page = null)
         {
 
+            var model = new HomeViewModel();
 
             // Retrieves the requested culture
             var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
@@ -42,35 +43,57 @@ namespace test.Controllers
             }
 
 
-            var postsResponse = await _apiClient.Posts.Get(searchWord, page, 9, category);
+            response.Content.ForEach(x =>
+            {
+                model.Categories.Add(x);
+            });
+
+
+            model.Culture = culture.IetfLanguageTag;
+
+            if (category == null && searchWord == null)
+            {
+
+                var mainPagePostsResponse = await _apiClient.Posts.GetMainPosts();
+
+                model.ShowCategories = false;
+                foreach(var post in mainPagePostsResponse.Content)
+                {
+                    if (post.Thumbnail != null)
+                    {
+                        post.ThumbnailBase64 = Convert.ToBase64String(post.Thumbnail);
+                    }
+                    model.Posts.Add(post);
+                }
+                
+
+                model.Pager = new Pager(3, 1, 9);
+                return View(model);
+            }
+
+
+            model.ChosenCategoryId = category;
+            model.SearchWord = searchWord;
+
+            var totalCount = await _apiClient.Posts.GetQuantity(searchWord, category);
+
+            var postsResponse = await _apiClient.Posts.Get(searchWord, page.HasValue ? page.Value - 1 : 0, 12, category);
 
             if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
                 return RedirectToAction("Login", "Identity");
             }
 
-            if (!response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode || response.Content == null)
             {
                 return RedirectToAction("Index", "Home");
             }
             
 
-            var model = new HomeViewModel();
-
-
-            model.ChosenCategoryId = category;
-
             foreach (var post in postsResponse.Content)
             {
-                if (category == null && post.ShowOnMainMenu)
-                {
-                    if(post.Thumbnail != null)
-                    {
-                        post.ThumbnailBase64 = Convert.ToBase64String(post.Thumbnail);
-                    }
-                    model.Posts.Add(post);
-                }
-                else if(category != null)
+               
+                if(category != null)
                 {
                     if (post.CategoryId == category)
                     {
@@ -92,27 +115,9 @@ namespace test.Controllers
                 }
             }
 
-            response.Content.ForEach(x =>
-            {
-                model.Categories.Add(x);
-            });
-
-            if (category == null)
-            {
-                if(string.IsNullOrEmpty(searchWord))
-                {
-                    model.Posts = model.Posts.OrderByDescending(x => x.UpdatedAt).Where(x => x.ShowOnMainMenu).ToList();
-                }
-                model.Culture = culture.IetfLanguageTag;
-                model.ShowCategories = !string.IsNullOrEmpty(searchWord);
-
-                model.Pager = new Pager(3, 1, 9);
-                return View(model);
-            }
 
             model.ShowCategories = true;
-            model.Culture = culture.IetfLanguageTag;
-            model.Pager = new Pager(model.Posts.Count < 9 ? 9 : postsResponse.Content.Count, page.HasValue ? page - 1 : 0, 9);
+            model.Pager = new Pager(totalCount.Content < 12 ? 12 : totalCount.Content, page.HasValue ? page - 1 : 0, 12);
             return View(model);
         }
 
