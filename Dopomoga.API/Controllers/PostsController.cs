@@ -26,7 +26,7 @@ namespace Dopomoga.API.Controllers
             try
             {
 
-                var posts = _context.Posts.Include(x => x.Category).Where(x => !x.IsDeleted);
+                var posts = _context.Posts.Include(x => x.Category).OrderByDescending(x => x.UpdatedAt).Where(x => !x.IsDeleted);
 
                 if(!string.IsNullOrEmpty(searchWord))
                 {
@@ -42,9 +42,6 @@ namespace Dopomoga.API.Controllers
                 {
                     posts = posts.Skip(page.Value * limit);
                 }
-
-                posts = posts.OrderByDescending(x => x.UpdatedAt);
-
 
                 return Ok(posts.Take(limit).ToList());
             }
