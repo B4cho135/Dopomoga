@@ -16,6 +16,9 @@ namespace Dopomoga.API.SDK.Resources
         [Get("/api/Posts/Main")]
         public Task<ApiResponse<List<PostEntity>>> GetMainPosts();
 
+        [Get("/api/Posts/All")]
+        public Task<ApiResponse<List<PostEntity>>> GetAll();
+
         [Get("/api/Posts/Quantity")]
         public Task<ApiResponse<int>> GetQuantity(string searchWord = null, int? categoryId = null);
 

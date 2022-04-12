@@ -72,6 +72,24 @@ namespace Dopomoga.API.Controllers
 
         }
 
+
+        [HttpGet("All")]
+        [AllowAnonymous]
+        public IActionResult GetAll()
+        {
+            try
+            {
+                var posts = _context.Posts.Include(x => x.Category).Where(x => !x.IsDeleted).ToList();
+
+                return Ok(posts);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
         [HttpGet("Quantity")]
         [AllowAnonymous]
         public IActionResult GetQuantity(string searchWord, int? categoryId)

@@ -134,7 +134,7 @@ namespace test.Controllers.Identity
         {
             var postViewModel = new PostViewModel();
 
-            var posts = await _client.Posts.Get(null, null);
+            var posts = await _client.Posts.GetAll();
 
             if(posts.IsSuccessStatusCode)
             {
