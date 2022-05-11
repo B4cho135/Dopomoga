@@ -99,6 +99,14 @@
         $("#aboutUsP").css("color", "white");
         $('#load').hide();
 
+
+        if(@Model.Post.Id == 250)
+        {
+            $("#mainPageP").text("Home");
+            $("#contactsP").text("Contact");
+            $("#faqP").text("FAQ");
+            $("#aboutUsP").text("About Us");
+        }
     };
 
 </script>
