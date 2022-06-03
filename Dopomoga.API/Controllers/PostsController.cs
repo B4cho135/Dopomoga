@@ -26,7 +26,7 @@ namespace Dopomoga.API.Controllers
             try
             {
 
-                var posts = _context.Posts.Include(x => x.Category).OrderByDescending(x => x.UpdatedAt).Where(x => !x.IsDeleted);
+                var posts = _context.Posts.Include(x => x.Category).OrderByDescending(x => !x.ShowInTheEnd).ThenBy(x => x.CreatedAt).Where(x => !x.IsDeleted);
 
                 if(!string.IsNullOrEmpty(searchWord))
                 {
@@ -173,6 +173,7 @@ namespace Dopomoga.API.Controllers
                 existingPost.RedirectUrl = request.RedirectUrl;
                 existingPost.ShowOnMainMenu = request.ShowOnMainMenu;
                 existingPost.UpdatedAt = DateTime.UtcNow;
+                existingPost.ShowInTheEnd = request.ShowInTheEnd;
 
                 if (request.Thumbnail != null)
                 {

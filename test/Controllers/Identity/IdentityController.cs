@@ -178,6 +178,7 @@ namespace test.Controllers.Identity
                 Thumbnail = model.Image,
                 RedirectUrl =model.RedirectUrl,
                 ShowOnMainMenu = model.ShowOnMainMenu,
+                ShowInTheEnd = model.ShowInTheEnd,
             };
             if (Image != null)
             {
@@ -256,6 +257,7 @@ namespace test.Controllers.Identity
                 model.CategoryName = post.Content.Category.CategoryGeorgianName;
                 model.CategoryId = post.Content.CategoryId;
                 model.ShowOnMainMenu = post.Content.ShowOnMainMenu;
+                model.ShowInTheEnd = post.Content.ShowInTheEnd;
             }
 
             if(postCategories.IsSuccessStatusCode)
@@ -295,7 +297,7 @@ namespace test.Controllers.Identity
             post.Thumbnail = model.Image;
             post.RedirectUrl = model.RedirectUrl;
             post.ShowOnMainMenu = model.ShowOnMainMenu;
-
+            post.ShowInTheEnd = model.ShowInTheEnd;
 
             if (Image != null)
             {
