@@ -22,6 +22,5 @@ namespace Dopomoga.Data.Entities.Posts
 
         [NotMapped]
         public string ThumbnailBase64 { get; set; }
-        public bool ShowInTheEnd { get; set; }
     }
 }

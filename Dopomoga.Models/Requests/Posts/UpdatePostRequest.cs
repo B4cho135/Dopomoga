@@ -16,6 +16,5 @@ namespace Dopomoga.Models.Requests.Posts
         public int CategoryId { get; set; }
         public string RedirectUrl { get; set; }
         public bool ShowOnMainMenu { get; set; }
-        public bool ShowInTheEnd { get; set; }
     }
 }

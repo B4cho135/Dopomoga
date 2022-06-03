@@ -15,8 +15,6 @@ namespace test.Models.Identity
         public byte[] Image { get; set; }
         public int CategoryId { get; set; }
         public bool ShowOnMainMenu { get; set; }
-        public bool ShowInTheEnd { get; set; }
-
         public CategoryEntity Category { get; set; }
         public List<SelectListItem> Categories { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> Posts { get; set; } = new List<SelectListItem>();
