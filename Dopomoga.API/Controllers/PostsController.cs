@@ -26,7 +26,7 @@ namespace Dopomoga.API.Controllers
             try
             {
 
-                var posts = _context.Posts.Include(x => x.Category).OrderByDescending(x => !x.ShowInTheEnd).ThenBy(x => x.CreatedAt).Where(x => !x.IsDeleted);
+                var posts = _context.Posts.Include(x => x.Category).OrderByDescending(x => !x.ShowInTheEnd).ThenByDescending(x => x.CreatedAt).Where(x => !x.IsDeleted);
 
                 if(!string.IsNullOrEmpty(searchWord))
                 {
