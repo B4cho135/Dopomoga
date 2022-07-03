@@ -45,9 +45,13 @@
                         {
                             <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryUkrainianName</p></a>
                         }
-                        else
+                        else if(Model.Culture == "en")
                         {
                             <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                        }
+                        else
+                        {
+                            <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryEnglishName</p></a>
                         }
                     </div>
                 }
@@ -58,9 +62,13 @@
                         {
                             <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryUkrainianName</p></a>
                         }
-                        else
+                        else if(Model.Culture == "en")
                         {
                             <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                        }
+                         else
+                        {
+                            <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryEnglishName</p></a>
                         }
                     </div>
                 }
@@ -155,8 +163,7 @@
                             }
                             else
                             {
-                                //this should change to new language
-                                h1_Title = chosenCategory.CategoryGeorgianName;
+                                h1_Title = chosenCategory.CategoryEnglishName;
                             }
                         }
                          

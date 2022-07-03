@@ -33,6 +33,7 @@ var supportedCultures = new List<CultureInfo>()
     {
         new CultureInfo("uk"),
         new CultureInfo("en"),
+        new CultureInfo("ge"),
     };
 
 builder.Services.Configure<RequestLocalizationOptions>(options =>

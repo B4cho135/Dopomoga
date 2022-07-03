@@ -185,7 +185,22 @@
                 </div>
 
                 <div style="width:25px; height:25px; margin-right:30px; margin-top:12px; cursor:pointer;"
-                     onclick="window.location.href = '@Url.Action("PostInternalPage", "Home", new { id = 250})'">
+                     onclick="
+
+                                                $('#load').show();
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: '@Url.Action("CultureManagement", "Home", new {culture = "ge"})',
+                                                    contentType: 'application/json; charset=utf-8',
+                                                    data: { culture: 'en' },
+                                                    dataType: 'json',
+                                                    success: function() {
+                                                        location.reload();
+                                                    },
+                                                    error: function () {
+                                                        location.reload();
+                                                    }
+                                                });">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                     <circle style="fill:#F0F0F0;" cx="256" cy="256" r="256" />
                     <g>

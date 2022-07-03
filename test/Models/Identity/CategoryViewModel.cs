@@ -8,6 +8,7 @@ namespace test.Models.Identity
     {
         public string GeorgianTitle { get; set; }
         public string UkrainianTitle { get; set; }
+        public string EnglishTitle { get; set; }
         public int CategoryId { get; set; }
         public int Order { get; set; }
         public List<SelectListItem> Categories { get; set; } = new List<SelectListItem>();

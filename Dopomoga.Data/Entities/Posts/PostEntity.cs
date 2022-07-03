@@ -19,6 +19,8 @@ namespace Dopomoga.Data.Entities.Posts
         public CategoryEntity Category { get; set; }
         public string RedirectUrl { get; set; }
         public bool ShowOnMainMenu { get; set; }
+        public string EnglishDescription { get; set; }
+        public string EnglishTitle { get; set; }
 
         [NotMapped]
         public string ThumbnailBase64 { get; set; }
