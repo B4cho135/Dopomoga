@@ -1,4 +1,6 @@
-﻿@model test.Models.Home.SharedViewModel;
+﻿@using Microsoft.Extensions.Localization
+@model test.Models.Home.SharedViewModel;
+@inject IStringLocalizer<SharedResources> SharedLocalizer
 
 @inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 
@@ -26,6 +28,7 @@
 
     <div class="col-md-9 bg-light" style="background: url('/content/images/background.svg') no-repeat bottom; background-position: 50% 115%;">
         <div class="container" style="margin-top:30px">
+            <h1 style="text-align:center ">@SharedLocalizer["Contacts"]</h1>
             <div class="row">
                 @if(@Model.Culture == "en")
                 {

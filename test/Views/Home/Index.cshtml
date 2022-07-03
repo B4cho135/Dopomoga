@@ -73,6 +73,8 @@
             <div class="row">
                 @if (!Model.ShowCategories)
                 {
+                    
+                    <h1 style="text-align:center ">@SharedLocalizer["Home"]</h1>
                     <div class="col-md-8">
                         @if (Model.Posts.ElementAtOrDefault(0) != null)
                         {
@@ -138,12 +140,30 @@
                 {
                     @if (Model != null && Model.Posts != null)
                     {
+                        var h1_Title = "";
 
+                        var chosenCategory = @Model.Categories.FirstOrDefault(x => x.Id == Model.ChosenCategoryId);
+                        if(chosenCategory != null)
+                        {
+                            if(@Model.Culture == "uk")
+                            {
+                                h1_Title = chosenCategory.CategoryUkrainianName;
+                            }
+                            else if(@Model.Culture == "en")
+                            {
+                                h1_Title = chosenCategory.CategoryGeorgianName;
+                            }
+                            else
+                            {
+                                //this should change to new language
+                                h1_Title = chosenCategory.CategoryGeorgianName;
+                            }
+                        }
+                         
+                        <h1 style="text-align:center ">@h1_Title</h1>
                         <div class="row" id="categoriesRow">
-
                             @foreach (var post in @Model.Posts)
                             {
-
                                 <div class="card-transparent" style="width: 16rem;">
                                     <a href="@Url.Action("PostInternalPage", "Home", new { id = post.Id})" style=" text-decoration: none;">
                                         <img class="card-img-top" src="data:image/png;base64,@post.ThumbnailBase64" alt="Card image cap" style="width:232px;height:146px;">
