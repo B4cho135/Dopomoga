@@ -22,7 +22,6 @@ namespace Dopomoga.Data
         public DbSet<CategoryEntity> Categories { get; set; }
         public DbSet<PostEntity> Posts { get; set; }
         public DbSet<PageInformationEntity> PageInformation { get; set; }
-        public DbSet<MainCategoryEntity> MainCategories { get; set; }
 
     }
 }

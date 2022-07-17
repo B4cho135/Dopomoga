@@ -12,7 +12,5 @@ namespace Dopomoga.Data.Entities.Categories
         public string CategoryUkrainianName { get; set; }
         public string CategoryEnglishName { get; set; }
         public int Order { get; set; }
-        public int MainCategoryId { get; set; }
-        public MainCategoryEntity MainCategory { get; set; }
     }
 }

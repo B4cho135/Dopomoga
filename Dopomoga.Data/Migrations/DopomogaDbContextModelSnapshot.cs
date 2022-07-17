@@ -17,7 +17,7 @@ namespace Dopomoga.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("ProductVersion", "6.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -29,9 +29,6 @@ namespace Dopomoga.Data.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CategoryEnglishName")
-                        .HasColumnType("text");
 
                     b.Property<string>("CategoryGeorgianName")
                         .HasColumnType("text");
@@ -48,54 +45,12 @@ namespace Dopomoga.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("MainCategoryId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Order")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MainCategoryId");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("Dopomoga.Data.Entities.Categories.MainCategoryEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("EnglishName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("GeorgianName")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("UkrainianName")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MainCategories");
                 });
 
             modelBuilder.Entity("Dopomoga.Data.Entities.Identity.RoleEntity", b =>
@@ -241,12 +196,6 @@ namespace Dopomoga.Data.Migrations
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("EnglishDescription")
-                        .HasColumnType("text");
-
-                    b.Property<string>("EnglishTitle")
-                        .HasColumnType("text");
-
                     b.Property<string>("GeorgianDescription")
                         .HasColumnType("text");
 
@@ -256,14 +205,8 @@ namespace Dopomoga.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
-                    b.Property<int?>("MainCategoryId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("RedirectUrl")
                         .HasColumnType("text");
-
-                    b.Property<bool>("ShowInTheEnd")
-                        .HasColumnType("boolean");
 
                     b.Property<bool>("ShowOnMainMenu")
                         .HasColumnType("boolean");
@@ -283,8 +226,6 @@ namespace Dopomoga.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("MainCategoryId");
 
                     b.ToTable("Posts");
                 });
@@ -392,17 +333,6 @@ namespace Dopomoga.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Dopomoga.Data.Entities.Categories.CategoryEntity", b =>
-                {
-                    b.HasOne("Dopomoga.Data.Entities.Categories.MainCategoryEntity", "MainCategory")
-                        .WithMany()
-                        .HasForeignKey("MainCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("MainCategory");
-                });
-
             modelBuilder.Entity("Dopomoga.Data.Entities.Posts.PostEntity", b =>
                 {
                     b.HasOne("Dopomoga.Data.Entities.Categories.CategoryEntity", "Category")
@@ -411,13 +341,7 @@ namespace Dopomoga.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Dopomoga.Data.Entities.Categories.MainCategoryEntity", "MainCategory")
-                        .WithMany()
-                        .HasForeignKey("MainCategoryId");
-
                     b.Navigation("Category");
-
-                    b.Navigation("MainCategory");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
