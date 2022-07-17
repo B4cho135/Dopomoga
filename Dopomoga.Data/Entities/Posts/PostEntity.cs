@@ -21,6 +21,8 @@ namespace Dopomoga.Data.Entities.Posts
         public bool ShowOnMainMenu { get; set; }
         public string EnglishDescription { get; set; }
         public string EnglishTitle { get; set; }
+        public int? MainCategoryId { get; set; }
+        public MainCategoryEntity MainCategory { get; set; }
 
         [NotMapped]
         public string ThumbnailBase64 { get; set; }
