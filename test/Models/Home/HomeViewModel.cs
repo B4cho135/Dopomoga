@@ -10,6 +10,7 @@ namespace test.Models.Home
         public string DisplayTitleText { get; set; }
         public string Culture { get; set; }
         public string SearchWord { get; set; }
+        public List<MainCategoryEntity> MainCategories { get; set; } = new List<MainCategoryEntity>();
         public List<CategoryEntity> Categories { get; set; } = new List<CategoryEntity>();
         public List<PostEntity> Posts { get; set; } = new List<PostEntity>();
         public Pager Pager { get; set; }

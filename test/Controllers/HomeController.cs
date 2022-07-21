@@ -48,6 +48,19 @@ namespace test.Controllers
                 model.Categories.Add(x);
             });
 
+            var mainCategoriesResponse = await _apiClient.Categories.GetMainCategories();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+
+            mainCategoriesResponse.Content.ForEach(x =>
+            {
+                model.MainCategories.Add(x);
+            });
+
 
             model.Culture = culture.IetfLanguageTag;
 

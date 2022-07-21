@@ -3,7 +3,7 @@
 
 <div class="row" style="height:100vh;">
 
-    <div class="col-md-3" style="background: #B9B9B9;">
+    <div class="col-md-3" style="background: #B9B9B9;" id="CategoriesDiv">
 
         <div style="margin-top:30px;">
             @foreach (var category in Model.Categories)
@@ -92,6 +92,11 @@
 
 <script>
     window.onload = function() {
+
+        if(window.innerWidth < 1000)
+        {
+            $("#CategoriesDiv").hide();
+        }
 
         $("#faqP").css("color", "white");
         $("#mainPageP").css("color", "white");

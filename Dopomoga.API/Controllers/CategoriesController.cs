@@ -35,6 +35,22 @@ namespace Dopomoga.API.Controllers
             }
         }
 
+        [HttpGet("MainCategories")]
+        [AllowAnonymous]
+        public IActionResult GetMainCategories()
+        {
+            try
+            {
+                var mainCategories = _context.MainCategories.Where(x => !x.IsDeleted).OrderBy(x => x.CreatedAt).ToList();
+
+                return Ok(mainCategories);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet("{id}")]
         [AllowAnonymous]
         public IActionResult Get(int id)

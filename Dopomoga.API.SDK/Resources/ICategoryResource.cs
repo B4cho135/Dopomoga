@@ -13,6 +13,9 @@ namespace Dopomoga.API.SDK.Resources
         [Get("/api/categories")]
         public Task<ApiResponse<List<CategoryEntity>>> Get();
 
+        [Get("/api/categories/MainCategories")]
+        public Task<ApiResponse<List<MainCategoryEntity>>> GetMainCategories();
+
         [Get("/api/categories/{id}")]
         public Task<ApiResponse<CategoryEntity>> GetById(int id);
 
