@@ -188,6 +188,7 @@
 
                         <!-- Full-width images with number and caption text -->
                         <div class="mySlides fade">
+                            <a href="@Url.Action("PostInternalPage", "Home", new { id = @Model.Posts[0].Id})" style=" text-decoration: none; color:black;">
                             <img src="data:image/png;base64,@Model.Posts[0].ThumbnailBase64" style="width:100%">
                             <div class="text">
                                 @if (Model.Culture == "uk")
@@ -199,9 +200,11 @@
                                     <p class="textFont"><b>@Model.Posts[0].GeorgianTitle</b></p>
                                 }
                             </div>
+                            </a>
                         </div>
 
                         <div class="mySlides fade">
+                            <a href="@Url.Action("PostInternalPage", "Home", new { id = @Model.Posts[1].Id})" style=" text-decoration: none; color:black;">
                             <img src="data:image/png;base64,@Model.Posts[1].ThumbnailBase64" style="width:100%">
                             <div class="text">
                                  @if (Model.Culture == "uk")
@@ -213,9 +216,11 @@
                                     <p class="textFont"><b>@Model.Posts[1].GeorgianTitle</b></p>
                                 }
                             </div>
+                            </a>
                         </div>
 
                         <div class="mySlides fade">
+                            <a href="@Url.Action("PostInternalPage", "Home", new { id = @Model.Posts[2].Id})" style=" text-decoration: none; color:black;">
                             <img src="data:image/png;base64,@Model.Posts[2].ThumbnailBase64" style="width:100%">
                             <div class="text"> 
                                 @if (Model.Culture == "uk")
@@ -226,6 +231,8 @@
                                 {
                                     <p class="textFont"><b>@Model.Posts[2].GeorgianTitle</b></p>
                                 }</div>
+                            </a>
+
                         </div>
 
                         <!-- Next and previous buttons -->
