@@ -48,6 +48,8 @@ namespace test.Controllers
                 model.Categories.Add(x);
             });
 
+            model.Categories = model.Categories.Where(x => x.Id != 47 && x.Id != 48).ToList();
+
             var mainCategoriesResponse = await _apiClient.Categories.GetMainCategories();
 
             if (!response.IsSuccessStatusCode)
