@@ -6,7 +6,8 @@
 
 
 <div class="row" style="height:100vh;">
-    <div class="col-md-3" style="background: #B9B9B9;">
+
+    <div class="col-md-3" style="background: #B9B9B9;" id="CategoriesDiv">
 
         <div style="margin-top:30px;">
             @foreach (var category in Model.Categories)
@@ -87,6 +88,13 @@
         $("#contactsP").css("color", "white");
         $("#aboutUsP").css("color", "#F8BF0C");
         $('#load').hide();
+
+
+        if(window.innerWidth < 1000)
+        {
+            $("#CategoriesDiv").hide();
+        }
+
     };
 
 </script>

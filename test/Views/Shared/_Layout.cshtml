@@ -366,7 +366,7 @@
                 </div>
             </div>
         </nav>
-        <div class="row" style="background-color:#F8BF0C;">
+        <div class="row" style="background-color:#F8BF0C;" id="MobileTopBar">
 
             <div class="d-flex">
 
@@ -544,6 +544,22 @@
         </main>
     </div>
 
+    <script>
+        
+        window.onload = function() {
+            $('#load').hide();
+
+            if(window.innerWidth > 1000)
+            {
+                $("#MobileTopBar").hide();
+            }
+            else
+            {
+                $("#MobileTopBar").show();
+            }
+        };
+    </script>
+     
     <script>
 
         document.querySelector('#searchWord').addEventListener('keypress', function (e) {
