@@ -91,19 +91,16 @@
 </div>
 
 <script>
-    window.onload = function() {
-
-        if(window.innerWidth < 1000)
-        {
-            $("#CategoriesDiv").hide();
-        }
+    
+    indow.addEventListener('load', function(event){
 
         $("#faqP").css("color", "white");
         $("#mainPageP").css("color", "white");
         $("#contactsP").css("color", "white");
         $("#aboutUsP").css("color", "white");
         $('#load').hide();
-
+        var newWidth = window.innerWidth;
+        var newHeight = window.innerHeight; 
 
         if(@Model.Post.Id == 250)
         {
@@ -112,6 +109,30 @@
             $("#faqP").text("FAQ");
             $("#aboutUsP").text("About Us");
         }
-    };
+
+        if(newWidth >= 1000)
+        {
+            $("#CategoriesDiv").show();
+        }
+        else
+        {
+            $("#CategoriesDiv").hide();
+        }
+    });
+
+
+    window.addEventListener('resize', function(event){
+        var newWidth = window.innerWidth;
+        var newHeight = window.innerHeight; 
+
+        if(newWidth >= 1000)
+        {
+            $("#CategoriesDiv").show();
+        }
+        else
+        {
+            $("#CategoriesDiv").hide();
+        }
+    });
 
 </script>

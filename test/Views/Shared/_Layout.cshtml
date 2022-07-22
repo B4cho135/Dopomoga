@@ -309,7 +309,7 @@
                                 
                                 <div class="d-flex">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FAQ" style="margin:auto">
-                                            <p id="faqP" <p id="mainPageP" style="font-family: 'FiraGO-SemiBold' !important;
+                                            <p id="faqP" style="font-family: 'FiraGO-SemiBold' !important;
                                                                         font-size: 20px;
                                                                         font-style: normal;
                                                                         font-weight: 700;
@@ -322,7 +322,7 @@
                                         </a>
 
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Blog" style="margin:auto">
-                                            <p id="faqP" <p id="mainPageP" style="font-family: 'FiraGO-SemiBold' !important;
+                                            <p id="blogP" style="font-family: 'FiraGO-SemiBold' !important;
                                                                         font-size: 20px;
                                                                         font-style: normal;
                                                                         font-weight: 700;
@@ -335,7 +335,7 @@
                                         </a>
 
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Media" style="margin:auto">
-                                            <p id="faqP" <p id="mainPageP" style="font-family: 'FiraGO-SemiBold' !important;
+                                            <p id="mediaP" style="font-family: 'FiraGO-SemiBold' !important;
                                                                         font-size: 20px;
                                                                         font-style: normal;
                                                                         font-weight: 700;
@@ -545,19 +545,38 @@
     </div>
 
     <script>
-        
-        window.onload = function() {
-            $('#load').hide();
 
-            if(window.innerWidth > 1000)
-            {
-                $("#MobileTopBar").hide();
-            }
-            else
-            {
-                $("#MobileTopBar").show();
-            }
-        };
+
+        window.addEventListener('load', function(event){
+             $('#load').hide();
+
+        var newWidth = window.innerWidth;
+        var newHeight = window.innerHeight; 
+
+        if(newWidth >= 1000)
+        {
+            $("#MobileTopBar").hide();
+        }
+        else
+        {
+            $("#MobileTopBar").show();
+        }
+    });
+
+
+    window.addEventListener('resize', function(event){
+        var newWidth = window.innerWidth;
+        var newHeight = window.innerHeight; 
+
+        if(newWidth >= 1000)
+        {
+            $("#MobileTopBar").hide();
+        }
+        else
+        {
+            $("#MobileTopBar").show();
+        }
+    });
     </script>
      
     <script>

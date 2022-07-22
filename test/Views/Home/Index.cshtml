@@ -61,8 +61,7 @@
 </style>
 
 <div class="row" style="height:100vh;">
-    @if (Model.ChosenCategoryId == null)
-    {
+    
         <div class="col-md-3" style="background: #B9B9B9;" id="CategoriesDiv">
 
             <div style="margin-top:30px;" id="DesktopCategories">
@@ -106,7 +105,9 @@
                 }
             </div>
 
-
+            @if(Model.ChosenCategoryId == null)
+            {
+            
             <div style="margin-top:30px;" id="MobileCategories">
 
                 @foreach (var mainCategory in Model.MainCategories)
@@ -167,20 +168,15 @@
                 }
 
             </div>
+            
+        }
         </div>
-
-    }
 
     <div class="col-md-9 bg-light" style="background: url('/content/images/background.svg') no-repeat bottom; background-position: 50% 115%;">
         <div class="container" style="margin-top:30px">
             <div class="row">
                 @if (!Model.ShowCategories)
                 {
-
-
-
-
-
                     <h1 style="text-align:center ">@SharedLocalizer["Home"]</h1>
                     <div class="col-md-8">
                         <!-- Slideshow container -->
@@ -439,7 +435,6 @@
         </div>
         <div class="col-md-2 justify-content-center" style="text-align:center">
             <div style="margin-left:auto;margin-right:auto;">
-
                 <div class="d-flex" style="margin-left:auto; margin-right:auto; margin-top:10px;">
                     <div style="width:30px; height:30px; margin-left:120px;cursor:pointer" onclick="window.open('https://t.me/+ugrIKNOeRGAzMzVi', '_blank');">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 48 47">
@@ -487,25 +482,43 @@
 </div>
 
 
-<script>
-    window.onload = function() {
-        $('#load').hide();
 
-        if(window.innerWidth < 1000)
+<script>
+    window.addEventListener('load', function(event){
+
+        $('#load').hide();
+        var newWidth = window.innerWidth;
+        var newHeight = window.innerHeight; 
+
+        if(newWidth >= 1000)
+        {
+            $("#MobileCategories").hide();
+            $("#DesktopCategories").show();
+        }
+        else
         {
             $("#MobileCategories").show();
             $("#DesktopCategories").hide();
         }
-        else
+    });
+
+    window.addEventListener('resize', function(event){
+        var newWidth = window.innerWidth;
+        var newHeight = window.innerHeight; 
+
+        if(newWidth >= 1000)
         {
-             $("#MobileCategories").hide();
+            $("#MobileCategories").hide();
             $("#DesktopCategories").show();
         }
-    };
-</script>
+        else
+        {
+            $("#MobileCategories").show();
+            $("#DesktopCategories").hide();
+        }
+    });
 
 
-<script>
 
     var acc = document.getElementsByClassName("accordion");
     var i;

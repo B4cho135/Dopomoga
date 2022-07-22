@@ -81,20 +81,40 @@
 
 
 <script>
-    window.onload = function() {
 
-        $("#faqP").css("color", "white");
+    window.addEventListener('load', function(event){
+
+       $("#faqP").css("color", "white");
         $("#mainPageP").css("color", "white");
         $("#contactsP").css("color", "white");
         $("#aboutUsP").css("color", "#F8BF0C");
         $('#load').hide();
+        var newWidth = window.innerWidth;
+        var newHeight = window.innerHeight; 
 
-
-        if(window.innerWidth < 1000)
+        if(newWidth >= 1000)
+        {
+            $("#CategoriesDiv").show();
+        }
+        else
         {
             $("#CategoriesDiv").hide();
         }
+    });
 
-    };
+
+    window.addEventListener('resize', function(event){
+        var newWidth = window.innerWidth;
+        var newHeight = window.innerHeight; 
+
+        if(newWidth >= 1000)
+        {
+            $("#CategoriesDiv").show();
+        }
+        else
+        {
+            $("#CategoriesDiv").hide();
+        }
+    });
 
 </script>
