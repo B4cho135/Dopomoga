@@ -231,7 +231,6 @@
             <div class="col-md-9">
                 <div  style="background: #2791B6">
                     <div class="container">
-                        <div class="container-fluid">
                             <div class="row justify-content-end">
                                 <div style="width:50px; height:50px; margin-right:10px; margin-top:-13px;margin-bottom:10px;" id="toggleButtonDiv">
                                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -240,9 +239,9 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="navbar-collapse collapse justify-content-start" id="headerNavContent">
-                                <ul class="navbar-nav ">
-                                    @*<li class="nav-item">
+                            <div class="navbar-collapse collapse justify-content-between" id="headerNavContent">
+                                <ul class="navbar-nav justify-content-lg-start">
+                                    <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
                                             <p id="mainPageP" style="font-family: 'FiraGO-SemiBold' !important;
                                                                         font-size: 20px;
@@ -257,7 +256,7 @@
                                                 @SharedLocalizer["Home"]
                                             </p>
                                         </a>
-                                    </li>*@
+                                    </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AboutUs">
                                             <p id="aboutUsP" <p id="mainPageP" style="font-family: 'FiraGO-SemiBold' !important;
@@ -269,7 +268,7 @@
                                                                         font-feature-settings: 'case' on;
                                                                         text-align: left;
                                                                         color:white;
-                                                                        margin-left:-30px">@SharedLocalizer["AboutUs"]</p>
+                                                                        margin-left:20px">@SharedLocalizer["AboutUs"]</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -283,27 +282,11 @@
                                                                         font-feature-settings: 'case' on;
                                                                         text-align: left;
                                                                         color:white;
-                                                                        margin-left:-30px">@SharedLocalizer["Contacts"]</p>
+                                                                        margin-left:20px">@SharedLocalizer["Contacts"]</p>
                                         </a>
                                     </li>
-                                    @*<li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FAQ">
-                                            <p id="faqP" <p id="mainPageP" style="font-family: 'FiraGO-SemiBold' !important;
-                                                                        font-size: 20px;
-                                                                        font-style: normal;
-                                                                        font-weight: 700;
-                                                                        line-height: 23px;
-                                                                        letter-spacing: -.03em;
-                                                                        font-feature-settings: 'case' on;
-                                                                        text-align: left;
-                                                                        color:white;
-                                                                        margin-left:-30px">@SharedLocalizer["FAQ"]</p>
-                                        </a>
-                                    </li>*@
                                 </ul>
 
-
-                                
                                 <div class="d-flex">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FAQ" style="margin:auto">
                                             <p id="faqP" style="font-family: 'FiraGO-SemiBold' !important;
@@ -315,7 +298,7 @@
                                                                         font-feature-settings: 'case' on;
                                                                         text-align: left;
                                                                         color:white;
-                                                                        margin-left:-30px">@SharedLocalizer["FAQ"]</p>
+                                                                        margin-left:20px">@SharedLocalizer["FAQ"]</p>
                                         </a>
 
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Blog" style="margin:auto">
@@ -344,26 +327,28 @@
                                                                         margin-left:-30px">@SharedLocalizer["Media"]</p>
                                         </a>
 
-                                   @* <div style="position:relative; margin-right:10px">
-                                        <input name="searchWord" id="searchWord" style="border-radius:20px; background-color:white;width: 200px; height:30px;border-color:transparent; outline:none" />
-                                        <div style="position:absolute; right:0px; top:-1px;">
-                                            <a style="cursor:pointer">
+                                  <div style="position:relative; margin-right:10px" id="searchBarForDesktop">
+                                    <input name="searchWord" id="searchWord" style="border-radius:20px; background-color:white;width: 200px; height:30px;border-color:transparent; outline:none" />
+                                    <div style="position:absolute; right:0px; top:-1px;">
+                                        <a style="cursor:pointer">
 
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="38" height="35" fill="none" viewBox="0 0 38 35" onclick="press()">
-                                                    <circle cx="15.862" cy="15.812" r="10.942" stroke="#CDCDCD" transform="rotate(-60 15.862 15.812)" />
-                                                    <path stroke="#CDCDCD" d="M31.605 24.989l-5.872-3.39" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>*@
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="35" fill="none" viewBox="0 0 38 35" onclick="press()">
+                                                <circle cx="15.862" cy="15.812" r="10.942" stroke="#CDCDCD" transform="rotate(-60 15.862 15.812)" />
+                                                <path stroke="#CDCDCD" d="M31.605 24.989l-5.872-3.39" />
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
+                                </div>
+
+
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </nav>
-        <div class="row" style="background-color:#F8BF0C;" id="MobileTopBar">
+
+        <div class="row MobileTopBar" style="background-color:#F8BF0C;">
 
             <div class="d-flex">
 
@@ -399,24 +384,24 @@
 ">
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 26 26">
-                        <path fill="#fff" stroke="#fff" stroke-width="2" d="M1 12.683C1 6.23 6.23 1 12.683 1h.634C19.77 1 25 6.23 25 12.683c0 6.452-5.23 11.683-11.683 11.683h-.634C6.23 24.366 1 19.136 1 12.683z" />
-                        <path fill="#F22222" d="M25.574 11.508H.426v2.984h25.148v-2.984z" />
-                        <path fill="#F22222" d="M11.508 0v25.148h2.984V0h-2.984zM9.924 17.378l-1.056.151.15-1.056h-1.96l.15 1.056-1.055-.15v1.96l1.056-.15-.151 1.055h1.96l-.15-1.055 1.056.15v-1.96zM19.847 17.378l-1.056.151.151-1.056h-1.96l.15 1.056-1.056-.15v1.96l1.056-.15-.15 1.055h1.96l-.15-1.055 1.055.15v-1.96z" />
-                        <g>
-                            <path fill="#F22222" d="M9.924 6.66l-1.056.151.15-1.055h-1.96l.15 1.055-1.055-.15v1.96l1.056-.15-.151 1.056h1.96l-.15-1.056 1.056.15v-1.96zM19.847 6.66l-1.056.151.151-1.055h-1.96l.15 1.055-1.056-.15v1.96l1.056-.15-.15 1.056h1.96l-.15-1.056 1.055.15v-1.96z" />
+                      <path fill="#fff" stroke="#fff" stroke-width="2" d="M1 12.683C1 6.23 6.23 1 12.683 1h.634C19.77 1 25 6.23 25 12.683c0 6.452-5.23 11.683-11.683 11.683h-.634C6.23 24.366 1 19.136 1 12.683z"/>
+                      <path fill="#F22222" d="M25.574 11.508H.426v2.984h25.148v-2.984z"/>
+                      <path fill="#F22222" d="M11.508 0v25.148h2.984V0h-2.984zM9.924 17.378l-1.056.151.15-1.056h-1.96l.15 1.056-1.055-.15v1.96l1.056-.15-.151 1.055h1.96l-.15-1.055 1.056.15v-1.96zM19.847 17.378l-1.056.151.151-1.056h-1.96l.15 1.056-1.056-.15v1.96l1.056-.15-.15 1.055h1.96l-.15-1.055 1.055.15v-1.96z"/>
+                      <g>
+                        <path fill="#F22222" d="M9.924 6.66l-1.056.151.15-1.055h-1.96l.15 1.055-1.055-.15v1.96l1.056-.15-.151 1.056h1.96l-.15-1.056 1.056.15v-1.96zM19.847 6.66l-1.056.151.151-1.055h-1.96l.15 1.055-1.056-.15v1.96l1.056-.15-.15 1.056h1.96l-.15-1.056 1.055.15v-1.96z"/>
+                      </g>
+                      <g>
+                        <mask id="a" width="26" height="26" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+                          <path fill="#fff" d="M0 12.683C0 5.678 5.678 0 12.683 0h.634C20.322 0 26 5.678 26 12.683s-5.678 12.683-12.683 12.683h-.634C5.678 25.366 0 19.688 0 12.683z"/>
+                          <path stroke="#CDCDCD" d="M0 12.683C0 5.678 5.678 0 12.683 0h.634C20.322 0 26 5.678 26 12.683s-5.678 12.683-12.683 12.683h-.634C5.678 25.366 0 19.688 0 12.683z"/>
+                        </mask>
+                        <g mask="url(#a)">
+                          <path stroke="#CDCDCD" stroke-width="2" d="M17.488 12.683C17.488 6.23 22.718 1 29.17 1h.634c6.452 0 11.683 5.23 11.683 11.683 0 6.452-5.23 11.683-11.683 11.683h-.634c-6.453 0-11.683-5.23-11.683-11.683z"/>
+                          <path fill="#017FCD" d="M-1.268-1.902h28.537v14.585H-1.268z"/>
+                          <path fill="#F8BF0C" d="M-1.268 12.683h28.537v14.585H-1.268z"/>
                         </g>
-                        <g>
-                            <mask id="a" width="26" height="26" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha">
-                                <path fill="#fff" d="M0 12.683C0 5.678 5.678 0 12.683 0h.634C20.322 0 26 5.678 26 12.683s-5.678 12.683-12.683 12.683h-.634C5.678 25.366 0 19.688 0 12.683z" />
-                                <path stroke="#CDCDCD" d="M0 12.683C0 5.678 5.678 0 12.683 0h.634C20.322 0 26 5.678 26 12.683s-5.678 12.683-12.683 12.683h-.634C5.678 25.366 0 19.688 0 12.683z" />
-                            </mask>
-                            <g mask="url(#a)">
-                                <path stroke="#CDCDCD" stroke-width="2" d="M17.488 12.683C17.488 6.23 22.718 1 29.17 1h.634c6.452 0 11.683 5.23 11.683 11.683 0 6.452-5.23 11.683-11.683 11.683h-.634c-6.453 0-11.683-5.23-11.683-11.683z" />
-                                <path fill="#017FCD" d="M-1.268-1.902h28.537v14.585H-1.268z" />
-                                <path fill="#F8BF0C" d="M-1.268 12.683h28.537v14.585H-1.268z" />
-                            </g>
-                        </g>
-                        <path stroke="#fff" d="M.5 12.683C.5 5.954 5.954.5 12.683.5h.634C20.046.5 25.5 5.954 25.5 12.683c0 6.728-5.454 12.183-12.183 12.183h-.634C5.954 24.866.5 19.41.5 12.683z" />
+                      </g>
+                      <path stroke="#fff" d="M.5 12.683C.5 5.954 5.954.5 12.683.5h.634C20.046.5 25.5 5.954 25.5 12.683c0 6.728-5.454 12.183-12.183 12.183h-.634C5.954 24.866.5 19.41.5 12.683z"/>
                     </svg>
                 </div>
 
@@ -552,17 +537,21 @@
 
         if(newWidth >= 1000)
         {
-            $("#MobileTopBar").hide();
+            $(".MobileTopBar").hide();
             $("#languageBarForDesktopUk").show();
             $("#languageBarForDesktopEN").show();
             $("#languageBarForDesktopGE").show();
+            $("#searchBarForDesktop").show();
+            $("#mainPageP").show();
         }
         else
         {
-            $("#MobileTopBar").show();
+            $(".MobileTopBar").show();
              $("#languageBarForDesktopUk").hide();
              $("#languageBarForDesktopEN").hide();
              $("#languageBarForDesktopGE").hide();
+             $("#searchBarForDesktop").hide();
+             $("#mainPageP").hide();
         }
     });
 
@@ -573,17 +562,21 @@
 
        if(newWidth >= 1000)
         {
-            $("#MobileTopBar").hide();
+            $(".MobileTopBar").hide();
             $("#languageBarForDesktopUk").show();
             $("#languageBarForDesktopEN").show();
             $("#languageBarForDesktopGE").show();
+            $("#searchBarForDesktop").show();
+            $("#mainPageP").show();
         }
         else
         {
-            $("#MobileTopBar").show();
+            $(".MobileTopBar").show();
              $("#languageBarForDesktopUk").hide();
              $("#languageBarForDesktopEN").hide();
              $("#languageBarForDesktopGE").hide();
+             $("#searchBarForDesktop").hide();
+             $("#mainPageP").hide();
         }
     });
     </script>
