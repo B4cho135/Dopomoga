@@ -102,11 +102,10 @@
             </a>
         </div>
         <div class="row" style="height:50px; background: #2791B6">
-            <div class="d-flex justify-content-end" style="background: #2791B6">
+            <div class="d-flex justify-content-end" style="background: #2791B6" >
 
-
-                @*<div style="width:25px; height:25px;
-                                            margin-top:12px; margin-right:5px; cursor:pointer"
+                <div style="width:25px; height:25px;
+                                            margin-top:12px; margin-right:5px; cursor:pointer" id="languageBarForDesktopUk"
                      onclick="
                                                 $('#load').show();
                                                 $.ajax({
@@ -146,7 +145,7 @@
                     </svg>
                 </div>
 
-                <div style="width:25px; height:25px;margin-top:12px;float:right; margin-right:5px;  cursor:pointer"
+                <div style="width:25px; height:25px;margin-top:12px;float:right; margin-right:5px;  cursor:pointer" id="languageBarForDesktopEN"
                      onclick="
 
                                                 $('#load').show();
@@ -184,7 +183,7 @@
 
                 </div>
 
-                <div style="width:25px; height:25px; margin-right:30px; margin-top:12px; cursor:pointer;"
+                <div style="width:25px; height:25px; margin-right:30px; margin-top:12px; cursor:pointer;" id="languageBarForDesktopGE"
                      onclick="
 
                                                 $('#load').show();
@@ -222,8 +221,6 @@
                     </g>
                     </svg>
                 </div>
-
-*@
 
             </div>
         </div>
@@ -556,10 +553,16 @@
         if(newWidth >= 1000)
         {
             $("#MobileTopBar").hide();
+            $("#languageBarForDesktopUk").show();
+            $("#languageBarForDesktopEN").show();
+            $("#languageBarForDesktopGE").show();
         }
         else
         {
             $("#MobileTopBar").show();
+             $("#languageBarForDesktopUk").hide();
+             $("#languageBarForDesktopEN").hide();
+             $("#languageBarForDesktopGE").hide();
         }
     });
 
@@ -568,13 +571,19 @@
         var newWidth = window.innerWidth;
         var newHeight = window.innerHeight; 
 
-        if(newWidth >= 1000)
+       if(newWidth >= 1000)
         {
             $("#MobileTopBar").hide();
+            $("#languageBarForDesktopUk").show();
+            $("#languageBarForDesktopEN").show();
+            $("#languageBarForDesktopGE").show();
         }
         else
         {
             $("#MobileTopBar").show();
+             $("#languageBarForDesktopUk").hide();
+             $("#languageBarForDesktopEN").hide();
+             $("#languageBarForDesktopGE").hide();
         }
     });
     </script>
