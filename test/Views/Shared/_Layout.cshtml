@@ -259,7 +259,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AboutUs">
-                                            <p id="aboutUsP" <p id="mainPageP" style="font-family: 'FiraGO-SemiBold' !important;
+                                            <p id="aboutUsP" style="font-family: 'FiraGO-SemiBold' !important;
                                                                         font-size: 20px;
                                                                         font-style: normal;
                                                                         font-weight: 700;
@@ -273,7 +273,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contacts">
-                                            <p id="contactsP" <p id="mainPageP" style="font-family: 'FiraGO-SemiBold' !important;
+                                            <p id="contactsP" style="font-family: 'FiraGO-SemiBold' !important;
                                                                         font-size: 20px;
                                                                         font-style: normal;
                                                                         font-weight: 700;
@@ -285,10 +285,59 @@
                                                                         margin-left:20px">@SharedLocalizer["Contacts"]</p>
                                         </a>
                                     </li>
+
+
+                                    <li class="nav-item" id="DesktopNavigationMenuFAQ">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FAQ">
+                                            <p id="faqP" style="font-family: 'FiraGO-SemiBold' !important;
+                                                                        font-size: 20px;
+                                                                        font-style: normal;
+                                                                        font-weight: 700;
+                                                                        line-height: 23px;
+                                                                        letter-spacing: -.03em;
+                                                                        font-feature-settings: 'case' on;
+                                                                        text-align: left;
+                                                                        color:white;
+                                                                        margin-left:20px">@SharedLocalizer["FAQ"]</p>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item" id="DesktopNavigationMenuBlog">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Blog">
+                                           <p id="blogP" style="font-family: 'FiraGO-SemiBold' !important;
+                                                                        font-size: 20px;
+                                                                        font-style: normal;
+                                                                        font-weight: 700;
+                                                                        line-height: 23px;
+                                                                        letter-spacing: -.03em;
+                                                                        font-feature-settings: 'case' on;
+                                                                        text-align: left;
+                                                                        color:white;
+                                                                        margin-left:20px">@SharedLocalizer["Blog"]</p>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item" id="DesktopNavigationMenuMedia">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Media">
+                                           <p id="mediaP" style="font-family: 'FiraGO-SemiBold' !important;
+                                                                        font-size: 20px;
+                                                                        font-style: normal;
+                                                                        font-weight: 700;
+                                                                        line-height: 23px;
+                                                                        letter-spacing: -.03em;
+                                                                        font-feature-settings: 'case' on;
+                                                                        text-align: left;
+                                                                        color:white;
+                                                                        margin-left:20px">@SharedLocalizer["Media"]</p>
+                                        </a>
+                                    </li>
+
+
+
                                 </ul>
 
                                 <div class="d-flex">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FAQ" style="margin:auto">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FAQ" style="margin:auto" id="mobileNavigationBarFAQ">
                                             <p id="faqP" style="font-family: 'FiraGO-SemiBold' !important;
                                                                         font-size: 20px;
                                                                         font-style: normal;
@@ -301,7 +350,7 @@
                                                                         margin-left:20px">@SharedLocalizer["FAQ"]</p>
                                         </a>
 
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Blog" style="margin:auto">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Blog" style="margin:auto" id="mobileNavigationBarBlog">
                                             <p id="blogP" style="font-family: 'FiraGO-SemiBold' !important;
                                                                         font-size: 20px;
                                                                         font-style: normal;
@@ -314,7 +363,7 @@
                                                                         margin-left:-30px">@SharedLocalizer["Blog"]</p>
                                         </a>
 
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Media" style="margin:auto">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Media" style="margin:auto" id="mobileNavigationBarMedia">
                                             <p id="mediaP" style="font-family: 'FiraGO-SemiBold' !important;
                                                                         font-size: 20px;
                                                                         font-style: normal;
@@ -535,7 +584,7 @@
         var newWidth = window.innerWidth;
         var newHeight = window.innerHeight; 
 
-        if(newWidth >= 1000)
+       if(newWidth >= 1000)
         {
             $(".MobileTopBar").hide();
             $("#languageBarForDesktopUk").show();
@@ -543,6 +592,12 @@
             $("#languageBarForDesktopGE").show();
             $("#searchBarForDesktop").show();
             $("#mainPageP").show();
+            $("#DesktopNavigationMenuMedia").show();
+            $("#DesktopNavigationMenuFAQ").show();
+            $("#DesktopNavigationMenuBlog").show();
+            $("#mobileNavigationBarFAQ").hide();
+            $("#mobileNavigationBarBlog").hide();
+            $("#mobileNavigationBarMedia").hide();
         }
         else
         {
@@ -552,6 +607,13 @@
              $("#languageBarForDesktopGE").hide();
              $("#searchBarForDesktop").hide();
              $("#mainPageP").hide();
+             $("#DesktopNavigationMenuMedia").hide();
+             $("#DesktopNavigationMenuFAQ").hide();
+             $("#DesktopNavigationMenuBlog").hide();
+             
+            $("#mobileNavigationBarFAQ").show();
+            $("#mobileNavigationBarBlog").show();
+            $("#mobileNavigationBarMedia").show();
         }
     });
 
@@ -568,6 +630,12 @@
             $("#languageBarForDesktopGE").show();
             $("#searchBarForDesktop").show();
             $("#mainPageP").show();
+            $("#DesktopNavigationMenuMedia").show();
+            $("#DesktopNavigationMenuFAQ").show();
+            $("#DesktopNavigationMenuBlog").show();
+            $("#mobileNavigationBarFAQ").hide();
+            $("#mobileNavigationBarBlog").hide();
+            $("#mobileNavigationBarMedia").hide();
         }
         else
         {
@@ -577,6 +645,13 @@
              $("#languageBarForDesktopGE").hide();
              $("#searchBarForDesktop").hide();
              $("#mainPageP").hide();
+             $("#DesktopNavigationMenuMedia").hide();
+             $("#DesktopNavigationMenuFAQ").hide();
+             $("#DesktopNavigationMenuBlog").hide();
+             
+            $("#mobileNavigationBarFAQ").show();
+            $("#mobileNavigationBarBlog").show();
+            $("#mobileNavigationBarMedia").show();
         }
     });
     </script>
