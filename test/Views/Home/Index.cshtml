@@ -248,42 +248,6 @@
                     </div>
                     <div class="col-md-4">
 
-                        @*@if (Model.Posts.ElementAtOrDefault(1) != null)
-                    {
-                    <div class="card-transparent mb-2">
-                    <a href="@Url.Action("PostInternalPage", "Home", new { id = @Model.Posts[1].Id})" style=" text-decoration: none; color:black;">
-                    <img class="card-img-top side-card-size" src="data:image/png;base64,@Model.Posts[1].ThumbnailBase64" alt="Card image cap">
-                    <div class="card-body">
-                    @if (Model.Culture == "uk")
-                    {
-                    <p class="textFont"><b>@Model.Posts[1].UkrainianTitle</b></p>
-                    }
-                    else
-                    {
-                    <p class="textFont"><b>@Model.Posts[1].GeorgianTitle</b></p>
-                    }
-                    </div>
-                    </a>
-                    </div>
-                    }
-                    @if (Model.Posts.ElementAtOrDefault(2) != null)
-                    {
-                    <div class="card-transparent mb-2">
-                    <a href="@Url.Action("PostInternalPage", "Home", new { id = @Model.Posts[2].Id})" style=" text-decoration: none;">
-                    <img class="card-img-top side-card-size" src="data:image/png;base64,@Model.Posts[2].ThumbnailBase64" alt="Card image cap">
-                    <div class="card-body">
-                    @if (Model.Culture == "uk")
-                    {
-                    <p class="textFont"><b>@Model.Posts[2].UkrainianTitle</b></p>
-                    }
-                    else
-                    {
-                    <p class="textFont"><b>@Model.Posts[2].GeorgianTitle</b></p>
-                    }
-                    </div>
-                    </a>
-                    </div>
-                    }*@
 
                         <div class="card-transparent mb-2" style="margin-top:20px;">
                             <a href="@Url.Action("Index", "Home", new {category = 47, page = 1})" style=" text-decoration: none;">
@@ -298,7 +262,7 @@
 
 
                         <div class="card-transparent mb-2" style="margin-top:20px;">
-                            <a href="@Url.Action("PostInternalPage", "Home", new { id = 48})" style=" text-decoration: none;">
+                            <a href="@Url.Action("Index", "Home", new {category = 48, page = 1})" style=" text-decoration: none;">
 @*                                <img class="card-img-top side-card-size" src="/content/images/Media.jpg" alt="Card image cap" style="height:150px;">
 *@                                <div class="card-body" style="background-color:#F22222;border-radius:5px;">
                                     <h4 style="text-align:center">Videos</h4>
@@ -332,24 +296,49 @@
 
                         <h1 style="text-align:center ">@h1_Title</h1>
                         <div class="row" id="categoriesRow">
-                            @foreach (var post in @Model.Posts)
+                            @if(Model.ChosenCategoryId == 48)
                             {
-                                <div class="card-transparent" style="width: 16rem;">
-                                    <a href="@Url.Action("PostInternalPage", "Home", new { id = post.Id})" style=" text-decoration: none;">
-                                        <img class="card-img-top" src="data:image/png;base64,@post.ThumbnailBase64" alt="Card image cap" style="width:232px;height:146px;">
-                                        <div class="card-body">
-                                            @if (Model.Culture == "uk")
-                                            {
-                                                <p class="textFont"><b>@post.UkrainianTitle</b></p>
-                                            }
-                                            else
-                                            {
-                                                <p class="textFont"><b>@post.GeorgianTitle</b></p>
-                                            }
-                                        </div>
-                                    </a>
-                                </div>
+                                foreach (var post in @Model.Posts)
+                                {
+                                    <div class="card-transparent" style="width: 16rem;">
+                                        <a href="@post.RedirectUrl" target="_blank" style=" text-decoration: none;">
+                                            <img class="card-img-top" src="data:image/png;base64,@post.ThumbnailBase64" alt="Card image cap" style="width:232px;height:146px;">
+                                            <div class="card-body">
+                                                @if (Model.Culture == "uk")
+                                                {
+                                                    <p class="textFont"><b>@post.UkrainianTitle</b></p>
+                                                }
+                                                else
+                                                {
+                                                    <p class="textFont"><b>@post.GeorgianTitle</b></p>
+                                                }
+                                            </div>
+                                        </a>
+                                    </div>
+                                }
                             }
+                            else
+                            {
+                                foreach (var post in @Model.Posts)
+                                {
+                                    <div class="card-transparent" style="width: 16rem;">
+                                        <a href="@Url.Action("PostInternalPage", "Home", new { id = post.Id})" style=" text-decoration: none;">
+                                            <img class="card-img-top" src="data:image/png;base64,@post.ThumbnailBase64" alt="Card image cap" style="width:232px;height:146px;">
+                                            <div class="card-body">
+                                                @if (Model.Culture == "uk")
+                                                {
+                                                    <p class="textFont"><b>@post.UkrainianTitle</b></p>
+                                                }
+                                                else
+                                                {
+                                                    <p class="textFont"><b>@post.GeorgianTitle</b></p>
+                                                }
+                                            </div>
+                                        </a>
+                                    </div>
+                                }
+                            }
+                           
                         </div>
                     }
                     @if (Model == null || Model.Posts == null)

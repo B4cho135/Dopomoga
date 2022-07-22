@@ -303,7 +303,7 @@
                                     </li>
 
                                     <li class="nav-item" id="DesktopNavigationMenuBlog">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Blog">
+                                        <a class="nav-link text-dark"  href="@Url.Action("Index", "Home", new {category = 47, page = 1})">
                                            <p id="blogP" style="font-family: 'FiraGO-SemiBold' !important;
                                                                         font-size: 20px;
                                                                         font-style: normal;
@@ -318,7 +318,7 @@
                                     </li>
 
                                     <li class="nav-item" id="DesktopNavigationMenuMedia">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Media">
+                                        <a class="nav-link text-dark"  href="@Url.Action("Index", "Home", new {category = 48, page = 1})">
                                            <p id="mediaP" style="font-family: 'FiraGO-SemiBold' !important;
                                                                         font-size: 20px;
                                                                         font-style: normal;
@@ -350,7 +350,7 @@
                                                                         margin-left:20px">@SharedLocalizer["FAQ"]</p>
                                         </a>
 
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Blog" style="margin:auto" id="mobileNavigationBarBlog">
+                                        <a class="nav-link text-dark" href="@Url.Action("Index", "Home", new {category = 47, page = 1})"  style="margin:auto" id="mobileNavigationBarBlog">
                                             <p id="blogP" style="font-family: 'FiraGO-SemiBold' !important;
                                                                         font-size: 20px;
                                                                         font-style: normal;
@@ -363,7 +363,7 @@
                                                                         margin-left:-30px">@SharedLocalizer["Blog"]</p>
                                         </a>
 
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Media" style="margin:auto" id="mobileNavigationBarMedia">
+                                        <a class="nav-link text-dark"  href="@Url.Action("Index", "Home", new {category = 48, page = 1})" style="margin:auto" id="mobileNavigationBarMedia">
                                             <p id="mediaP" style="font-family: 'FiraGO-SemiBold' !important;
                                                                         font-size: 20px;
                                                                         font-style: normal;
