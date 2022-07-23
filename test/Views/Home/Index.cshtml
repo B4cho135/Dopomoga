@@ -59,9 +59,9 @@
 </style>
 
 <div class="row" style="height:100vh;">
-    
-        <div class="col-md-3" style="background: #B9B9B9;" id="CategoriesDiv">
-
+   
+    <div class="col-md-3" style="background: #B9B9B9;" id="CategoriesDiv">
+            @Html.Hidden("ChosenCategoryIdTmp", Model.ChosenCategoryId)
             <div style="margin-top:30px;" id="DesktopCategories">
 
                 @{
@@ -550,7 +550,11 @@
         {
             $("#MobileCategories").show();
             $("#DesktopCategories").hide();
-            $("#CategoriesDiv").hide();
+            if($("#ChosenCategoryIdTmp").val() == "47" || $("#ChosenCategoryIdTmp").val() == "48")
+            {
+                $("#CategoriesDiv").hide();
+            }
+            
         }
     });
 
@@ -568,7 +572,11 @@
         {
             $("#MobileCategories").show();
             $("#DesktopCategories").hide();
-            $("#CategoriesDiv").hide();
+            if($("#ChosenCategoryIdTmp").val() == "47" || $("#ChosenCategoryIdTmp").val() == "48")
+            {
+                $("#CategoriesDiv").hide();
+            }
+            
         }
     });
 
