@@ -2,6 +2,7 @@
 using Dopomoga.Data.Entities.Categories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -25,7 +26,7 @@ namespace Dopomoga.API.Controllers
         {
             try
             {
-                var categories = _context.Categories.Where(x => !x.IsDeleted).OrderBy(x => x.Order).ToList();
+                var categories = _context.Categories.Include(x => x.MainCategory).Where(x => !x.IsDeleted).OrderBy(x => x.Order).ToList();
 
                 return Ok(categories);
             }
