@@ -230,7 +230,7 @@ img {
     transition: 0.6s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(28,133,211,0.8);
 }
 
 /* Position the "next button" to the right */
@@ -241,7 +241,7 @@ img {
 
     /* On hover, add a black background color with a little bit see-through */
     .prev:hover, .next:hover {
-        background-color: rgba(0,0,0,0.8);
+        background-color: rgba(28,133,211,0.8);
     }
 
 /* Caption text */
