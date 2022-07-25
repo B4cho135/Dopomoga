@@ -79,6 +79,15 @@ html, body {
     color: white;
 }
 
+.textStyleMobile {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 15px;
+    padding-top: 10px;
+    color: white;
+}
+
 customText {
     font-family: 'Roboto';
     font-style: normal;

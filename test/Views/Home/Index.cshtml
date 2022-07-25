@@ -71,15 +71,15 @@
                 <button class="accordion" style="margin-left:20px;">
                         @if (Model.Culture == "uk")
                         {
-                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">@employmentDropdDown.MainCategory.NameUkrainian</p></a>
+                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">↓ @employmentDropdDown.MainCategory.NameUkrainian</p></a>
                         }
                         else if (Model.Culture == "en")
                         {
-                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">@employmentDropdDown.MainCategory.NameGeorgian</p></a>
+                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">↓ @employmentDropdDown.MainCategory.NameGeorgian</p></a>
                         }
                         else
                         {
-                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">@employmentDropdDown.MainCategory.NameEnglish</p></a>
+                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">↓ @employmentDropdDown.MainCategory.NameEnglish</p></a>
                         }
                 </button>
                 
@@ -92,15 +92,15 @@
                             <div class="row activeCategory">
                                 @if (Model.Culture == "uk")
                                 {
-                                    <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryUkrainianName</p></a>
+                                    <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyleMobile">@category.CategoryUkrainianName</p></a>
                                 }
                                 else if (Model.Culture == "en")
                                 {
-                                    <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                                    <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyleMobile">@category.CategoryGeorgianName</p></a>
                                 }
                                 else
                                 {
-                                    <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryEnglishName</p></a>
+                                    <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyleMobile">@category.CategoryEnglishName</p></a>
                                 }
                             </div>
                         }
@@ -109,15 +109,15 @@
                             <div class="row categoryItem">
                                 @if (Model.Culture == "uk")
                                 {
-                                    <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryUkrainianName</p></a>
+                                    <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyleMobile">@category.CategoryUkrainianName</p></a>
                                 }
                                 else if (Model.Culture == "en")
                                 {
-                                    <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                                    <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyleMobile">@category.CategoryGeorgianName</p></a>
                                 }
                                 else
                                 {
-                                    <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryEnglishName</p></a>
+                                    <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyleMobile">@category.CategoryEnglishName</p></a>
                                 }
                             </div>
                         }
@@ -176,15 +176,15 @@
                     <button class="accordion" style="text-align:center">
                         @if (Model.Culture == "uk")
                         {
-                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">@mainCategory.NameUkrainian</p></a>
+                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">↓ @mainCategory.NameUkrainian</p></a>
                         }
                         else if (Model.Culture == "en")
                         {
-                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">@mainCategory.NameGeorgian</p></a>
+                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">↓ @mainCategory.NameGeorgian</p></a>
                         }
                         else
                         {
-                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">@mainCategory.NameEnglish</p></a>
+                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">↓ @mainCategory.NameEnglish</p></a>
                         }
                     </button>
                     <div class="panel">
@@ -195,15 +195,15 @@
                                 <div class="row activeCategory" style="text-align:center">
                                     @if (Model.Culture == "uk")
                                     {
-                                        <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryUkrainianName</p></a>
+                                        <a style="text-decoration: none; padding-left: 50px;" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyleMobile" >@category.CategoryUkrainianName</p></a>
                                     }
                                     else if (Model.Culture == "en")
                                     {
-                                        <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                                        <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyleMobile">@category.CategoryGeorgianName</p></a>
                                     }
                                     else
                                     {
-                                        <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryEnglishName</p></a>
+                                        <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyleMobile">@category.CategoryEnglishName</p></a>
                                     }
                                 </div>
                             }
@@ -212,15 +212,15 @@
                                 <div class="row categoryItem" style="text-align:center">
                                     @if (Model.Culture == "uk")
                                     {
-                                        <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryUkrainianName</p></a>
+                                        <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyleMobile">@category.CategoryUkrainianName</p></a>
                                     }
                                     else if (Model.Culture == "en")
                                     {
-                                        <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                                        <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyleMobile">@category.CategoryGeorgianName</p></a>
                                     }
                                     else
                                     {
-                                        <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryEnglishName</p></a>
+                                        <a style="text-decoration: none; padding-left: 50px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyleMobile">@category.CategoryEnglishName</p></a>
                                     }
                                 </div>
                             }
