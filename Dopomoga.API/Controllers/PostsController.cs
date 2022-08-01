@@ -144,6 +144,33 @@ namespace Dopomoga.API.Controllers
             {
                 _context.Posts.Add(request);
                 _context.SaveChanges();
+
+
+                if(request.MainCategoryId == 6 && request.CategoryId != 28)
+                {
+                    var newPost = new PostEntity()
+                    {
+                        CategoryId = 28,
+                        MainCategoryId = request.CategoryId,
+                        CreatedAt = DateTime.Now,
+                        EnglishDescription = request.EnglishDescription,
+                        EnglishTitle = request.EnglishTitle,
+                        GeorgianDescription = request.GeorgianDescription,
+                        GeorgianTitle = request.GeorgianTitle,
+                        IsDeleted = false,
+                        RedirectUrl = request.RedirectUrl,
+                        ShowInTheEnd = request.ShowInTheEnd,
+                        ShowOnMainMenu = request.ShowOnMainMenu,
+                        Thumbnail = request.Thumbnail,
+                        UkrainianDescription = request.UkrainianDescription,
+                        UkrainianTitle = request.UkrainianTitle,
+                        UpdatedAt = DateTime.Now
+                    };
+
+                    _context.Posts.Add(newPost);
+                    _context.SaveChanges();
+                }
+
                 return NoContent();
             }
             catch (Exception ex)
