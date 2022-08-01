@@ -84,11 +84,11 @@
                 <div class="row categoryItem">
                     @if (Model.Culture == "uk")
                     {
-                        <a class="textStyle" style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryUkrainianName</p></a>
+                        <a class="textStyle" style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyleMobile">@category.CategoryUkrainianName</p></a>
                     }
                     else
                     {
-                        <a class="textStyle" style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                        <a class="textStyle" style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyleMobile">@category.CategoryGeorgianName</p></a>
                     }
                 </div>
             }
