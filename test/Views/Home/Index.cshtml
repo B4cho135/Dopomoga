@@ -59,7 +59,6 @@
 </style>
 
 <div class="row" style="height:100vh;">
-   
     <div class="col-md-3" style="background: #B9B9B9;" id="CategoriesDiv">
             @Html.Hidden("ChosenCategoryIdTmp", Model.ChosenCategoryId)
             <div style="margin-top:30px;" id="DesktopCategories">
@@ -176,15 +175,15 @@
                     <button class="accordion" style="text-align:center">
                         @if (Model.Culture == "uk")
                         {
-                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">↓ @mainCategory.NameUkrainian</p></a>
+                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">@mainCategory.NameUkrainian</p></a>
                         }
                         else if (Model.Culture == "en")
                         {
-                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">↓ @mainCategory.NameGeorgian</p></a>
+                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">@mainCategory.NameGeorgian</p></a>
                         }
                         else
                         {
-                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">↓ @mainCategory.NameEnglish</p></a>
+                            <a style="text-decoration: none; padding-left: 50px"><p class="textStyle">@mainCategory.NameEnglish</p></a>
                         }
                     </button>
                     <div class="panel">
@@ -327,6 +326,11 @@
                 }
                 else
                 {
+
+                    <div style="width:30px;height:30px">
+                        <button onclick="history.back()" style="border-radius:20px;font-size:20px;">←</button>
+                    </div>
+
                     @if (Model != null && Model.Posts != null)
                     {
                         var h1_Title = "";
