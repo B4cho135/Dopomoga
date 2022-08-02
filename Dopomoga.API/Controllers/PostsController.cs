@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace Dopomoga.API.Controllers
 {
@@ -142,6 +143,27 @@ namespace Dopomoga.API.Controllers
         {
             try
             {
+
+                if (request.CategoryId == 48)
+                {
+
+                    String St = request.RedirectUrl;
+
+                    int pFrom = St.IndexOf("v=") + "v=".Length;
+                    int pTo = St.LastIndexOf("&");
+
+                    String result = St.Substring(pFrom, pTo - pFrom);
+
+                    string someUrl = $"https://img.youtube.com/vi/{result}/0.jpg";
+                    using (var webClient = new WebClient())
+                    {
+                        byte[] imageBytes = webClient.DownloadData(someUrl);
+
+                        request.Thumbnail = imageBytes;
+                    }
+                }
+
+
                 _context.Posts.Add(request);
                 _context.SaveChanges();
 
@@ -167,6 +189,7 @@ namespace Dopomoga.API.Controllers
                         UpdatedAt = DateTime.Now
                     };
 
+                    
                     _context.Posts.Add(newPost);
                     _context.SaveChanges();
                 }
