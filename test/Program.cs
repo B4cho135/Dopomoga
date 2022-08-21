@@ -31,9 +31,9 @@ builder.Services.AddHttpContextAccessor();
 
 var supportedCultures = new List<CultureInfo>()
     {
+        new CultureInfo("ge"),
         new CultureInfo("uk"),
         new CultureInfo("en"),
-        new CultureInfo("ge"),
     };
 
 builder.Services.Configure<RequestLocalizationOptions>(options =>

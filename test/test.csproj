@@ -48,4 +48,10 @@
     <None Include="Resources\Views\Shared\_Layout.en.resx" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\SharedResources.ge.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

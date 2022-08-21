@@ -172,6 +172,51 @@
 
                 @foreach (var mainCategory in Model.MainCategories)
                 {
+
+                    if(mainCategory.Id == 5)
+                    {
+
+                        var category = Model.Categories.FirstOrDefault(x => x.Id == 32);
+
+                        if (Model.ChosenCategoryId == category.Id)
+                            {
+                                <div class="row activeCategory" style="text-align:center">
+                                    @if (Model.Culture == "uk")
+                                    {
+                                        <a style="text-decoration: none; padding-left: 20px;" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle" >@category.CategoryUkrainianName</p></a>
+                                    }
+                                    else if (Model.Culture == "en")
+                                    {
+                                        <a style="text-decoration: none; padding-left: 20px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                                    }
+                                    else
+                                    {
+                                        <a style="text-decoration: none; padding-left: 20px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryEnglishName</p></a>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="row categoryItem" style="text-align:center">
+                                    @if (Model.Culture == "uk")
+                                    {
+                                        <a style="text-decoration: none; padding-left: 20px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryUkrainianName</p></a>
+                                    }
+                                    else if (Model.Culture == "en")
+                                    {
+                                        <a style="text-decoration: none; padding-left: 20px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                                    }
+                                    else
+                                    {
+                                        <a style="text-decoration: none; padding-left: 20px" href="@Url.Action("Index", "Home", new {category = @category.Id, page = Model.Pager.CurrentPage})"><p class="textStyle">@category.CategoryEnglishName</p></a>
+                                    }
+                                </div>
+                            }
+
+
+                        continue;
+                    }
+
                     <button class="accordion" style="text-align:center">
                         @if (Model.Culture == "uk")
                         {
@@ -237,8 +282,7 @@
             <div class="row">
                 @if (!Model.ShowCategories)
                 {
-                    <h1 style="text-align:center ">@SharedLocalizer["Home"]</h1>
-                    <div class="col-md-8">
+                   <div class="col-md-8">
                         <!-- Slideshow container -->
                         <div class="slideshow-container" style="margin-top:20px;">
 
