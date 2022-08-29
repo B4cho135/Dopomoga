@@ -315,9 +315,12 @@
 
                         <!-- The dots/circles -->
                         <div style="text-align:center">
-                            <span class="dot" onclick="currentSlide(1)"></span>
-                            <span class="dot" onclick="currentSlide(2)"></span>
-                            <span class="dot" onclick="currentSlide(3)"></span>
+                            @for(int i = 1; i <= Model.Posts.Count; i++)
+                            {
+                                <span class="dot" onclick="currentSlide(@i)"></span>
+                            }
+                            @*<span class="dot" onclick="currentSlide(2)"></span>
+                            <span class="dot" onclick="currentSlide(3)"></span>*@
                         </div>
 
                     </div>
