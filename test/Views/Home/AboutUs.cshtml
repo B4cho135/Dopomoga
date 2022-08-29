@@ -104,9 +104,13 @@
                 {
                 @Html.Raw(Model.Info.PageTextInGeorgian)
                 }
+                else if(@Model.Culture == "uk")
+                {
+                    @Html.Raw(Model.Info.PageTextInUkrainian)
+                }
                 else
                 {
-                @Html.Raw(Model.Info.PageTextInUkrainian)
+                    @Html.Raw(Model.Info.PageTextInEnglish)
                 }
             </div>
         </div>

@@ -11,5 +11,6 @@ namespace Dopomoga.Data.Entities.PageInformation
         public string PageType { get; set; }
         public string PageTextInGeorgian { get; set; }
         public string PageTextInUkrainian { get; set; }
+        public string PageTextInEnglish { get; set; }
     }
 }
