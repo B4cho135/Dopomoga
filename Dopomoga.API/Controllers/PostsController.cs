@@ -26,8 +26,7 @@ namespace Dopomoga.API.Controllers
         {
             try
             {
-
-                var posts = _context.Posts.Include(x => x.Category).OrderByDescending(x => !x.ShowInTheEnd).ThenByDescending(x => x.CreatedAt).Where(x => !x.IsDeleted);
+                var posts = _context.Posts.Include(x => x.Category).OrderByDescending(x => !x.ShowInTheEnd).ThenByDescending(x => x.CreatedAt).Where(x => !x.IsDeleted && x.Thumbnail != null);
 
                 if(!string.IsNullOrEmpty(searchWord))
                 {
@@ -36,13 +35,22 @@ namespace Dopomoga.API.Controllers
 
                 if(category.HasValue)
                 {
-                    posts = posts.Where(x => x.CategoryId == category.Value);
+                    if(category.Value != 28)
+                    {
+                        posts = posts.Where(x => x.CategoryId == category.Value);
+                    }
+                    else
+                    {
+                        posts = posts.Where(x => x.Category.MainCategoryId == 6);
+                    }
                 }
 
                 if(page != null && page > 0)
                 {
                     posts = posts.Skip(page.Value * limit);
                 }
+
+                var a = posts.Take(limit).ToList();
 
                 return Ok(posts.Take(limit).ToList());
             }
@@ -105,6 +113,11 @@ namespace Dopomoga.API.Controllers
 
                 if(categoryId.HasValue)
                 {
+                    if(categoryId.Value == 28)
+                    {
+                        var quantity = posts.Where(x => x.Category.MainCategoryId == 6).Count();
+                        return Ok(quantity);
+                    }
                     var categoryItemsQuantity = posts.Where(x => x.CategoryId == categoryId.Value).Count();
 
                     return Ok(categoryItemsQuantity);

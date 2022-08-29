@@ -107,27 +107,11 @@ namespace test.Controllers
 
             foreach (var post in postsResponse.Content)
             {
-               
-                if(category != null)
+                if (post.Thumbnail != null)
                 {
-                    if (post.CategoryId == category)
-                    {
-                        if (post.Thumbnail != null)
-                        {
-                            post.ThumbnailBase64 = Convert.ToBase64String(post.Thumbnail);
-                        }
-                        model.Posts.Add(post);
-                    }
+                    post.ThumbnailBase64 = Convert.ToBase64String(post.Thumbnail);
                 }
-                else
-                {
-                    if (post.Thumbnail != null)
-                    {
-                        post.ThumbnailBase64 = Convert.ToBase64String(post.Thumbnail);
-                    }
-
-                    model.Posts.Add(post);
-                }
+                model.Posts.Add(post);
             }
 
 
