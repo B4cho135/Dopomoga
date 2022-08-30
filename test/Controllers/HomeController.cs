@@ -19,9 +19,68 @@ namespace test.Controllers
         }
 
 
-        public async Task<IActionResult> Index(int? category = null, string searchWord = null, int? page = null)
+        public async Task<IActionResult> Index(string searchWord = null, int? page = null)
         {
+            var model = new HomeViewModel();
 
+            // Retrieves the requested culture
+            var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            // Culture contains the information of the requested culture
+            var culture = rqf.RequestCulture.Culture;
+
+            var response = await _apiClient.Categories.Get();
+
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                return RedirectToAction("Login", "Identity");
+            }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            response.Content.ForEach(x =>
+            {
+                model.Categories.Add(x);
+            });
+
+            model.Categories = model.Categories.Where(x => x.Id != 47 && x.Id != 48).ToList();
+
+            var mainCategoriesResponse = await _apiClient.Categories.GetMainCategories();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            mainCategoriesResponse.Content.ForEach(x =>
+            {
+                model.MainCategories.Add(x);
+            });
+
+            model.Culture = culture.IetfLanguageTag;
+            
+            var mainPagePostsResponse = await _apiClient.Posts.GetMainPosts();
+
+            model.ShowCategories = false;
+            foreach(var post in mainPagePostsResponse.Content)
+            {
+                if (post.Thumbnail != null)
+                {
+                    post.ThumbnailBase64 = Convert.ToBase64String(post.Thumbnail);
+                }
+                model.Posts.Add(post);
+            }
+
+            model.Pager = new Pager(3, 1, 9);
+            return View(model);
+        }
+
+
+        [Route("Categories/{categoryName}/{page}")]
+        public async Task<IActionResult> Categories(string categoryName, int? page, string searchWord)
+        {
             var model = new HomeViewModel();
 
             // Retrieves the requested culture
@@ -41,7 +100,6 @@ namespace test.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-
 
             response.Content.ForEach(x =>
             {
@@ -66,33 +124,15 @@ namespace test.Controllers
 
             model.Culture = culture.IetfLanguageTag;
 
-            if (category == null && searchWord == null)
-            {
+            model.ShowCategories = true;
+            var category = model.Categories.FirstOrDefault(x => x.CategoryEnglishName == categoryName);
 
-                var mainPagePostsResponse = await _apiClient.Posts.GetMainPosts();
-
-                model.ShowCategories = false;
-                foreach(var post in mainPagePostsResponse.Content)
-                {
-                    if (post.Thumbnail != null)
-                    {
-                        post.ThumbnailBase64 = Convert.ToBase64String(post.Thumbnail);
-                    }
-                    model.Posts.Add(post);
-                }
-                
-
-                model.Pager = new Pager(3, 1, 9);
-                return View(model);
-            }
-
-
-            model.ChosenCategoryId = category;
+            model.ChosenCategoryId = category.Id;
             model.SearchWord = searchWord;
 
-            var totalCount = await _apiClient.Posts.GetQuantity(searchWord, category);
+            var totalCount = await _apiClient.Posts.GetQuantity(searchWord, category.Id);
 
-            var postsResponse = await _apiClient.Posts.Get(searchWord, page.HasValue ? page.Value - 1 : 0, 12, category);
+            var postsResponse = await _apiClient.Posts.Get(searchWord, page.HasValue ? page.Value - 1 : 0, 12, category.Id);
 
             if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
@@ -103,7 +143,7 @@ namespace test.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            
+
 
             foreach (var post in postsResponse.Content)
             {

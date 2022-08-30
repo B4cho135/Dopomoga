@@ -61,6 +61,7 @@
 @{
     var baseUrl = "https://dopomoga.ge";
 }
+
 <div class="row" style="height:100vh;">
     <div class="col-md-3" style="background: #B9B9B9;" id="CategoriesDiv">
             @Html.Hidden("ChosenCategoryIdTmp", Model.ChosenCategoryId)
@@ -183,7 +184,7 @@
 
                         var category = Model.Categories.FirstOrDefault(x => x.Id == 32);
 
-                        var url = $"{baseUrl}/Categories/{category.CategoryEnglishName}/1";
+                    var url = $"{baseUrl}/Categories/{category.CategoryEnglishName}/1";
 
                         if (Model.ChosenCategoryId == category.Id)
                             {
@@ -468,7 +469,7 @@
                                         {
                                             <li class="page-item">
                                                 <a class="page-link" href="@Url.Action("Categories",
-                                                                  new {searchWord = Model.SearchWord, page = (Model.Pager.CurrentPage + 2)
+                                                                  new {searchWord = Model.SearchWord,  page = (Model.Pager.CurrentPage + 2)
                                                                   })" value="@(Model.Pager.StartPage + 2)" aria-label="Next">
                                                     <span aria-hidden="true">»</span>
                                                     <span class="sr-only">Next</span>

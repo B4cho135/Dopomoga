@@ -32,6 +32,9 @@
 
 </style>
 
+@{
+    var baseUrl = "https://dopomoga.ge";
+}
 
 
 <div class="row" style="height:100vh;">
@@ -61,18 +64,20 @@
             <div class="panel">
                 @foreach (var category in Model.Categories.Where(x => x.MainCategoryId == 6))
                 {
+                    var url = $"{baseUrl}/Categories/{category.CategoryEnglishName}/1";
+
                     <div class="row categoryItem">
                         @if (Model.Culture == "uk")
                         {
-                        <a class="textStyle" style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryUkrainianName</p></a>
+                        <a style="text-decoration: none; padding-left: 30px" href="@url"><p class="textStyleMobile">@category.CategoryUkrainianName</p></a>
                         }
                         else if (Model.Culture == "en")
                         {
-                        <a class="textStyle" style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                        <a  style="text-decoration: none; padding-left: 30px" href="@url"><p class="textStyleMobile">@category.CategoryGeorgianName</p></a>
                         }
                         else
                         {
-                        <a class="textStyle" style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyle">@category.CategoryEnglishName</p></a>
+                        <a style="text-decoration: none; padding-left: 30px" href="@url"><p class="textStyleMobile">@category.CategoryEnglishName</p></a>
                         }
                     </div>
                 }
@@ -81,14 +86,16 @@
 
             @foreach (var category in Model.Categories.Where(x => x.MainCategoryId != 6))
             {
+                    var url = $"{baseUrl}/Categories/{category.CategoryEnglishName}/1";
+
                 <div class="row categoryItem">
                     @if (Model.Culture == "uk")
                     {
-                        <a class="textStyle" style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyleMobile">@category.CategoryUkrainianName</p></a>
+                        <a style="text-decoration: none; padding-left: 30px" href="@url"><p class="textStyle">@category.CategoryUkrainianName</p></a>
                     }
                     else
                     {
-                        <a class="textStyle" style="text-decoration: none; padding-left: 30px" href="@Url.Action("Index", "Home", new {category = @category.Id})"><p class="textStyleMobile">@category.CategoryGeorgianName</p></a>
+                        <a style="text-decoration: none; padding-left: 30px" href="@url"><p class="textStyle">@category.CategoryGeorgianName</p></a>
                     }
                 </div>
             }
