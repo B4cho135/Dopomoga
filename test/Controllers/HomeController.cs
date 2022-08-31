@@ -127,12 +127,15 @@ namespace test.Controllers
             model.ShowCategories = true;
             var category = model.Categories.FirstOrDefault(x => x.CategoryEnglishName == categoryName);
 
-            model.ChosenCategoryId = category.Id;
+
+            var categoryId = category != null ? category.Id : categoryName == "Blog" ? 47 : 48;
+
+            model.ChosenCategoryId = categoryId;
             model.SearchWord = searchWord;
 
-            var totalCount = await _apiClient.Posts.GetQuantity(searchWord, category.Id);
+            var totalCount = await _apiClient.Posts.GetQuantity(searchWord, categoryId);
 
-            var postsResponse = await _apiClient.Posts.Get(searchWord, page.HasValue ? page.Value - 1 : 0, 12, category.Id);
+            var postsResponse = await _apiClient.Posts.Get(searchWord, page.HasValue ? page.Value - 1 : 0, 12, categoryId);
 
             if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
