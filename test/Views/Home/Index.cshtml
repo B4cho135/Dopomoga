@@ -7,6 +7,11 @@
 @inject IStringLocalizer<SharedResources> SharedLocalizer
 @inject IHtmlLocalizer<SharedResources> SharedHtmlLocalizer
 
+@{
+    var baseUrl = "https://dopomoga.ge";
+    var urlMedia = $"{baseUrl}/Categories/Media/1";
+    var urlBlog = $"{baseUrl}/Categories/Blog/1";
+}
 
 <style>
     .textFont {
@@ -58,9 +63,6 @@
     }
 </style>
 
-@{
-    var baseUrl = "https://dopomoga.ge";
-}
 <div class="row" style="height:100vh;">
     <div class="col-md-3" style="background: #B9B9B9;" id="CategoriesDiv">
             @Html.Hidden("ChosenCategoryIdTmp", Model.ChosenCategoryId)
@@ -336,7 +338,7 @@
 
 
                         <div class="card-transparent mb-2" style="margin-top:20px;">
-                            <a href="@Url.Action("Index", "Home", new {category = 47, page = 1})" style=" text-decoration: none;">
+                            <a href="@urlBlog" style=" text-decoration: none;">
                                 <img class="card-img-top side-card-size" src="/content/images/Blogs.png" alt="Card image cap" style="height:200px;">
                                 
                             </a>
@@ -344,7 +346,7 @@
 
 
                         <div class="card-transparent mb-2" style="margin-top:20px;">
-                            <a href="@Url.Action("Index", "Home", new {category = 48, page = 1})" style=" text-decoration: none;">
+                            <a href="@urlMedia" style=" text-decoration: none;">
                                 <img class="card-img-top" src="/content/images/Videos.png" alt="Card image cap" style="height:200px;">
                             </a>
                         </div>
