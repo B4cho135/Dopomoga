@@ -127,6 +127,39 @@ namespace test.Controllers
             model.ShowCategories = true;
             var category = model.Categories.FirstOrDefault(x => x.CategoryEnglishName == categoryName);
 
+            if(!string.IsNullOrEmpty(searchWord))
+            {
+                model.SearchWord = searchWord;
+
+                var totalCountBySearchWord = await _apiClient.Posts.GetQuantity(searchWord, null);
+
+                var postsResponseBySearchWord = await _apiClient.Posts.Get(searchWord, page.HasValue ? page.Value - 1 : 0, 12, null);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    return RedirectToAction("Login", "Identity");
+                }
+
+                if (!response.IsSuccessStatusCode || response.Content == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+
+                foreach (var post in postsResponseBySearchWord.Content)
+                {
+                    if (post.Thumbnail != null)
+                    {
+                        post.ThumbnailBase64 = Convert.ToBase64String(post.Thumbnail);
+                    }
+                    model.Posts.Add(post);
+                }
+
+
+                model.ShowCategories = true;
+                model.Pager = new Pager(totalCountBySearchWord.Content < 12 ? 12 : totalCountBySearchWord.Content, page.HasValue ? page - 1 : 0, 12);
+                return View(model);
+            }
 
             var categoryId = category != null ? category.Id : categoryName == "Blog" ? 47 : 48;
 

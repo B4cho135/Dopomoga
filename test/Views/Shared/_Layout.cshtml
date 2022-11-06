@@ -636,7 +636,7 @@
 
         document.querySelector('#searchWord').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
-                var url = '@Url.Action("Index", "Home")';
+                var url = '/Categories/Search/1';
                 var textValue = $('#searchWord').val();
 
                 window.location.href = url + '?searchWord=' + textValue;
@@ -652,12 +652,12 @@
 
         function press()
         {
-            var url = '@Url.Action("Index", "Home")';
+            var url = '/Categories/Search/1';
             var textValue = $('#searchWord').val();
 
             window.location.href = url + '?searchWord=' + textValue;
         }
-
+        
     </script>
     <!-- Meta Pixel Code -->
     <script>
