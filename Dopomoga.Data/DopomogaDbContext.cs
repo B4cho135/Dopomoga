@@ -1,4 +1,5 @@
 ﻿using Dopomoga.Data.Entities.Categories;
+using Dopomoga.Data.Entities.EmailSubsctiption;
 using Dopomoga.Data.Entities.Identity;
 using Dopomoga.Data.Entities.PageInformation;
 using Dopomoga.Data.Entities.Posts;
@@ -23,6 +24,8 @@ namespace Dopomoga.Data
         public DbSet<PostEntity> Posts { get; set; }
         public DbSet<PageInformationEntity> PageInformation { get; set; }
         public DbSet<MainCategoryEntity> MainCategories { get; set; }
+        public DbSet<SubsctiptionEntity> Subscriptions { get; set; }
+        public DbSet<SentEmailEntity> SentEmails { get; set; }
 
     }
 }

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Dopomoga.Data\Dopomoga.Data.csproj" />
     <ProjectReference Include="..\Dopomoga.Models\Dopomoga.Models.csproj" />
+    <ProjectReference Include="..\Dopomoga.Services\Dopomoga.Services.csproj" />
   </ItemGroup>
 
 </Project>

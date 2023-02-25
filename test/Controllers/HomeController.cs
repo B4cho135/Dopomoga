@@ -78,6 +78,27 @@ namespace test.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<IActionResult> AddSubscriber(string email)
+        {
+            try
+            {
+                var response = await _apiClient.Subscribers.AddSubscriber(email);
+
+                return Ok(response);
+            }
+            catch(Refit.ApiException apiException)
+            {
+                return Ok(apiException.Content);
+            }
+            catch (Exception ex)
+            {
+
+                return Ok("Error");
+            }
+            
+        }
+
         [Route("Categories/{categoryName}/{page}")]
         public async Task<IActionResult> Categories(string categoryName, int? page, string searchWord)
         {
