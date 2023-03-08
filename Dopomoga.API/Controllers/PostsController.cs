@@ -206,8 +206,8 @@ namespace Dopomoga.API.Controllers
                     //_context.SaveChanges();
                 }
 
-                //_context.Posts.Add(request);
-                //_context.SaveChanges();
+                _context.Posts.Add(request);
+                _context.SaveChanges();
 
                 try
                 {

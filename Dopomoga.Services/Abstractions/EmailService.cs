@@ -30,7 +30,7 @@ namespace Dopomoga.Services.Abstractions
                 var smtpClient = new SmtpClient("smtp.gmail.com")
                 {
                     Port = 587,
-                    Credentials = new NetworkCredential("badri.tatarashvili@gmail.com", "davocrahoijiouyj"),
+                    Credentials = new NetworkCredential("Dopomogage@gmail.com", "jblukjogewpgducj"),
                     EnableSsl = true,
                 };
 
@@ -39,7 +39,7 @@ namespace Dopomoga.Services.Abstractions
                     try
                     {
 
-                        var mailMessage = new MailMessage("badri.tatarashvili@gmail.com", recipient, subject, post.UkrainianDescription);
+                        var mailMessage = new MailMessage("Dopomogage@gmail.com", recipient, subject, post.UkrainianDescription);
 
                         mailMessage.IsBodyHtml = true;
 
