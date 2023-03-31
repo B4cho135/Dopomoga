@@ -28,6 +28,25 @@ namespace Dopomoga.API.Controllers
             return Ok(subscriptions);
         }
 
+        [HttpPost("{emailAddress}/Unsubscribe")]
+        public IActionResult RemoveSubscription(string emailAddress)
+        {
+            var subscriber = _dbContext.Subscriptions.FirstOrDefault(x => x.Email == emailAddress);
+
+            if(subscriber == null)
+            {
+                return NotFound();
+            }
+
+            subscriber.IsDeleted= true;
+            subscriber.UpdatedAt= DateTime.UtcNow;
+
+            _dbContext.Subscriptions.Update(subscriber);
+            _dbContext.SaveChanges();
+
+            return Ok();
+        }
+
         [HttpPost]
         public IActionResult CreateSubscription(string email)
         {

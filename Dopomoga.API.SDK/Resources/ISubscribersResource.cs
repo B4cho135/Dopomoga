@@ -13,5 +13,7 @@ namespace Dopomoga.API.SDK.Resources
 
         [Post("/api/Subscriptions")]
         public Task<string> AddSubscriber(string email);
+        [Post("/api/Subscriptions/{emailAddress}/Unsubscribe")]
+        public Task<string> RemoveSubscriber(string emailAddress);
     }
 }

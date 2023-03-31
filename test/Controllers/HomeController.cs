@@ -18,7 +18,19 @@ namespace test.Controllers
             _apiClient = apiClient;
         }
 
+        public async Task<IActionResult> Unsubscribe(string emailAddress)
+        {
+            try
+            {
+                await _apiClient.Subscribers.RemoveSubscriber(emailAddress);
 
+                return Ok($"{emailAddress} was removed from subscribers!");
+            }
+            catch (Exception ex)
+            {
+                return Ok($"Was not able to unsubscribe user - {emailAddress}");
+            }
+        }
         public async Task<IActionResult> Index(string searchWord = null, int? page = null)
         {
             var model = new HomeViewModel();

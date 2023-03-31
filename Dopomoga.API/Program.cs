@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Hosting.Server;
 using Dopomoga.API.Jobs;
 
 var builder = WebApplication.CreateBuilder(args);
-
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 // Add services to the container.
 
 builder.Services.AddControllers();
