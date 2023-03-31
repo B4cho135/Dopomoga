@@ -19,11 +19,24 @@ namespace Dopomoga.Services.Abstractions
             _dbContext = dbContext;
         }
 
-        public void SendEmailsToSubscribers(PostEntity post)
+        public void SendEmailsToSubscribers()
         {
             try
             {
                 var subject = "На Dopomoga.ge опубліковано нову інформацію";
+
+                var todayPosts = _dbContext.Posts.Where(x => !x.IsDeleted && x.CreatedAt.Date == DateTime.Today).ToList();
+
+                if(!todayPosts.Any()) {
+                    return;
+                }
+
+                var emailBody = "";
+
+                todayPosts.ForEach(post =>
+                {
+                    emailBody += post.UkrainianDescription + "<br />";
+                });
 
                 var recipients = _dbContext.Subscriptions.Where(x => !x.IsDeleted).Select(x => x.Email).ToList();
 
@@ -39,7 +52,7 @@ namespace Dopomoga.Services.Abstractions
                     try
                     {
 
-                        var mailMessage = new MailMessage("Dopomogage@gmail.com", recipient, subject, post.UkrainianDescription);
+                        var mailMessage = new MailMessage("Dopomogage@gmail.com", recipient, subject, emailBody);
 
                         mailMessage.IsBodyHtml = true;
 

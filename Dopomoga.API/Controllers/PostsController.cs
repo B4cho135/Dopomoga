@@ -209,15 +209,6 @@ namespace Dopomoga.API.Controllers
                 _context.Posts.Add(request);
                 _context.SaveChanges();
 
-                try
-                {
-                    _emailSerivce.SendEmailsToSubscribers(request);
-                }
-                catch
-                {
-                    Console.WriteLine("Could not send emails");
-                }
-
                 return NoContent();
             }
             catch (Exception ex)

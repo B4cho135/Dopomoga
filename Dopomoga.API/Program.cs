@@ -1,12 +1,17 @@
 using Dopomoga.Data;
 using Dopomoga.Data.Entities.Identity;
 using Dopomoga.Services.Abstractions;
+using Hangfire.MemoryStorage;
+using Hangfire;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using HangfireBasicAuthenticationFilter;
+using Microsoft.AspNetCore.Hosting.Server;
+using Dopomoga.API.Jobs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,6 +54,22 @@ builder.Services.AddSwaggerGen(c =>
                 });
 });
 
+builder.Services.AddScoped<IEmailJobs, EmailJobs>();
+
+var options = new MemoryStorageOptions
+{
+    FetchNextJobTimeout = TimeSpan.FromHours(10)
+};
+
+builder.Services.AddHangfire(config => config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+.UseSimpleAssemblyNameTypeSerializer()
+.UseDefaultTypeSerializer()
+.UseMemoryStorage(options));
+
+
+builder.Services.AddHangfireServer();
+
+
 builder.Services.AddCors(c =>
 {
     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
@@ -86,6 +107,7 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 builder.Services.AddScoped<IEmailService, EmailService>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -95,9 +117,22 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseRouting();
 
 app.UseHttpsRedirection();
+
+app.UseHangfireDashboard("/hangfire", new DashboardOptions
+{
+    DashboardTitle = "Greenway notification retries",
+    Authorization = new[]
+        {
+            new HangfireCustomBasicAuthenticationFilter{
+                User = builder.Configuration.GetSection("HangfireSettings:UserName").Value,
+                Pass = builder.Configuration.GetSection("HangfireSettings:Password").Value
+            }
+        }
+});
 
 app.UseAuthentication();
 
@@ -106,5 +141,8 @@ app.UseCors("AllowOrigin");
 app.UseAuthorization();
 
 app.MapControllers();
+
+//Jobs
+RecurringJob.AddOrUpdate<IEmailJobs>(i => i.SendEmailsToSubscribers(), Cron.Daily(21, 0), timeZone: TimeZoneInfo.Local);
 
 app.Run();

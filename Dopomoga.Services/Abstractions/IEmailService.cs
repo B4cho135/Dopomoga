@@ -9,6 +9,6 @@ namespace Dopomoga.Services.Abstractions
 {
     public interface IEmailService
     {
-        void SendEmailsToSubscribers(PostEntity post);
+        void SendEmailsToSubscribers();
     }
 }
