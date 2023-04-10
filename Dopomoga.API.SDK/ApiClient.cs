@@ -11,6 +11,7 @@ namespace Dopomoga.API.SDK
         public ICategoryResource Categories { get; set; }
         public IPostResource Posts { get; set; }
         public IPageInformationResource PageInformation { get; set; }
+        public ISubscribersResource Subscribers { get; set; }
 
 
 
@@ -20,6 +21,7 @@ namespace Dopomoga.API.SDK
             Account = RestService.For<IAccountResource>(httpClient);
             Posts = RestService.For<IPostResource>(httpClient);
             PageInformation = RestService.For<IPageInformationResource>(httpClient);
+            Subscribers = RestService.For<ISubscribersResource>(httpClient);
 
             this.httpClient = httpClient;
         }

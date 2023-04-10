@@ -322,11 +322,10 @@
                                                                         margin-left:20px">@SharedLocalizer["FAQ"]</p>
                                         </a>
                                     </li>
-                                </ul>
 
-                                <div class="d-flex">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FAQ" style="margin:auto" id="mobileNavigationBarFAQ">
-                                            <p id="faqP" style="font-family: 'FiraGO-SemiBold' !important;
+                                <li class="nav-item" id="DesktopNavigationMenuFAQ">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Subscribe">
+                                        <p id="subscribeP" style="font-family: 'FiraGO-SemiBold' !important;
                                                                         font-size: 20px;
                                                                         font-style: normal;
                                                                         font-weight: 700;
@@ -335,10 +334,32 @@
                                                                         font-feature-settings: 'case' on;
                                                                         text-align: left;
                                                                         color:white;
-                                                                        margin-left:20px">@SharedLocalizer["FAQ"]</p>
-                                        </a>
+                                                                        margin-left:20px">@SharedLocalizer["Subscribe"]</p>
+                                    </a>
+                                </li>
+                                </ul>
 
-                                  <div style="position:relative; margin-right:10px" id="searchBarForDesktop">
+                                <div class="d-flex">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FAQ" id="mobileNavigationBarFAQ">
+                                            <p id="faqP" style="font-family: 'FiraGO-SemiBold' !important;
+                                                                        font-size: 20px;
+                                                                        font-style: normal;
+                                                                        font-weight: 700;
+                                                                        line-height: 23px;
+                                                                        letter-spacing: -.03em;
+                                                                        font-feature-settings: 'case' on;
+                                                                        text-align: left;
+                                                                        color:white;">@SharedLocalizer["FAQ"]</p>
+                                    </a>
+                                </div>
+
+                                <div class="d-flex">
+                                    
+                                
+                                </div>
+
+
+                                <div style="position:relative; margin-right:10px" id="searchBarForDesktop">
                                     <input name="searchWord" id="searchWord" style="border-radius:20px; background-color:white;width: 200px; height:30px;border-color:transparent; outline:none" />
                                     <div style="position:absolute; right:0px; top:-1px;">
                                         <a style="cursor:pointer">
@@ -350,8 +371,6 @@
                                         </a>
                                     </div>
                                 </div>
-                                </div>
-
 
                             </div>
                     </div>

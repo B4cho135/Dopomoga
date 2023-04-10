@@ -120,7 +120,61 @@
                     @Html.Raw(Model.Info.PageTextInEnglish)
                 }
             </div>
+
+
+            <br />
+            <br />
+
+            @if (@Model.Culture == "en")
+            {
+                <p>გამოიწერეთ სიახლეები ელ.ფოსტაზე</p>
+            }
+            else
+            {
+                <p>Підпишіться на новини електронною поштою</p>
+            }
+
+            <div class="row" style="border: 1px solid #adb5bd; padding:10px;">
+                @if (@Model.Culture == "en")
+                {
+                    <label class="form-label" style="color:black; font-size:20px; padding:1px;">სიახლეების გამოწერა</label>
+                }
+                else
+                {
+                    <label class="form-label" style="color:black; font-size:20px; padding:1px;">Підпишіться на новини</label>
+                }
+                <hr style="padding-left: 10px; padding-right:10px;" />
+
+                <div class="d-flex justify-content-center">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @if (@Model.Culture == "en")
+                            {
+                                <label for="exampleInputEmail1" id="exampleInputEmail1Label" style="margin-top:4px; color:black">ელ.ფოსტა<span style="color:red">*</span></label>
+                            }
+                            else
+                            {
+                                <label for="exampleInputEmail1" id="exampleInputEmail1Label" style="margin-top:4px; color:black">Ел.пошта<span style="color:red">*</span></label>
+                            }
+                        </div>
+                        <div class="col-md-10">
+                            <input type="email" class="form-control" id="exampleInputEmail1" style="padding-bottom:10px; margin-left:10px;">
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            @if (@Model.Culture == "en")
+                            {
+                                <button style="margin-top:10px;background-color:darkblue; color:white; width:150px;height:40px;" id="SubscriberSubmit">გამოწერა</button>
+                            }
+                            else
+                            {
+                                <button style="margin-top:10px;background-color:darkblue; color:white; width:150px;height:40px;" id="SubscriberSubmit">Підписка</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
     <div class="row" style="background:#EEEEEE;">
         <div class="col-lg-3">
@@ -187,15 +241,31 @@
                         color: #626262;">© 2022 Dopomoga Ukraini</p>
         </div>
     </div>
-
 </div>
 
 
 <script>
 
+    var myEl = document.getElementById('SubscriberSubmit');
+
+    myEl.addEventListener('click', function () {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddSubscriber","Home")',
+            data: {email: $("#exampleInputEmail1").val()},
+            success: function (response){
+                alert(response);
+            },
+        });
+    }, false);
+</script>
+
+<script>
+
     window.addEventListener('load', function(event){
 
-       $("#faqP").css("color", "white");
+        $("#faqP").css("color", "white");
+        $("#subscribeP").css("color", "white");
         $("#mainPageP").css("color", "white");
         $("#contactsP").css("color", "white");
         $("#aboutUsP").css("color", "#F8BF0C");
@@ -206,10 +276,15 @@
         if(newWidth >= 1000)
         {
             $("#CategoriesDiv").show();
+
+            $("#exampleInputEmail1Label").css("margin-left", "0px");
         }
         else
         {
             $("#CategoriesDiv").hide();
+
+            $("#exampleInputEmail1Label").css("margin-left","10px");
+            $("#exampleInputEmail1Label").css("margin-bottom","5px");
         }
     });
 
@@ -221,10 +296,18 @@
         if(newWidth >= 1000)
         {
             $("#CategoriesDiv").show();
+
+
+            $("#exampleInputEmail1Label").css("margin-left", "-10px");
+            $("#exampleInputEmail1Label").css("margin-bottom", "-5px");
         }
         else
         {
             $("#CategoriesDiv").hide();
+
+
+            $("#exampleInputEmail1Label").css("margin-left", "10px");
+            $("#exampleInputEmail1Label").css("margin-bottom", "5px");
         }
     });
 

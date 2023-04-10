@@ -18,7 +18,19 @@ namespace test.Controllers
             _apiClient = apiClient;
         }
 
+        public async Task<IActionResult> Unsubscribe(string emailAddress)
+        {
+            try
+            {
+                await _apiClient.Subscribers.RemoveSubscriber(emailAddress);
 
+                return Ok($"{emailAddress} was removed from subscribers!");
+            }
+            catch (Exception ex)
+            {
+                return Ok($"Was not able to unsubscribe user - {emailAddress}");
+            }
+        }
         public async Task<IActionResult> Index(string searchWord = null, int? page = null)
         {
             var model = new HomeViewModel();
@@ -77,6 +89,49 @@ namespace test.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Subscribe()
+        {
+            // Retrieves the requested culture
+            var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            // Culture contains the information of the requested culture
+            var culture = rqf.RequestCulture.Culture;
+
+            var model = new SharedViewModel();
+
+            model.Culture = culture.IetfLanguageTag;
+
+            var response = await _apiClient.Categories.Get();
+
+            response.Content.ForEach(x =>
+            {
+                model.Categories.Add(x);
+            });
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> AddSubscriber(string email)
+        {
+            try
+            {
+                var response = await _apiClient.Subscribers.AddSubscriber(email);
+
+                return Ok(response);
+            }
+            catch(Refit.ApiException apiException)
+            {
+                return Ok(apiException.Content);
+            }
+            catch (Exception ex)
+            {
+
+                return Ok("Error");
+            }
+            
+        }
 
         [Route("Categories/{categoryName}/{page}")]
         public async Task<IActionResult> Categories(string categoryName, int? page, string searchWord)

@@ -144,4 +144,7 @@
   <data name="Media" xml:space="preserve">
     <value>МЕДIА</value>
   </data>
+  <data name="Subscribe" xml:space="preserve">
+    <value>Підписка</value>
+  </data>
 </root>

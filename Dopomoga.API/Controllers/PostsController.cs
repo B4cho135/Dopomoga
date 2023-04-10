@@ -1,6 +1,7 @@
 ﻿using Dopomoga.Data;
 using Dopomoga.Data.Entities.Posts;
 using Dopomoga.Models.Requests.Posts;
+using Dopomoga.Services.Abstractions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,9 +16,11 @@ namespace Dopomoga.API.Controllers
     public class PostsController : ControllerBase
     {
         private readonly DopomogaDbContext _context;
-        public PostsController(DopomogaDbContext context)
+        private readonly IEmailService _emailSerivce;
+        public PostsController(DopomogaDbContext context, IEmailService emailSerivce)
         {
             _context = context;
+            _emailSerivce = emailSerivce;
         }
 
         [HttpGet]
@@ -176,36 +179,35 @@ namespace Dopomoga.API.Controllers
                     }
                 }
 
+                if(request.MainCategoryId == 6 && request.CategoryId != 28)
+                {
+                    request.CategoryId = 28;
+                    //var newPost = new PostEntity()
+                    //{
+                    //    CategoryId = 28,
+                    //    MainCategoryId = request.CategoryId,
+                    //    CreatedAt = DateTime.Now,
+                    //    EnglishDescription = request.EnglishDescription,
+                    //    EnglishTitle = request.EnglishTitle,
+                    //    GeorgianDescription = request.GeorgianDescription,
+                    //    GeorgianTitle = request.GeorgianTitle,
+                    //    IsDeleted = false,
+                    //    RedirectUrl = request.RedirectUrl,
+                    //    ShowInTheEnd = request.ShowInTheEnd,
+                    //    ShowOnMainMenu = request.ShowOnMainMenu,
+                    //    Thumbnail = request.Thumbnail,
+                    //    UkrainianDescription = request.UkrainianDescription,
+                    //    UkrainianTitle = request.UkrainianTitle,
+                    //    UpdatedAt = DateTime.Now
+                    //};
+
+                    
+                    //_context.Posts.Add(newPost);
+                    //_context.SaveChanges();
+                }
 
                 _context.Posts.Add(request);
                 _context.SaveChanges();
-
-
-                if(request.MainCategoryId == 6 && request.CategoryId != 28)
-                {
-                    var newPost = new PostEntity()
-                    {
-                        CategoryId = 28,
-                        MainCategoryId = request.CategoryId,
-                        CreatedAt = DateTime.Now,
-                        EnglishDescription = request.EnglishDescription,
-                        EnglishTitle = request.EnglishTitle,
-                        GeorgianDescription = request.GeorgianDescription,
-                        GeorgianTitle = request.GeorgianTitle,
-                        IsDeleted = false,
-                        RedirectUrl = request.RedirectUrl,
-                        ShowInTheEnd = request.ShowInTheEnd,
-                        ShowOnMainMenu = request.ShowOnMainMenu,
-                        Thumbnail = request.Thumbnail,
-                        UkrainianDescription = request.UkrainianDescription,
-                        UkrainianTitle = request.UkrainianTitle,
-                        UpdatedAt = DateTime.Now
-                    };
-
-                    
-                    _context.Posts.Add(newPost);
-                    _context.SaveChanges();
-                }
 
                 return NoContent();
             }
