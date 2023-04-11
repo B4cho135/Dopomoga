@@ -369,6 +369,23 @@
                                 </a>
                             </div>
                         }
+                        @*search suka for main posts under videos*@
+                        @if (Model.Culture == "en")
+                        {
+                            <div class="card-transparent mb-2" style="margin-top:20px;">
+                                <a href="@urlMedia" style=" text-decoration: none;">
+                                    <img class="card-img-top" src="/content/images/Videos.png" alt="Card image cap" style="height:200px;">
+                                </a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="card-transparent mb-2" style="margin-top:20px;">
+                                <a href="@urlMedia" style=" text-decoration: none;">
+                                    <img class="card-img-top" src="/content/images/Videos_Ukrainian.png" alt="Card image cap" style="height:200px;">
+                                </a>
+                            </div>
+                        }
 
                         
                     </div>
@@ -511,15 +528,21 @@
     </div>
 
     <div class="row" style="background:#EEEEEE;">
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <img src="~/content/images/USAID.png" style="margin-left:10px; margin-top:10px;" class="img-fluid" alt="Responsive image">
         </div>
+        <div class="col-lg-2">
+            <img src="~/content/images/EULogo.jpg" style="margin-left:10px; margin-top:10px;" class="img-fluid" alt="Responsive image">
+        </div>
+        <div class="col-lg-1">
+            <img src="~/content/images/PIN.jpg" style="margin-left:10px; margin-top:10px;" class="img-fluid" alt="Responsive image">
+        </div>
 
-        <div class="col-md-7">
+        <div class="col-md-6">
             <p style="font-family: 'Roboto';
                         font-style: normal;
                         font-weight: 400;
-                        font-size: 13px;
+                        font-size: 11px;
                         line-height: 15px;
                         margin-left: 20px;
                         margin-top:10px;
@@ -527,9 +550,9 @@
 
                         letter-spacing: 0.1em;
 
-                        color: #626262;">ვებგვერდზე განთავსებული ინფორმაციის მოძიება და შეკრება შესაძლებელი გახდა ამერიკელი ხალხის გულუხვი დახმარების წყალობით, ამერიკის შეერთებული შტატების საერთაშორისო განვითარების სააგენტოს (USAID) დაფინანსებით. ვებგვერდზე განთავსებულ მასალაზე პასუხისმგებელია მხოლოდ საინიციატივო ჯგუფი და შესაძლოა არ გამოხატავდეს ამერიკის შეერთებული შტატების საერთაშორისო განვითარების სააგენტოს (USAID), აღმოსავლეთ-დასავლეთის მართვის ინსტიტუტის (EWMI), ან ამერიკის შეერთებული შტატების მთავრობის შეხედულებებს.</p>
+                        color: #626262;">ვებგვერდზე განთავსებული ინფორმაციის მოძიება და შეკრება შესაძლებელი გახდა ამერიკის შეერთებული შტატების საერთაშორისო განვითარების სააგენტოსა (USAID) და ევროკავშირის დაფინანსებით. ვებგვერდზე განთავსებულ მასალაზე პასუხისმგებელია მხოლოდ საინიციატივო ჯგუფი და შესაძლოა არ გამოხატავდეს ამერიკის შეერთებული შტატების საერთაშორისო განვითარების სააგენტოს (USAID), ამერიკის შეერთებული შტატების მთავრობის ან  ევროკავშირის შეხედულებებს.</p>
         </div>
-        <div class="col-md-2 justify-content-center" style="text-align:center">
+        <div class="col-md-1 justify-content-center" style="text-align:center">
             <div style="margin-left:auto;margin-right:auto;">
                 <div class="d-flex justify-content-center" style="margin-top:20px;">
                         <div style="width:30px; height:30px; cursor:pointer" onclick="window.open('https://t.me/+ugrIKNOeRGAzMzVi', '_blank');">
