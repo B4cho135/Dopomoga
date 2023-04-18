@@ -98,7 +98,7 @@
             <img src="~/content/images/USAIDLogo.png" style="margin-left:10px; margin-top:10px;" class="img-fluid" alt="Responsive image">
         </div>
         <div class="col-lg-2">
-            <img src="~/content/images/SecondLogo.png" style="margin-top:10px;" class="img-fluid" alt="Responsive image" id="secondImage">
+            <img src="~/content/images/SecondLogo.png" style="margin-top:10px;margin-left:10px; margin-right:10px;" class="img-fluid" alt="Responsive image" id="secondImage">
         </div>
         <div class="col-lg-2">
             <img src="~/content/images/EULogo.png" style="margin-left:10px; margin-top:10px;" class="img-fluid" alt="Responsive image">
@@ -202,8 +202,6 @@
         if (newWidth >= 1000) {
             $("#CategoriesDiv").show();
 
-            $("#secondImage").css("margin-left", "40px");
-            $("#secondImage").css("height", "68%");
             $("#exampleInputEmail1Label").css("margin-left", "0px");
         }
         else {
@@ -211,8 +209,6 @@
 
             $("#exampleInputEmail1Label").css("margin-left", "10px");
             $("#exampleInputEmail1Label").css("margin-bottom", "5px");
-            $("#secondImage").css("margin-left", "");
-            $("#secondImage").css("height", "95%");
         }
     });
 
@@ -225,8 +221,6 @@
             $("#CategoriesDiv").show();
 
 
-            $("#secondImage").css("margin-left", "40px");
-            $("#secondImage").css("height", "68%");
 
             $("#exampleInputEmail1Label").css("margin-left", "-10px");
             $("#exampleInputEmail1Label").css("margin-bottom", "-5px");
@@ -234,8 +228,6 @@
         else {
             $("#CategoriesDiv").hide();
 
-            $("#secondImage").css("margin-left", "");
-            $("#secondImage").css("height", "95%");
 
             $("#exampleInputEmail1Label").css("margin-left", "10px");
             $("#exampleInputEmail1Label").css("margin-bottom", "5px");

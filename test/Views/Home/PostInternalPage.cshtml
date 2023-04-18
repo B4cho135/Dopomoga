@@ -135,7 +135,7 @@
             <img src="~/content/images/USAIDLogo.png" style="margin-left:10px; margin-top:10px;" class="img-fluid" alt="Responsive image">
         </div>
         <div class="col-lg-2">
-            <img src="~/content/images/SecondLogo.png" style="margin-top:10px;" class="img-fluid" alt="Responsive image" id="secondImage">
+            <img src="~/content/images/SecondLogo.png" style="margin-top:10px;margin-left:10px; margin-right:10px;" class="img-fluid" alt="Responsive image" id="secondImage">
         </div>
         <div class="col-lg-2">
             <img src="~/content/images/EULogo.png" style="margin-left:10px; margin-top:10px;" class="img-fluid" alt="Responsive image">
@@ -229,14 +229,10 @@
         if(newWidth >= 1000)
         {
 
-            $("#secondImage").css("margin-left", "40px");
-            $("#secondImage").css("height", "68%");
             $("#CategoriesDiv").show();
         }
         else
         {
-            $("#secondImage").css("margin-left", "");
-            $("#secondImage").css("height", "95%");
             $("#CategoriesDiv").hide();
         }
     });
@@ -249,14 +245,10 @@
         if(newWidth >= 1000)
         {
 
-            $("#secondImage").css("margin-left", "40px");
-            $("#secondImage").css("height", "68%");
             $("#CategoriesDiv").show();
         }
         else
         {
-            $("#secondImage").css("margin-left", "");
-            $("#secondImage").css("height", "95%");
             $("#CategoriesDiv").hide();
         }
     });
