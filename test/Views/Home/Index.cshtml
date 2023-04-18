@@ -11,6 +11,7 @@
     var baseUrl = "https://dopomoga.ge";
     var urlMedia = $"{baseUrl}/Categories/Media/1";
     var urlBlog = $"{baseUrl}/Categories/Blog/1";
+    var urlThirdCard = $"{baseUrl}/Categories/Valunteers/1";
 }
 
 <style>
@@ -373,7 +374,7 @@
                         @*@if (Model.Culture == "en")
                         {*@
                             <div class="card-transparent mb-2" style="margin-top:20px;">
-                                <a href="@urlMedia" style=" text-decoration: none;">
+                                <a href="@urlThirdCard" style=" text-decoration: none;">
                                     <img class="card-img-top" src="/content/images/cards3.png" alt="Card image cap" style="height:200px;">
                                 </a>
                             </div>
@@ -532,7 +533,7 @@
             <img src="~/content/images/USAIDLogo.png" style="margin-left:10px; margin-top:10px;" class="img-fluid" alt="Responsive image">
         </div>
         <div class="col-lg-2">
-            <img src="~/content/images/SecondLogo.png" style="margin-left:40px; margin-top:10px;" class="img-fluid" alt="Responsive image" id="secondImage">
+            <img src="~/content/images/SecondLogo.png" style="margin-top:10px;" class="img-fluid" alt="Responsive image" id="secondImage">
         </div>
         <div class="col-lg-2">
             <img src="~/content/images/EULogo.png" style="margin-left:10px; margin-top:10px;" class="img-fluid" alt="Responsive image">
@@ -617,8 +618,8 @@
             $("#MobileCategories").hide();
             $("#DesktopCategories").show();
             $("#CategoriesDiv").show();
-            $("#secondImage").css("marging-left", "40px");
-            $("#secondImage").css("height", "74px");
+            $("#secondImage").css("margin-left", "40px");
+            $("#secondImage").css("height", "68%");
         }
         else
         {
@@ -628,9 +629,9 @@
             {
                 $("#CategoriesDiv").hide();
             }
-@*
-            $("#secondImage").css("marging-left", "0px");
-            $("#secondImage").css("height", "95%");*@
+
+            $("#secondImage").css("margin-left", "");
+            $("#secondImage").css("height", "95%");
         }
     });
 
@@ -643,6 +644,8 @@
             $("#MobileCategories").hide();
             $("#DesktopCategories").show();
             $("#CategoriesDiv").show();
+            $("#secondImage").css("margin-left", "40px");
+            $("#secondImage").css("height", "68%");
         }
         else
         {
@@ -652,7 +655,9 @@
             {
                 $("#CategoriesDiv").hide();
             }
-            
+
+            $("#secondImage").css("margin-left", "");
+            $("#secondImage").css("height", "95%");
         }
     });
 
