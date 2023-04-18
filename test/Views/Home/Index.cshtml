@@ -370,14 +370,14 @@
                             </div>
                         }
                         @*search suka for main posts under videos*@
-                        @if (Model.Culture == "en")
-                        {
+                        @*@if (Model.Culture == "en")
+                        {*@
                             <div class="card-transparent mb-2" style="margin-top:20px;">
                                 <a href="@urlMedia" style=" text-decoration: none;">
-                                    <img class="card-img-top" src="/content/images/Videos.png" alt="Card image cap" style="height:200px;">
+                                    <img class="card-img-top" src="/content/images/cards3.png" alt="Card image cap" style="height:200px;">
                                 </a>
                             </div>
-                        }
+                        @*}
                         else
                         {
                             <div class="card-transparent mb-2" style="margin-top:20px;">
@@ -385,7 +385,7 @@
                                     <img class="card-img-top" src="/content/images/Videos_Ukrainian.png" alt="Card image cap" style="height:200px;">
                                 </a>
                             </div>
-                        }
+                        }*@
 
                         
                     </div>
@@ -527,18 +527,21 @@
 
     </div>
 
-    <div class="row" style="background:#EEEEEE;">
+    <div class="row" style="height:50px;">
         <div class="col-lg-2">
-            <img src="~/content/images/USAID.png" style="margin-left:10px; margin-top:10px;" class="img-fluid" alt="Responsive image">
+            <img src="~/content/images/USAIDLogo.png" style="margin-left:10px; margin-top:10px;" class="img-fluid" alt="Responsive image">
         </div>
         <div class="col-lg-2">
-            <img src="~/content/images/EULogo.jpg" style="margin-left:10px; margin-top:10px;" class="img-fluid" alt="Responsive image">
+            <img src="~/content/images/SecondLogo.png" style="margin-left:40px; margin-top:10px;" class="img-fluid" alt="Responsive image" id="secondImage">
+        </div>
+        <div class="col-lg-2">
+            <img src="~/content/images/EULogo.png" style="margin-left:10px; margin-top:10px;" class="img-fluid" alt="Responsive image">
         </div>
         <div class="col-lg-1">
-            <img src="~/content/images/PIN.jpg" style="margin-left:10px; margin-top:10px;" class="img-fluid" alt="Responsive image">
+            <img src="~/content/images/PIN.png" style="margin-left:10px; margin-top:10px;" class="img-fluid" alt="Responsive image">
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-4">
             <p style="font-family: 'Roboto';
                         font-style: normal;
                         font-weight: 400;
@@ -614,6 +617,8 @@
             $("#MobileCategories").hide();
             $("#DesktopCategories").show();
             $("#CategoriesDiv").show();
+            $("#secondImage").css("marging-left", "40px");
+            $("#secondImage").css("height", "74px");
         }
         else
         {
@@ -623,7 +628,9 @@
             {
                 $("#CategoriesDiv").hide();
             }
-            
+@*
+            $("#secondImage").css("marging-left", "0px");
+            $("#secondImage").css("height", "95%");*@
         }
     });
 
