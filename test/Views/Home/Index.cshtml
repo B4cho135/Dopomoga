@@ -178,6 +178,24 @@
             
             <div style="margin-top:30px;" id="MobileCategories">
 
+                @{
+                    var urlTemp = $"{baseUrl}/Categories/Buy%20Ukrainian/1";
+                }
+                <div class="row categoryItem" style="text-align:center">
+                    @if (Model.Culture == "uk")
+                    {
+                        <a style="text-decoration: none; " href="@urlTemp"><p class="textStyle">Купуй українське</p></a>
+                    }
+                    else if (Model.Culture == "en")
+                    {
+                        <a style="text-decoration: none; " href="@urlTemp"><p class="textStyle">იყიდე უკრაინული</p></a>
+                    }
+                    else
+                    {
+                        <a style="text-decoration: none; " href="@urlTemp"><p class="textStyle">Buy Ukrainian</p></a>
+                    }
+                </div>
+
                 @foreach (var mainCategory in Model.MainCategories)
                 {
 

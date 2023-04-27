@@ -9,6 +9,7 @@ using Dopomoga.Data.Entities.Posts;
 using Dopomoga.Data;
 using Dopomoga.Data.Entities.EmailSubsctiption;
 using Org.BouncyCastle.Ocsp;
+using Org.BouncyCastle.Cms;
 
 namespace Dopomoga.Services.Abstractions
 {
@@ -48,15 +49,17 @@ namespace Dopomoga.Services.Abstractions
                     EnableSsl = true,
                 };
 
+                
+
                 foreach (var recipient in recipients)
                 {
                     try
                     {
-                        emailBody += "<br />  " +
+                        var emailBodyWithUnsubscribeButton = emailBody + "<br />  " +
                                "<div class=\"d-flex justify-content-center\"> " +
                                $"<a href=\"https://dopomoga.ge/Home/Unsubscribe?={recipient}\" style=\"margin-top:10px;background-color:darkblue; color:white; width:150px;height:40px;\" id=\"SubscriberSubmit\">Відписатися</a> </div>";
 
-                        var mailMessage = new MailMessage("Dopomogage@gmail.com", recipient, subject, emailBody);
+                        var mailMessage = new MailMessage("Dopomogage@gmail.com", recipient, subject, emailBodyWithUnsubscribeButton);
 
                         mailMessage.IsBodyHtml = true;
 
