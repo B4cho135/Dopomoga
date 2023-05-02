@@ -57,7 +57,7 @@ namespace Dopomoga.Services.Abstractions
                     {
                         var emailBodyWithUnsubscribeButton = emailBody + "<br />  " +
                                "<div class=\"d-flex justify-content-center\"> " +
-                               $"<a href=\"https://dopomoga.ge/Home/Unsubscribe?={recipient}\" style=\"margin-top:10px;background-color:darkblue; color:white; width:150px;height:40px;\" id=\"SubscriberSubmit\">Відписатися</a> </div>";
+                               $"<a href=\"https://dopomoga.ge/Home/Unsubscribe?emailAddress={recipient}\" style=\"margin-top:10px;background-color:darkblue; color:white; width:150px;height:40px;\" id=\"SubscriberSubmit\">Відписатися</a> </div>";
 
                         var mailMessage = new MailMessage("Dopomogage@gmail.com", recipient, subject, emailBodyWithUnsubscribeButton);
 
