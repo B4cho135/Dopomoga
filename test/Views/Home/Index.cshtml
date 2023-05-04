@@ -8,10 +8,10 @@
 @inject IHtmlLocalizer<SharedResources> SharedHtmlLocalizer
 
 @{
-    var baseUrl = "https://dopomoga.ge";
+    var baseUrl = "https://localhost:7045";
     var urlMedia = $"{baseUrl}/Categories/Media/1";
     var urlBlog = $"{baseUrl}/Categories/Blog/1";
-    var urlThirdCard = $"{baseUrl}/Categories/Valunteers/1";
+    var urlThirdCard = $"https://localhost:7045/Categories/Valunteers/1";
 }
 
 <style>
@@ -329,9 +329,20 @@
                                             {
                                                 <p class="textFont"><b>@post.UkrainianTitle</b></p>
                                             }
-                                            else
+                                            else if(Model.Culture == "en")
                                             {
                                                 <p class="textFont"><b>@post.GeorgianTitle</b></p>
+                                            }
+                                            else
+                                            {
+                                                if(!string.IsNullOrEmpty(post.EnglishTitle))
+                                                {
+                                                    <p class="textFont"><b>@post.EnglishTitle</b></p>
+                                                }
+                                                else
+                                                {
+                                                    <p class="textFont"><b>@post.UkrainianTitle</b></p>
+                                                }
                                             }
                                         </div>
                                     </a>

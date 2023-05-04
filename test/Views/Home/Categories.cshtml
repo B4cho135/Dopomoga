@@ -309,9 +309,20 @@
                                             {
                                                 <p class="textFont"><b>@post.UkrainianTitle</b></p>
                                             }
-                                            else
+                                             else if(Model.Culture == "en")
                                             {
                                                 <p class="textFont"><b>@post.GeorgianTitle</b></p>
+                                            }
+                                            else
+                                            {
+                                                if(!string.IsNullOrEmpty(post.EnglishTitle))
+                                                {
+                                                    <p class="textFont"><b>@post.EnglishTitle</b></p>
+                                                }
+                                                else
+                                                {
+                                                    <p class="textFont"><b>@post.UkrainianTitle</b></p>
+                                                }
                                             }
                                         </div>
                                     </a>
@@ -393,9 +404,20 @@
                                                 {
                                                     <p class="textFont"><b>@post.UkrainianTitle</b></p>
                                                 }
-                                                else
+                                                else if (Model.Culture == "en")
                                                 {
                                                     <p class="textFont"><b>@post.GeorgianTitle</b></p>
+                                                }
+                                                else
+                                                {
+                                                    if (!string.IsNullOrEmpty(post.EnglishTitle))
+                                                    {
+                                                        <p class="textFont"><b>@post.EnglishTitle</b></p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p class="textFont"><b>@post.UkrainianTitle</b></p>
+                                                    }
                                                 }
                                             </div>
                                         </a>
@@ -414,9 +436,20 @@
                                                 {
                                                     <p class="textFont"><b>@post.UkrainianTitle</b></p>
                                                 }
-                                                else
+                                                else if (Model.Culture == "en")
                                                 {
                                                     <p class="textFont"><b>@post.GeorgianTitle</b></p>
+                                                }
+                                                else
+                                                {
+                                                    if (!string.IsNullOrEmpty(post.EnglishTitle))
+                                                    {
+                                                        <p class="textFont"><b>@post.EnglishTitle</b></p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p class="textFont"><b>@post.UkrainianTitle</b></p>
+                                                    }
                                                 }
                                             </div>
                                         </a>

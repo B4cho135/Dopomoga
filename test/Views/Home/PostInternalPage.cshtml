@@ -114,7 +114,7 @@
                         </div>
                     </div>
                 }
-                else if (@Model.Culture == "en")
+                else if (@Model.Culture == "uk")
                 {
                     <div class="card-transparent">
                         <div class="card-body" style="word-wrap: break-word">
@@ -129,7 +129,7 @@
                 else
                 {
 
-                    if(!string.IsNullOrEmpty(Model.Post.EnglishTitle))
+                    if(string.IsNullOrEmpty(Model.Post.EnglishTitle))
                     {
                         <div class="card-transparent">
                             <div class="card-body" style="word-wrap: break-word">
