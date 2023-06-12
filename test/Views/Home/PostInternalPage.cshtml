@@ -89,9 +89,13 @@
                     {
                         <a style="text-decoration: none; padding-left: 30px" href="@url"><p class="textStyle">@category.CategoryUkrainianName</p></a>
                     }
-                    else
+                    else if (Model.Culture == "en")
                     {
                         <a style="text-decoration: none; padding-left: 30px" href="@url"><p class="textStyle">@category.CategoryGeorgianName</p></a>
+                    }
+                    else
+                    {
+                        <a style="text-decoration: none; padding-left: 30px" href="@url"><p class="textStyle">@category.CategoryEnglishName</p></a>
                     }
                 </div>
             }
