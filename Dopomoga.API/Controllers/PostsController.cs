@@ -166,7 +166,7 @@ namespace Dopomoga.API.Controllers
                     String St = request.RedirectUrl;
 
                     int pFrom = St.IndexOf("v=") + "v=".Length;
-                    int pTo = St.LastIndexOf("&");
+                    int pTo = St.LastIndexOf("&") == -1 ? St.Length : St.LastIndexOf("&");
 
                     String result = St.Substring(pFrom, pTo - pFrom);
 
